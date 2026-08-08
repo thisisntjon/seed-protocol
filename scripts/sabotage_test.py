@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""sabotage_test.py -- Law 2 applied to our own guard.
+"""Prove that onboard_check fails on each defect class it claims to detect.
 
-A guard is not trusted until it fails on the defect it claims to catch. This seeds four defect
-classes into throwaway copies of the repo and requires onboard_check.py to go red on each,
-and green on the clean copy. If any sabotage stays green, the checker is decorative.
+Every case runs in a disposable copy. A green clean copy plus red sabotaged copies is the
+minimum evidence that the guard has refutation power; it is not evidence that every possible
+defect is covered.
 """
 import shutil
 import subprocess
@@ -15,15 +15,26 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CHECK = ROOT / "scripts" / "onboard_check.py"
 
+
 def run_check(root):
-    r = subprocess.run([sys.executable, str(CHECK), "--root", str(root)],
-                       capture_output=True, text=True)
-    return r.returncode
+    result = subprocess.run(
+        [sys.executable, str(CHECK), "--root", str(root)],
+        capture_output=True,
+        text=True,
+    )
+    return result.returncode
+
 
 def fresh_copy(tmp, name):
-    dst = Path(tmp) / name
-    shutil.copytree(ROOT, dst, ignore=shutil.ignore_patterns(".git", "__pycache__"))
-    return dst
+    destination = Path(tmp) / name
+    shutil.copytree(ROOT, destination, ignore=shutil.ignore_patterns(".git", "__pycache__"))
+    return destination
+
+
+def add_gate(root, row):
+    path = root / "GATES.md"
+    path.write_text(path.read_text(encoding="utf-8") + "\n" + row + "\n", encoding="utf-8")
+
 
 def main():
     results = []
@@ -31,36 +42,83 @@ def main():
         clean = fresh_copy(tmp, "clean")
         results.append(("clean repo passes", run_check(clean) == 0))
 
-        s1 = fresh_copy(tmp, "s1-missing-path")
-        (s1 / "LAWS.md").unlink()
-        results.append(("missing claimed path fails", run_check(s1) != 0))
+        missing_path = fresh_copy(tmp, "missing-path")
+        (missing_path / "LAWS.md").unlink()
+        results.append(("missing claimed path fails", run_check(missing_path) != 0))
 
-        s2 = fresh_copy(tmp, "s2-stale-gate")
-        gates = s2 / "GATES.md"
+        stale_gate = fresh_copy(tmp, "stale-gate")
         old = (datetime.now() - timedelta(days=10)).strftime("%Y-%m-%d")
-        body = gates.read_text(encoding="utf-8")
-        import re
-        body = re.sub(r"\| (\d{4}-\d{2}-\d{2}) \| OPEN \|", f"| {old} | OPEN |", body)
-        gates.write_text(body, encoding="utf-8")
-        results.append(("gate past SLA fails", run_check(s2) != 0))
+        add_gate(stale_gate, f"| G-SABOTAGE-STALE | test overdue gate | human | {old} | OPEN |")
+        results.append(("independent overdue gate fails", run_check(stale_gate) != 0))
 
-        s3 = fresh_copy(tmp, "s3-bad-receipt")
-        (s3 / "workflow" / "receipts" / "2026-08-08-bad.md").write_text(
-            "STATE: DONE\nOBJECT: something\nNEXT_OWNER: none\n", encoding="utf-8")
-        results.append(("receipt without EVIDENCE fails", run_check(s3) != 0))
+        invalid_gate = fresh_copy(tmp, "invalid-gate")
+        today = datetime.now().strftime("%Y-%m-%d")
+        add_gate(invalid_gate, f"| G-SABOTAGE-STATUS | test bad status | human | {today} | MAYBE |")
+        results.append(("invalid gate status fails", run_check(invalid_gate) != 0))
 
-        s4 = fresh_copy(tmp, "s4-retracted-cite")
-        (s4 / "workflow" / "handoffs" / "2026-08-08-notes.md").write_text(
-            "The score was EXAMPLE-999.9 at last reading.\n", encoding="utf-8")
-        results.append(("retracted token cited fails", run_check(s4) != 0))
+        bad_receipt = fresh_copy(tmp, "bad-receipt")
+        (bad_receipt / "workflow" / "receipts" / "2026-08-08-bad.md").write_text(
+            "STATE: DONE\nOBJECT: something\nEXACT_REF: abc123\nNEXT_OWNER: none\n",
+            encoding="utf-8",
+        )
+        results.append(("receipt without evidence fails", run_check(bad_receipt) != 0))
+
+        bad_state = fresh_copy(tmp, "bad-receipt-state")
+        (bad_state / "workflow" / "receipts" / "2026-08-08-wishful.md").write_text(
+            "STATE: WISHFUL\nOBJECT: something\nEXACT_REF: abc123\n"
+            "EVIDENCE: none\nNEXT_OWNER: none\n",
+            encoding="utf-8",
+        )
+        results.append(("invalid receipt state fails", run_check(bad_state) != 0))
+
+        retracted = fresh_copy(tmp, "nested-retraction")
+        docs = retracted / "docs" / "nested"
+        docs.mkdir(parents=True)
+        (docs / "notes.md").write_text(
+            "The obsolete score was EXAMPLE-999.9.\n",
+            encoding="utf-8",
+        )
+        results.append(("retracted token in nested docs fails", run_check(retracted) != 0))
+
+        bad_dispatch = fresh_copy(tmp, "bad-dispatch")
+        dispatches = bad_dispatch / "workflow" / "dispatches"
+        dispatches.mkdir(parents=True, exist_ok=True)
+        (dispatches / "bad.md").write_text(
+            "TO: worker\nOBJECT: thing\nEXACT_REF: abc123\nACTION: build\n"
+            "FENCES: none\nNEXT_EVENT: verify\n",
+            encoding="utf-8",
+        )
+        results.append(("dispatch without acceptance fails", run_check(bad_dispatch) != 0))
+
+        bad_experiment = fresh_copy(tmp, "bad-experiment")
+        experiments = bad_experiment / "workflow" / "experiments"
+        experiments.mkdir(parents=True, exist_ok=True)
+        (experiments / "bad.md").write_text(
+            "HYPOTHESIS: x\nOBJECT: abc123\nDEPLOYED_FORM: local\nMEASUREMENT: n=1\n"
+            "PASS_BAR: 1\nKILL_BAR: 0\nCOST: none\nOUTCOME: CELEBRATE\n"
+            "INDEPENDENT_REPRO: pending\n",
+            encoding="utf-8",
+        )
+        results.append(("invalid experiment outcome fails", run_check(bad_experiment) != 0))
+
+        bad_handoff = fresh_copy(tmp, "bad-handoff")
+        (bad_handoff / "workflow" / "handoffs" / "bad.md").write_text(
+            "# We are probably done\n",
+            encoding="utf-8",
+        )
+        results.append(("malformed handoff fails", run_check(bad_handoff) != 0))
 
     ok = True
     for name, passed in results:
         print(("PASS    " if passed else "FAIL    ") + name)
         ok = ok and passed
-    print("\nSABOTAGE TEST " + ("PASSED -- the guard demonstrably catches its defects"
-                                if ok else "FAILED -- the guard is decorative, do not trust green"))
+    count = sum(1 for _, passed in results if passed)
+    print(
+        f"\nSABOTAGE TEST {count}/{len(results)} "
+        + ("PASSED -- every seeded defect was detected" if ok else "FAILED -- the guard is decorative, do not trust green")
+    )
     return 0 if ok else 1
+
 
 if __name__ == "__main__":
     sys.exit(main())

@@ -50,8 +50,9 @@ Chat is ephemeral; heads are lossy. Plans, decisions, receipts, retractions, and
 files a cold session can read. The health metric: each successive handoff memo gets shorter.
 **Earned by:** the Pokemon repo surviving fleet-wide session death repeatedly; "picking this back
 up costs an hour, not a week."
-**Enforcement:** CHANNEL + ENCODED — templates exist for every artifact type; the checker lints
-receipts for required fields and verifies every path this documentation claims.
+**Enforcement:** CHANNEL + ENCODED — templates exist for every artifact type; the checker validates
+receipt, dispatch, experiment, and handoff instances and verifies every concrete path this
+documentation claims.
 
 ## Law 6 — Correct by editing, retract by ledger
 Append-only correction means the wrong answer sits above the right one and grep finds it first.

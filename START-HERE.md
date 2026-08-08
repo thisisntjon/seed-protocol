@@ -6,7 +6,7 @@ this file is edited, not appended. `scripts/onboard_check.py` verifies its claim
 ## THE WHOLE JOB, IN FOUR LINES
 
 ```
-1. This repo is SEED: a drop-in operating skeleton for AI-driven projects.
+1. This repo is Bonkers; SEED is its drop-in operating protocol for AI-driven projects.
 2. Read LAWS.md (the proven rules), then AGENTS.md (your contract), then workflow/PLAN.md (the work).
 3. Run: python scripts/onboard_check.py   — it must pass before you act on anything written here.
 4. Humans decide only what GATES.md lists. Everything else: proceed, leave receipts.
@@ -14,16 +14,17 @@ this file is edited, not appended. `scripts/onboard_check.py` verifies its claim
 
 ## What this is
 
-A skeleton framework distilled from a year-long experiment (41 projects + a 30-day multi-agent
-campaign, audited 2026-08-08). Its three commitments:
+A small protocol distilled from a year-long experiment (41 projects + a 30-day multi-agent
+campaign, audited 2026-08-08). It is an epistemic control plane, not an agent runtime. Its three
+commitments:
 
-- **Communicates optimally** — all state lives in git artifacts with linted schemas
-  (`workflow/templates/`), never in chat or heads. A cold session resumes from files alone.
+- **Preserves inspectable state** — decisions and work state live in git artifacts with validated
+  schemas (`workflow/templates/`), not only in chat or human memory.
 - **Researches appropriately** — work begins with a phased plan (`workflow/PLAN.md`): problem,
   assumption registry with kill criteria, synthesis gate, then roadmap. Depth is triaged, not maximal.
-- **Builds itself with minimal human intervention** — agents propose, build, verify, and bank;
-  humans are an escalation surface for irreversibles only (`GATES.md`), with an SLA so pending
-  gates cannot silently kill the project.
+- **Supports agent-led execution** — agents can propose, build, verify, and bank while humans
+  remain the escalation surface for irreversibles (`GATES.md`). Whether this reduces human work is
+  an unverified hypothesis until the transplant and ablation phases complete.
 
 ## File map (every path below is verified by the checker)
 
@@ -39,16 +40,22 @@ campaign, audited 2026-08-08). Its three commitments:
 | `workflow/templates/RECEIPT.md` | Schema for reporting work done |
 | `workflow/templates/HANDOFF.md` | Cold-open session handoff memo format |
 | `workflow/templates/EXPERIMENT.md` | Pre-registration + kill-bar template |
+| `workflow/dispatches/` | Validated work claims; empty until a project needs one |
+| `workflow/experiments/` | Validated experiment registrations; empty until a project needs one |
 | `workflow/receipts/` | Banked receipts land here (linted) |
 | `workflow/handoffs/` | Dated handoff memos land here |
 | `scripts/onboard_check.py` | Verifies this documentation against reality |
 | `scripts/sabotage_test.py` | Proves the checker fails on seeded defects |
+| `scripts/status.py` | Computes progress from the plan's phase table |
+| `scripts/checkpoint.py` | Refuses a git checkpoint while required checks are red |
+| `.github/workflows/verify.yml` | Runs both verification scripts in CI |
 | `scripts/status.py` | Progress bars from the PLAN's phasing table + gate pressure |
 | `scripts/checkpoint.py` | Verified snapshot: refuses to commit while checks are red |
 
 ## Onboarding a fresh harness (any vendor)
 
-1. Run `python scripts/onboard_check.py`. Red means this file is lying somewhere — fix that first.
+1. Run `python scripts/onboard_check.py` and `python scripts/sabotage_test.py`. Red means a claimed
+   invariant or its refutation test is broken — fix that first.
 2. Read `LAWS.md`, `AGENTS.md`, `GATES.md`, `workflow/PLAN.md`, and the newest file in
    `workflow/handoffs/` (if any). That is the complete state. Do not ask a human to re-explain.
 3. Check `workflow/canon/RETRACTIONS.md` before citing ANY number found in older documents.

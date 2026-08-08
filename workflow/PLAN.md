@@ -3,7 +3,7 @@
 Format: phased-investigation-workflow (`/phased`).
 Triage depth: **Medium** — the investigation stage was satisfied by the 2026-08-08 twelve-agent
 corpus audit (see Research); this plan records its synthesis and governs the build.
-Current stage: roadmap -> executing (P1)
+Current stage: roadmap -> executing (P1 truthfulness hardening)
 Last updated: 2026-08-08
 
 ## Problem
@@ -18,9 +18,9 @@ for verified progress.
 campaign) into a small set of proven laws. That knowledge is currently spread across two
 directories and one report. Compounding only happens if it becomes a drop-in skeleton.
 
-**Hypothesis:** A ~14-file skeleton — where every law is enforced by a machine check rather than
-prose — lets any harness cold-onboard in ≤15 minutes and lets a project run research → build →
-verify with human intervention only at irreversibles.
+**Hypothesis:** A small, incident-bounded protocol — where enforcement strength is explicit and
+important claims have refutation tests — lets a capable agent cold-onboard in ≤15 minutes and
+helps a project run research → build → verify while reserving irreversible decisions for humans.
 
 ## Goal
 
@@ -33,11 +33,13 @@ Pokemon campaign.
 
 1. `python scripts/onboard_check.py` passes clean on this repo. 
 2. `python scripts/sabotage_test.py` proves the checker FAILS on each seeded defect class
-   (missing path, overdue gate, malformed receipt, retracted-value citation) — a guard is not
+   (missing path, overdue/invalid gates, malformed artifact schemas, and retracted-value
+   citations anywhere in the project) — a guard is not
    trusted until it fails on the defect it claims to catch. 
 3. Every law in `LAWS.md` cites the incident/evidence that earned it and names its enforcement
    (ENCODED / CHANNEL / PROSE), with PROSE kept to a minimum. 
-4. All files copy into a new project unmodified except marked placeholders. 
+4. The portable core copies into a new project with only explicitly documented project-specific
+   fields rewritten.
 5. A cold session can state the whole job from the first four lines of `START-HERE.md`. 
 
 ## Assumption Registry
@@ -60,8 +62,8 @@ Pokemon campaign.
   Status: verified in origin corpus; carried as design principle here
   | Affects: everything — checks over prose throughout
 
-- Assumption: A ~14-file skeleton is the right size; the 646-tool sprawl of the origin corpus
-  is the anti-pattern ("the valuable core is 8-12 components" — Sol assessment).
+- Assumption: A small, incident-bounded core is the right shape; the 646-tool sprawl of the origin
+  corpus is the anti-pattern ("the valuable core is 8-12 components" — Sol assessment).
   Source: PTCG_SOL_VALUE_ASSESSMENT_2026-08-08.md
   Status: holding
   | Affects: scope — additions require a named incident, per Law 6
@@ -72,13 +74,22 @@ Pokemon campaign.
 
 | Phase | Scope | Gate | Status |
 |---|---|---|---|
-| P1 Skeleton | All files + working checks + progress/checkpointing | onboard_check green; sabotage_test proves red-on-defect | DONE |
+| P1 Skeleton | All files + working checks + progress/checkpointing | onboard_check green; sabotage_test proves red-on-defect | ACTIVE(90%) |
 | P2 First transplant | Drop skeleton into one real new project | fresh harness onboards ≤15 min from START-HERE alone | TODO |
 | P3 Ablation | Compare a skeleton-run project vs. bare-harness on one comparable task | measured delta recorded here, whatever it shows | TODO |
 | P4 External proof | A second user/machine runs SEED; skeleton published after the Sept 13 fence lifts | one adoption or review by someone who is not Jon | TODO |
 
 ## Phase Log
 
+- 2026-08-08 — P1 truthfulness-hardening increment locked against baseline `3730a79` after
+  review found three contradictions: no reproducible git identity, schema-lint claims wider than
+  implementation, and a stale-gate sabotage coupled to the presence of an existing OPEN gate.
+  Acceptance: strict gate/status validation; project-wide Markdown retraction scan; structured
+  receipt/dispatch/experiment/handoff validation; CI entrypoint; independent sabotage for every
+  added check; clean status/checkpoint path; banked receipt bound to the resulting commit.
+- 2026-08-08 — Evidence-portability debt recorded: the primary corpus audit currently resolves to
+  an external artifact rather than a repository-bound evidence pack. P2 may cite it as context,
+  but cannot treat its universal claims as independently reproducible until exported or rebuilt.
 - 2026-08-08 — Investigation satisfied by the twelve-agent corpus audit (8 local readers, 3 web
   researchers, 1 adversarial skeptic). Report:
   https://claude.ai/code/artifact/a82abedd-c7de-4407-9a4c-b9e5bfb1cf86

@@ -5,7 +5,7 @@ Bank one file per completed dispatch into `workflow/receipts/`, named
 "Done" without evidence is not a state (Law 5).
 
 ```
-STATE:       DONE | PARTIAL | BLOCKED | KILLED
+STATE:       DONE | PARTIAL | BLOCKED | KILLED | INVALIDATED
 OBJECT:      <what this receipt is about>
 EXACT_REF:   <commit/artifact hash the evidence was produced against>
 EVIDENCE:    <command output, file path, hash, or measurement that proves the state —

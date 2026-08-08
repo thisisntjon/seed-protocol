@@ -17,3 +17,5 @@ Rules:
 | token | use instead | why it was wrong (mechanism) | retracted |
 |---|---|---|---|
 | EXAMPLE-999.9 | (delete this example row on first real retraction) | Example mechanism: frozen pre-maturity artifact quoted as converged | 2026-08-08 |
+| ~14 files | small, incident-bounded core; actual file count is descriptive, not a target | Approximate component count was published as a file-count constraint before the first git identity existed | 2026-08-08 |
+| sabotage_test: 5/5 | use the newest receipt bound to an exact commit | The stale-gate sabotage depended on an existing OPEN gate and stopped testing its claimed defect after that gate was answered | 2026-08-08 |

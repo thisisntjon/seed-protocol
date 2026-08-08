@@ -13,6 +13,7 @@ MEASUREMENT:     <the command/procedure; the sample size and why it is powered f
 PASS_BAR:        <pre-stated threshold for shipping>
 KILL_BAR:        <pre-stated threshold for abandoning — honored regardless of narrative>
 COST:            <estimated spend/time; actual filled in at outcome — economics get measured>
-OUTCOME:         PASS | KILL | NULL | INVALID-INSTRUMENT   (+ the measured value, + receipt path)
+OUTCOME:         PENDING before results; then PASS | KILL | NULL | INVALID-INSTRUMENT
+                 (+ the measured value, + receipt path)
 INDEPENDENT_REPRO: <required for PASS: who reproduced it, from what ref — author XOR verifier>
 ```

@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""onboard_check.py -- verifies the skeleton's documentation against reality (Law 1).
+"""Verify that SEED's documentation and workflow artifacts agree with reality.
 
 Checks:
-  1. PATHS      every path claimed in START-HERE.md's file map exists
-  2. RETRACT    no retracted token (workflow/canon/RETRACTIONS.md) cited outside the ledger
-  3. GATES      no OPEN gate in GATES.md older than the SLA; no DEFERRED gate past its date
-  4. RECEIPTS   every file in workflow/receipts/ carries STATE / EVIDENCE / NEXT_OWNER
+  1. PATHS       every concrete path claimed in START-HERE.md exists
+  2. RETRACT     retracted tokens do not appear in project Markdown outside the ledger
+  3. GATES       IDs/statuses/dates are valid and no human gate silently exceeds its SLA
+  4. TEMPLATES   artifact templates still expose their required fields
+  5. ARTIFACTS   receipts, dispatches, experiments, and handoffs match their schemas
+  6. LAWS        every numbered law still names its evidence and enforcement grade
 
-Exit 0 = documentation is trustworthy. Exit 1 = something above is lying; fix before acting.
-ASCII output only (Windows cp1252 console crash is a documented origin-corpus incident).
+Exit 0 means these checks found no contradiction. It does not prove project success.
+ASCII output only (Windows cp1252 console safety).
 """
 import argparse
 import re
@@ -17,13 +19,33 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 SLA_HOURS = 48
-TRACKED_GLOBS = ["*.md", "workflow/**/*.md"]
+
+TEMPLATE_FIELDS = {
+    "DISPATCH.md": ("TO", "OBJECT", "EXACT_REF", "ACTION", "ACCEPTANCE", "FENCES", "NEXT_EVENT"),
+    "RECEIPT.md": ("STATE", "OBJECT", "EXACT_REF", "EVIDENCE", "BLOCKED_ON", "NEXT_OWNER"),
+    "EXPERIMENT.md": (
+        "HYPOTHESIS", "OBJECT", "DEPLOYED_FORM", "MEASUREMENT", "PASS_BAR", "KILL_BAR",
+        "COST", "OUTCOME", "INDEPENDENT_REPRO",
+    ),
+}
+RECEIPT_STATES = {"DONE", "PARTIAL", "BLOCKED", "KILLED", "INVALIDATED"}
+EXPERIMENT_OUTCOMES = {"PENDING", "PASS", "KILL", "NULL", "INVALID-INSTRUMENT"}
+HANDOFF_HEADINGS = (
+    "## THE WHOLE JOB, IN FOUR LINES",
+    "## BINDING RULES RIGHT NOW",
+    "## EVERY NUMBER WORTH CITING",
+    "## OPEN QUESTIONS",
+    "## WHAT NOT TO DO",
+)
+
 
 def fail(msgs, text):
     msgs.append("ERROR   " + text)
 
+
 def note(msgs, text):
     msgs.append("warn    " + text)
+
 
 def check_paths(root, msgs):
     src = root / "START-HERE.md"
@@ -34,24 +56,34 @@ def check_paths(root, msgs):
     for tok in tokens:
         if " " in tok or "*" in tok or tok.startswith("http"):
             continue
-        if not ("/" in tok or "\\" in tok or tok.endswith((".md", ".py"))):
+        if not ("/" in tok or "\\" in tok or tok.endswith((".md", ".py", ".yml", ".yaml"))):
             continue
-        p = root / tok.rstrip("/")
-        if not p.exists():
+        path = root / tok.rstrip("/")
+        if not path.exists():
             fail(msgs, f"START-HERE.md claims `{tok}` but it does not exist")
+
 
 def parse_table_rows(text, id_prefix=None):
     rows = []
     for line in text.splitlines():
         if not line.strip().startswith("|"):
             continue
-        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
         if len(cells) < 2 or set(cells[0]) <= {"-", " ", ":"}:
             continue
         if id_prefix and not cells[0].startswith(id_prefix):
             continue
         rows.append(cells)
     return rows
+
+
+def project_markdown(root):
+    """Include tracked and not-yet-tracked Markdown; exclude only git internals."""
+    return sorted(
+        path for path in root.rglob("*.md")
+        if path.is_file() and ".git" not in path.relative_to(root).parts
+    )
+
 
 def check_retractions(root, msgs):
     ledger = root / "workflow" / "canon" / "RETRACTIONS.md"
@@ -60,22 +92,19 @@ def check_retractions(root, msgs):
         return
     tokens = []
     for cells in parse_table_rows(ledger.read_text(encoding="utf-8")):
-        if cells[0] in ("token",):
+        if cells[0] != "token":
+            tokens.append(cells[0])
+    for path in project_markdown(root):
+        if path.resolve() == ledger.resolve():
             continue
-        tokens.append(cells[0])
-    if not tokens:
-        return
-    files = set()
-    for g in TRACKED_GLOBS:
-        files.update(root.glob(g))
-    for f in sorted(files):
-        if f.resolve() == ledger.resolve() or not f.is_file():
-            continue
-        body = f.read_text(encoding="utf-8", errors="replace")
-        for tok in tokens:
-            if tok and tok in body:
-                fail(msgs, f"retracted token '{tok}' cited in {f.relative_to(root)} "
-                           f"-- check the ledger, use the replacement")
+        body = path.read_text(encoding="utf-8", errors="replace")
+        for token in tokens:
+            if token and token in body:
+                fail(
+                    msgs,
+                    f"retracted token '{token}' cited in {path.relative_to(root)} -- use the ledger replacement",
+                )
+
 
 def check_gates(root, msgs, now=None):
     gates = root / "GATES.md"
@@ -83,62 +112,183 @@ def check_gates(root, msgs, now=None):
         fail(msgs, "GATES.md missing -- the human-key boundary is undefined")
         return
     now = now or datetime.now()
+    seen = set()
     open_count = 0
-    for cells in parse_table_rows(gates.read_text(encoding="utf-8"), id_prefix="G-"):
-        if len(cells) < 5:
-            fail(msgs, f"gate row malformed (need 5 cells): {cells}")
+    rows = parse_table_rows(gates.read_text(encoding="utf-8"), id_prefix="G-")
+    for cells in rows:
+        if len(cells) != 5:
+            fail(msgs, f"gate row malformed (need exactly 5 cells): {cells}")
             continue
-        gid, what, _owner, opened_s, status = cells[0], cells[1], cells[2], cells[3], cells[4]
+        gid, what, _owner, opened_s, status = cells
+        if gid in seen:
+            fail(msgs, f"duplicate gate ID: {gid}")
+        seen.add(gid)
         try:
             opened = datetime.strptime(opened_s, "%Y-%m-%d")
         except ValueError:
             fail(msgs, f"gate {gid}: opened date '{opened_s}' not YYYY-MM-DD")
             continue
-        if status.upper().startswith("OPEN"):
+
+        normalized = status.upper()
+        if normalized == "OPEN":
             open_count += 1
             age = now - opened
             if age > timedelta(hours=SLA_HOURS):
-                fail(msgs, f"gate {gid} OPEN for {age.days}d ({what[:60]}) -- SLA is {SLA_HOURS}h. "
-                           f"Pending gates kill projects: answer it or defer it with a date.")
-        elif status.upper().startswith("DEFERRED"):
-            m = re.search(r"DEFERRED\((\d{4}-\d{2}-\d{2})\)", status)
-            if not m:
-                fail(msgs, f"gate {gid}: DEFERRED requires a revisit date, e.g. DEFERRED(2026-09-01)")
-            elif datetime.strptime(m.group(1), "%Y-%m-%d") < now:
-                fail(msgs, f"gate {gid}: deferral date {m.group(1)} has passed -- re-decide it")
+                fail(
+                    msgs,
+                    f"gate {gid} OPEN for {age.days}d ({what[:60]}) -- SLA is {SLA_HOURS}h; answer or defer it",
+                )
+        elif normalized == "ANSWERED":
+            pass
+        else:
+            match = re.fullmatch(r"DEFERRED\((\d{4}-\d{2}-\d{2})\)", normalized)
+            if not match:
+                fail(msgs, f"gate {gid}: invalid status '{status}'")
+                continue
+            revisit = datetime.strptime(match.group(1), "%Y-%m-%d")
+            if revisit.date() < now.date():
+                fail(msgs, f"gate {gid}: deferral date {match.group(1)} has passed -- re-decide it")
     if open_count:
         note(msgs, f"{open_count} gate(s) OPEN and inside SLA -- fine, but they are on the clock")
 
+
+def parse_fields(body):
+    fields = {}
+    for line in body.splitlines():
+        match = re.match(r"^([A-Z][A-Z0-9_]*):\s*(.*)$", line)
+        if match:
+            fields[match.group(1)] = match.group(2).strip()
+    return fields
+
+
+def check_required_fields(path, required, msgs):
+    body = path.read_text(encoding="utf-8", errors="replace")
+    fields = parse_fields(body)
+    missing = [key for key in required if key not in fields]
+    empty = [key for key in required if key in fields and not fields[key]]
+    placeholder = [key for key in required if key in fields and "<" in fields[key] and ">" in fields[key]]
+    if missing:
+        fail(msgs, f"{path.relative_to(path.parents[2])} missing field(s): {', '.join(missing)}")
+    if empty:
+        fail(msgs, f"{path.name} has empty field(s): {', '.join(empty)}")
+    if placeholder:
+        fail(msgs, f"{path.name} retains placeholder field(s): {', '.join(placeholder)}")
+    return fields
+
+
+def check_templates(root, msgs):
+    template_dir = root / "workflow" / "templates"
+    for name, required in TEMPLATE_FIELDS.items():
+        path = template_dir / name
+        if not path.exists():
+            fail(msgs, f"workflow/templates/{name} missing")
+            continue
+        fields = parse_fields(path.read_text(encoding="utf-8", errors="replace"))
+        missing = [key for key in required if key not in fields]
+        if missing:
+            fail(msgs, f"template {name} missing schema field(s): {', '.join(missing)}")
+    handoff = template_dir / "HANDOFF.md"
+    if not handoff.exists():
+        fail(msgs, "workflow/templates/HANDOFF.md missing")
+    else:
+        body = handoff.read_text(encoding="utf-8", errors="replace")
+        for heading in HANDOFF_HEADINGS:
+            if heading not in body:
+                fail(msgs, f"template HANDOFF.md missing heading: {heading}")
+
+
 def check_receipts(root, msgs):
-    rdir = root / "workflow" / "receipts"
-    if not rdir.exists():
+    directory = root / "workflow" / "receipts"
+    if not directory.exists():
         fail(msgs, "workflow/receipts/ missing")
         return
-    required = ("STATE:", "EVIDENCE:", "NEXT_OWNER:")
-    for f in sorted(rdir.glob("*.md")):
-        body = f.read_text(encoding="utf-8", errors="replace")
-        missing = [k for k in required if k not in body]
-        if missing:
-            fail(msgs, f"receipt {f.name} missing field(s): {', '.join(missing)} "
-                       f"-- 'done' without evidence is not a state")
+    required = ("STATE", "OBJECT", "EXACT_REF", "EVIDENCE", "NEXT_OWNER")
+    for path in sorted(directory.glob("*.md")):
+        fields = check_required_fields(path, required, msgs)
+        state = fields.get("STATE", "").upper()
+        if state and state not in RECEIPT_STATES:
+            fail(msgs, f"receipt {path.name} has invalid STATE '{fields['STATE']}'")
+        if state == "BLOCKED" and not fields.get("BLOCKED_ON"):
+            fail(msgs, f"receipt {path.name} is BLOCKED but has no BLOCKED_ON")
+
+
+def check_dispatches(root, msgs):
+    directory = root / "workflow" / "dispatches"
+    if not directory.exists():
+        return
+    required = TEMPLATE_FIELDS["DISPATCH.md"]
+    for path in sorted(directory.glob("*.md")):
+        check_required_fields(path, required, msgs)
+
+
+def check_experiments(root, msgs):
+    directory = root / "workflow" / "experiments"
+    if not directory.exists():
+        return
+    required = TEMPLATE_FIELDS["EXPERIMENT.md"]
+    for path in sorted(directory.glob("*.md")):
+        fields = check_required_fields(path, required, msgs)
+        outcome = fields.get("OUTCOME", "").split(maxsplit=1)[0].upper()
+        if outcome and outcome not in EXPERIMENT_OUTCOMES:
+            fail(msgs, f"experiment {path.name} has invalid OUTCOME '{fields['OUTCOME']}'")
+        if outcome == "PASS" and not fields.get("INDEPENDENT_REPRO"):
+            fail(msgs, f"experiment {path.name} is PASS but has no INDEPENDENT_REPRO")
+
+
+def check_handoffs(root, msgs):
+    directory = root / "workflow" / "handoffs"
+    if not directory.exists():
+        fail(msgs, "workflow/handoffs/ missing")
+        return
+    for path in sorted(directory.glob("*.md")):
+        body = path.read_text(encoding="utf-8", errors="replace")
+        if not body.startswith("# RESUME HERE"):
+            fail(msgs, f"handoff {path.name} must start with '# RESUME HERE'")
+        for heading in HANDOFF_HEADINGS:
+            if heading not in body:
+                fail(msgs, f"handoff {path.name} missing heading: {heading}")
+
+
+def check_laws(root, msgs):
+    path = root / "LAWS.md"
+    if not path.exists():
+        fail(msgs, "LAWS.md missing")
+        return
+    body = path.read_text(encoding="utf-8", errors="replace")
+    sections = re.split(r"(?=^## Law \d+)", body, flags=re.MULTILINE)[1:]
+    if not sections:
+        fail(msgs, "LAWS.md contains no numbered laws")
+    for section in sections:
+        title = section.splitlines()[0]
+        if "**Earned by:**" not in section:
+            fail(msgs, f"{title} has no Earned by evidence")
+        if "**Enforcement:**" not in section:
+            fail(msgs, f"{title} has no Enforcement grade")
+
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--root", default=None, help="repo root (default: parent of this script)")
-    args = ap.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", default=None, help="repo root (default: parent of this script)")
+    args = parser.parse_args()
     root = Path(args.root).resolve() if args.root else Path(__file__).resolve().parent.parent
     msgs = []
     check_paths(root, msgs)
     check_retractions(root, msgs)
     check_gates(root, msgs)
+    check_templates(root, msgs)
     check_receipts(root, msgs)
-    errors = [m for m in msgs if m.startswith("ERROR")]
-    warns = [m for m in msgs if m.startswith("warn")]
-    for m in msgs:
-        print(m)
-    print(f"\n{len(errors)} error(s), {len(warns)} warning(s). "
-          + ("ONBOARD CHECK PASSED" if not errors else "ONBOARD CHECK FAILED -- docs are lying somewhere"))
+    check_dispatches(root, msgs)
+    check_experiments(root, msgs)
+    check_handoffs(root, msgs)
+    check_laws(root, msgs)
+    errors = [msg for msg in msgs if msg.startswith("ERROR")]
+    warns = [msg for msg in msgs if msg.startswith("warn")]
+    for msg in msgs:
+        print(msg)
+    verdict = "ONBOARD CHECK PASSED" if not errors else "ONBOARD CHECK FAILED -- docs are lying somewhere"
+    print(f"\n{len(errors)} error(s), {len(warns)} warning(s). {verdict}")
     return 1 if errors else 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
