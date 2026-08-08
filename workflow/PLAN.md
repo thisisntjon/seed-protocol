@@ -3,7 +3,7 @@
 Format: phased-investigation-workflow (`/phased`).
 Triage depth: **Medium** — the investigation stage was satisfied by the 2026-08-08 twelve-agent
 corpus audit (see Research); this plan records its synthesis and governs the build.
-Current stage: roadmap -> executing (P1 truthfulness hardening)
+Current stage: roadmap -> P2 first-transplant design ready
 Last updated: 2026-08-08
 
 ## Problem
@@ -74,13 +74,17 @@ Pokemon campaign.
 
 | Phase | Scope | Gate | Status |
 |---|---|---|---|
-| P1 Skeleton | All files + working checks + progress/checkpointing | onboard_check green; sabotage_test proves red-on-defect | ACTIVE(90%) |
+| P1 Skeleton | All files + working checks + progress/checkpointing | onboard_check green; sabotage_test proves red-on-defect | DONE |
 | P2 First transplant | Drop skeleton into one real new project | fresh harness onboards ≤15 min from START-HERE alone | TODO |
 | P3 Ablation | Compare a skeleton-run project vs. bare-harness on one comparable task | measured delta recorded here, whatever it shows | TODO |
 | P4 External proof | A second user/machine runs SEED; skeleton published after the Sept 13 fence lifts | one adoption or review by someone who is not Jon | TODO |
 
 ## Phase Log
 
+- 2026-08-08 — P1 truthfulness hardening DONE at `1e5bc7d`: onboard check 0 errors;
+  sabotage test 10/10; schema instances, gate states, project-wide Markdown retractions, law
+  evidence/enforcement, CI, status, and checkpoint paths verified. Replacement receipt:
+  `workflow/receipts/2026-08-08-p1-truthfulness-hardening.md`. P2 is now the critical path.
 - 2026-08-08 — P1 truthfulness-hardening increment locked against baseline `3730a79` after
   review found three contradictions: no reproducible git identity, schema-lint claims wider than
   implementation, and a stale-gate sabotage coupled to the presence of an existing OPEN gate.
