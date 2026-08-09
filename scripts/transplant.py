@@ -85,8 +85,13 @@ def plan(target: Path) -> dict[str, object]:
             identical.append(relative)
         else:
             conflicts.append(relative)
+    identity_payload = "\n".join(
+        f"{item['path']}:{item['sha256']}" for item in sorted(files, key=lambda item: item["path"])
+    )
+    portable_identity = hashlib.sha256(identity_payload.encode("utf-8")).hexdigest()
     return {
         "source_commit": source_commit(),
+        "portable_identity_sha256": portable_identity,
         "target": str(target),
         "would_copy": copied,
         "identical": identical,
@@ -108,6 +113,7 @@ def apply_transplant(target: Path, transplant_plan: dict[str, object]) -> None:
         "schema_version": 1,
         "source_project": "Bonkers / SEED",
         "source_commit": transplant_plan["source_commit"],
+        "portable_identity_sha256": transplant_plan["portable_identity_sha256"],
         "installed_at_utc": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "portable_files": transplant_plan["files"],
         "project_specific_files_required": [

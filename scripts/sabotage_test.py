@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tempfile
 import re
+import json
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -219,13 +220,16 @@ def main():
         apply_target = Path(tmp) / "transplant-apply-target"
         initialized = init_target(apply_target)
         apply_result = run_transplant(apply_target, apply=True)
+        provenance_path = apply_target / "workflow" / "SEED-TRANSPLANT.json"
+        provenance = json.loads(provenance_path.read_text(encoding="utf-8")) if provenance_path.exists() else {}
         results.append(
             (
                 "transplant copies portable core with provenance",
                 initialized
                 and apply_result.returncode == 0
                 and (apply_target / "LAWS.md").exists()
-                and (apply_target / "workflow" / "SEED-TRANSPLANT.json").exists(),
+                and provenance_path.exists()
+                and len(provenance.get("portable_identity_sha256", "")) == 64,
             )
         )
 
