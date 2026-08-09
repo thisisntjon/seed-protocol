@@ -58,9 +58,8 @@ commitments:
 | `pocs/deceptive-green/` | Source-vs-deployed-artifact false-green calibration fixture |
 | `workflow/research/2026-08-08-poc-foundations.md` | Primary-source rationale for the POC architecture |
 | `.github/workflows/verify.yml` | Runs onboarding, sabotage, and POC calibration in CI |
-| `scripts/status.py` | Progress bars from the PLAN's phasing table + gate pressure |
-| `scripts/checkpoint.py` | Verified snapshot: refuses to commit while checks are red |
 | `scripts/spend_check.py` | Law 9: fails when compute burns without closed loops |
+| `scripts/stress_test.py` | Randomized defect-injection stress test of the guards at scale |
 
 ## Onboarding a fresh harness (any vendor)
 
