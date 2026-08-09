@@ -3,7 +3,7 @@
 Format: phased-investigation-workflow (`/phased`).
 Triage depth: **Medium** — the investigation stage was satisfied by the 2026-08-08 twelve-agent
 corpus audit (see Research); this plan records its synthesis and governs the build.
-Current stage: phase P3 — investigating matched ablation execution
+Current stage: phase P3 — plan gate for matched-ablation instrumentation
 Last updated: 2026-08-08
 
 ## Problem
@@ -100,6 +100,26 @@ Pokemon campaign.
   hidden allowlist accepted only START-HERE.md or workflow/PLAN.md for P2b.
   | Affects: P2 cold-onboarding gate, POC-01, and evidence scoring for P3
 
+- Assumption: The P3 treatment identity `e46361e...` remains a valid SEED object.
+  Source: original P3 preregistration
+  Status: invalidated (2026-08-08) — P2a killed this identity because its portable manifest omitted
+  a runtime dependency required by its own sabotage suite. The recommended replacement is the
+  P2c-proven `bed1e9e...`; the current `7f4cebdb...` is a later replication candidate.
+  | Affects: P3 treatment, preregistration, and every downstream causal claim
+
+- Assumption: Live human-intervention minutes can be captured prospectively without material
+  missingness or observer effect.
+  Source: P3 secondary endpoint and POC-08 design
+  Status: unverified — build and sabotage-test the event logger before any registered solver run
+  | Affects: P3 human-cost endpoint and public Human Delta thermometer
+
+- Assumption: Twelve binary matched pairs support the preregistered 25pp directional claim.
+  Source: P3 fixed sample
+  Status: unverified — the original “paired 90% interval” does not name an estimator. Proposed exact
+  rule is mean paired effect >=25pp plus one-sided discordant-pair p<=0.10; at n=12 the smallest
+  simple pass is four discordant pairs all favoring SEED.
+  | Affects: P3 PASS interpretation and POC-09
+
 ## Phasing
 
 <!-- Status column machine-parsed by scripts/status.py: DONE | ACTIVE | ACTIVE(nn%) | TODO -->
@@ -108,10 +128,21 @@ Pokemon campaign.
 |---|---|---|---|
 | P1 Skeleton | All files + working checks + progress/checkpointing | onboard_check green; sabotage_test proves red-on-defect | DONE |
 | P2 First transplant | Drop skeleton into one real new project | fresh session onboards ≤15 min from START-HERE alone | DONE |
-| P3 Ablation | Compare a skeleton-run project vs. bare-harness on one comparable task | measured delta recorded here, whatever it shows | ACTIVE(10%) |
+| P3 Ablation | Compare SEED vs. bare instructions across twelve matched task pairs | blinded fixed-sample terminal, including an honest null | ACTIVE(20%) |
 | P4 External proof | A second user/machine runs SEED; skeleton published after the Sept 13 fence lifts | one adoption or review by someone who is not Jon | TODO |
 
 ## Phase Log
+
+### Pivot — 2026-08-08 — P3 treatment identity is dead
+
+P3's registered `e46361e...` object was subsequently killed by P2a, so executing it would measure a
+known-broken package. The causal question survives. The recommended local pivot is to freeze the
+P2c-proven identity `bed1e9e...` from source `728ff959...` as the first P3 treatment and defer the
+current `7f4cebdb...` identity to a later replication. Investigation also found two prerequisites
+that must precede spend: prospective human-intervention capture (POC-08) and an exact small-sample
+test replacing the under-specified “paired 90% interval.” The twelve-pair sample and roadmap remain
+unchanged. Execution is held at the plan gate; no solver/model run is authorized by this pivot.
+Research: `workflow/research/phase-P3-ablation-design.md`. Phase plan: `workflow/phases/P3.md`.
 
 ### Pivot — 2026-08-08 — cold-onboarding scorer is lexically invalid
 
@@ -191,6 +222,9 @@ HYPOTHESIS and moves to P3's fixed matched ablation. P2 is DONE; P3 begins in in
   this skeleton is its extraction. Roadmap approved implicitly by the build directive. P1 started.
 
 ## Research
+
+- P3 ablation design and pivot: `workflow/research/phase-P3-ablation-design.md`
+- P3 gated execution plan: `workflow/phases/P3.md`
 
 - Corpus audit report (primary): https://claude.ai/code/artifact/a82abedd-c7de-4407-9a4c-b9e5bfb1cf86
 - Origin exemplars: `Desktop\Pokemon\START-HERE.md` + `scripts\onboard_check.py` (machine-checked
