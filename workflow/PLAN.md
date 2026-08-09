@@ -3,7 +3,7 @@
 Format: phased-investigation-workflow (`/phased`).
 Triage depth: **Medium** — the investigation stage was satisfied by the 2026-08-08 twelve-agent
 corpus audit (see Research); this plan records its synthesis and governs the build.
-Current stage: phase P2 — executing transplant and onboarding instruments
+Current stage: phase P3 — investigating matched ablation execution
 Last updated: 2026-08-08
 
 ## Problem
@@ -107,8 +107,8 @@ Pokemon campaign.
 | Phase | Scope | Gate | Status |
 |---|---|---|---|
 | P1 Skeleton | All files + working checks + progress/checkpointing | onboard_check green; sabotage_test proves red-on-defect | DONE |
-| P2 First transplant | Drop skeleton into one real new project | fresh session onboards ≤15 min from START-HERE alone | ACTIVE(80%) |
-| P3 Ablation | Compare a skeleton-run project vs. bare-harness on one comparable task | measured delta recorded here, whatever it shows | TODO |
+| P2 First transplant | Drop skeleton into one real new project | fresh session onboards ≤15 min from START-HERE alone | DONE |
+| P3 Ablation | Compare a skeleton-run project vs. bare-harness on one comparable task | measured delta recorded here, whatever it shows | ACTIVE(10%) |
 | P4 External proof | A second user/machine runs SEED; skeleton published after the Sept 13 fence lifts | one adoption or review by someone who is not Jon | TODO |
 
 ## Phase Log
@@ -130,10 +130,18 @@ Roadmap sequencing is unchanged because the failure is local to the scoring inst
 V2 repaired hidden vocabulary but repeated the same class at the evidence layer. A new reader
 returned the exact target, 8/8 correct declared facts, and evidence for every field in 70 seconds.
 The scorer rejected P2b only because the reader cited the specific experiment and terminal receipt
-instead of two hidden summary paths. Preserve v2 as INVALID-INSTRUMENT. Recommended local pivot
-Jon approved v3: validate any safe cited path that exists at the exact target commit against
+instead of two hidden summary paths. Preserve v2 as INVALID-INSTRUMENT. Jon approved v3: validate
+any safe cited path that exists at the exact target commit against
 preregistered fact anchors. Use a new reader; do not retrofit or reuse the v2 result. Roadmap
 sequencing remains unchanged because the failure remains local to the scoring instrument.
+
+### P2 close — 2026-08-08 — first transplant and cold onboarding PASS
+
+V3 closed the gate at exact Human Delta commit `2ff86b5`: target commit available, identity PASS,
+75/900 seconds, 8/8 facts, 8/8 content-validated evidence, zero clarifications, and zero target
+writes. P2a, P2b, scorer v1, and scorer v2 remain preserved negative terminals; no result was
+rescued. C-003 advances only for the tested second-project transplant. C-004 causal benefit stays
+HYPOTHESIS and moves to P3's fixed matched ablation. P2 is DONE; P3 begins in investigation.
 
 - 2026-08-08 — P2 instrument calibration designed from primary sources and implemented without
   altering the frozen P3 causal protocol. The cold-start scorer binds answers to Human Delta's

@@ -5,11 +5,11 @@
     {
       "id": "POC-01",
       "name": "Cold-start comprehension",
-      "status": "ACTIVE",
-      "progress_percent": 30,
+      "status": "DONE",
+      "progress_percent": 100,
       "proves": "A fresh reader can recover exact project truth within 15 minutes.",
-      "missing": "V1 exact vocabulary and V2 hidden evidence allowlist were INVALID-INSTRUMENT. Requires a disclosed or content-validated evidence policy and a new independent run.",
-      "evidence": "workflow/measurements/2026-08-08-p2c-independent-cold-score-v2.json"
+      "missing": "none",
+      "evidence": "workflow/measurements/2026-08-08-p2c-independent-cold-score-v3.json"
     },
     {
       "id": "POC-02",
@@ -50,11 +50,11 @@
     {
       "id": "POC-06",
       "name": "Second-project transplant",
-      "status": "ACTIVE",
-      "progress_percent": 80,
+      "status": "DONE",
+      "progress_percent": 100,
       "proves": "The portable core installs without overwriting target-owned files.",
-      "missing": "Independent cold onboarding; local technical checks alone cannot close it.",
-      "evidence": "workflow/receipts/2026-08-08-p2c-local-verification.md"
+      "missing": "none",
+      "evidence": "workflow/receipts/2026-08-08-p2c-cold-v3-pass.md"
     },
     {
       "id": "POC-07",

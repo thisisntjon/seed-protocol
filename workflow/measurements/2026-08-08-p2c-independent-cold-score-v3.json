@@ -1,0 +1,19 @@
+{
+  "classification": "PASS",
+  "contract_version": 3,
+  "contract_commit": "0800978",
+  "target_commit": "2ff86b509c120f4070c41493a0745baf1f74c6d1",
+  "elapsed_seconds": 75,
+  "time_limit_seconds": 900,
+  "source_commit_ok": true,
+  "identity_ok": true,
+  "within_time": true,
+  "facts_correct": 8,
+  "facts_total": 8,
+  "evidence_correct": 8,
+  "evidence_total": 8,
+  "clarifications": 0,
+  "target_writes": 0,
+  "independent_finding": "The reader independently identified the stale workflow/PLAN.md current-stage header for the third consecutive run.",
+  "reproduce": "python pocs/cold-start/score-v3.py workflow/measurements/2026-08-08-p2c-independent-cold-answer-v3.json --target-repo C:/Users/thisi/Desktop/Pokemon/human-delta"
+}

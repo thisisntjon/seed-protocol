@@ -5,5 +5,5 @@ MEASUREMENT:     `score-v3.py` checks exact target identity and commit availabil
 PASS_BAR:        Target commit available; identity PASS; elapsed <=900 seconds; 8/8 facts correct; 8/8 facts supported by at least one cited committed file matching a fact anchor; no live clarification or oral reconstruction.
 KILL_BAR:        Any identity, time, fact, or genuine evidence-content failure is terminal FAIL. Any scorer exception, unsafe path accepted, unavailable target commit, hidden vocabulary/path requirement, or valid evidence rejected because of the instrument is INVALID-INSTRUMENT. Results are never repaired in place.
 COST:            One fresh agent run; no external actuation, platform access, spending, or target-repository writes.
-OUTCOME:         PENDING
+OUTCOME:         PASS — exact source commit available; identity PASS; 75/900 seconds; 8/8 facts; 8/8 content-validated evidence; no clarification; no target writes. Receipt: `workflow/receipts/2026-08-08-p2c-cold-v3-pass.md`.
 INDEPENDENT_REPRO: The reader must have no inherited conversation and may not be either prior reader. A later external-provider replication remains P4 evidence, not a condition for this P2 terminal.

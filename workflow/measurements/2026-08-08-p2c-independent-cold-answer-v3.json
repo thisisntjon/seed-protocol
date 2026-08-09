@@ -1,0 +1,27 @@
+{
+  "target_commit": "2ff86b509c120f4070c41493a0745baf1f74c6d1",
+  "elapsed_seconds": 75,
+  "answers": {
+    "mission_category": "HUMAN_CONTRIBUTION_MEASUREMENT",
+    "external_actuation": "NOT_AUTHORIZED",
+    "current_phase": "P1_FOUNDATION",
+    "next_action": "INDEPENDENT_COLD_ONBOARDING",
+    "p2a_status": "INVALID_INSTRUMENT",
+    "p2b_status": "INVALID_INSTRUMENT",
+    "p2c_status": "PENDING_INDEPENDENT_ONBOARDING",
+    "causal_benefit": "UNSUPPORTED_PENDING_ABLATION"
+  },
+  "evidence": {
+    "mission_category": ["START-HERE.md", "AGENTS.md"],
+    "external_actuation": ["GATES.md", "AGENTS.md"],
+    "current_phase": ["workflow/PLAN.md"],
+    "next_action": ["START-HERE.md", "workflow/PLAN.md"],
+    "p2a_status": ["START-HERE.md", "workflow/handoffs/2026-08-08.md"],
+    "p2b_status": ["workflow/experiments/2026-08-08-seed-transplant-p2b.md", "workflow/receipts/2026-08-08-p2b-invalid-retraction-test.md"],
+    "p2c_status": ["workflow/experiments/2026-08-08-seed-transplant-p2c.md", "workflow/receipts/2026-08-08-p2c-local-verification.md"],
+    "causal_benefit": ["START-HERE.md", "CLAIMS.md"]
+  },
+  "uncertainties": [
+    "workflow/PLAN.md's header says the Bonkers P2b probe is active, while START-HERE.md and the plan's own decision log/current gate say P2b is INVALID-INSTRUMENT and P2c independent onboarding is pending."
+  ]
+}
