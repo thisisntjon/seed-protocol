@@ -83,6 +83,15 @@ Pokemon campaign.
   Status: holding — adopted as measurement design; no Human Delta curve measured yet
   | Affects: P3 endpoints and later public thermometer
 
+- Assumption: Exact-token equality is a valid protected scorer for semantic cold-onboarding
+  comprehension when the response schema asks only for "short uppercase semantic codes."
+  Source: POC-01 v1 scorer and first independent run at Human Delta
+  Status: invalidated (2026-08-08) — the reader recovered the correct mission, authority boundary,
+  phase, next action, both invalid experiments, pending P2c state, and unsupported causal claim in
+  95 seconds, but synonymous codes match only 3/8 frozen strings. The scorer confounds vocabulary
+  with comprehension.
+  | Affects: P2 cold-onboarding gate, POC-01, and the scoring architecture for P3
+
 ## Phasing
 
 <!-- Status column machine-parsed by scripts/status.py: DONE | ACTIVE | ACTIVE(nn%) | TODO -->
@@ -95,6 +104,18 @@ Pokemon campaign.
 | P4 External proof | A second user/machine runs SEED; skeleton published after the Sept 13 fence lifts | one adoption or review by someone who is not Jon | TODO |
 
 ## Phase Log
+
+### Pivot — 2026-08-08 — cold-onboarding scorer is lexically invalid
+
+The first independent reader returned the correct substantive state at exact Human Delta commit
+`2ff86b5` in 95 seconds and independently identified a stale PLAN-header contradiction. The frozen
+v1 scorer rejects the run because five semantically equivalent uppercase codes do not equal its
+hidden canonical strings. The run is preserved as INVALID-INSTRUMENT; it is neither retrofitted to
+PASS nor treated as a failure to onboard. Blast radius is local to scoring: the transplant bytes,
+15-minute endpoint, and P3 causal protocol remain intact. Recommended pivot (awaiting Jon): replace
+exact-token scoring with a source-bound fact rubric that accepts declared aliases and requires
+evidence paths, preregister v2, then run a new independent reader. Do not reuse this reader for the
+v2 terminal.
 
 - 2026-08-08 — P2 instrument calibration designed from primary sources and implemented without
   altering the frozen P3 causal protocol. The cold-start scorer binds answers to Human Delta's

@@ -6,10 +6,10 @@
       "id": "POC-01",
       "name": "Cold-start comprehension",
       "status": "ACTIVE",
-      "progress_percent": 70,
+      "progress_percent": 40,
       "proves": "A fresh reader can recover exact project truth within 15 minutes.",
-      "missing": "Independent cold run at the bound Human Delta commit.",
-      "evidence": "pocs/cold-start/contract.json"
+      "missing": "V1 was INVALID-INSTRUMENT: exact tokens rejected correct semantic answers. Requires preregistered semantic rubric v2 and a new independent run.",
+      "evidence": "workflow/measurements/2026-08-08-p2c-independent-cold-score-v1.json"
     },
     {
       "id": "POC-02",

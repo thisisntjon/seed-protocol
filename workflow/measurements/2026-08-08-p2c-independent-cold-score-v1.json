@@ -1,0 +1,23 @@
+{
+  "classification": "INVALID_INSTRUMENT",
+  "reason": "Exact-token scorer rejects semantically correct, evidence-backed answers that use unannounced synonymous codes.",
+  "contract_version": 1,
+  "elapsed_seconds": 95,
+  "facts_correct": 3,
+  "facts_total": 8,
+  "identity_ok": true,
+  "within_time": true,
+  "scorer_exit": 1,
+  "semantic_review": {
+    "mission_code": true,
+    "external_actuation": true,
+    "current_phase": true,
+    "next_action": true,
+    "p2a": true,
+    "p2b": true,
+    "p2c": true,
+    "causal_benefit": true
+  },
+  "independent_finding": "The reader identified a stale workflow/PLAN.md header that conflicts with the newer P2c gate state.",
+  "disposition": "Preserve this run; do not relabel PASS or reuse the reader for a repaired scorer terminal."
+}
