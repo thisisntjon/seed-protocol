@@ -14,6 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CHECK = ROOT / "scripts" / "onboard_check.py"
+STATUS = ROOT / "scripts" / "status.py"
 
 
 def run_check(root):
@@ -23,6 +24,15 @@ def run_check(root):
         text=True,
     )
     return result.returncode
+
+
+def run_status(root):
+    result = subprocess.run(
+        [sys.executable, str(STATUS), "--root", str(root)],
+        capture_output=True,
+        text=True,
+    )
+    return result.returncode, result.stdout
 
 
 def fresh_copy(tmp, name):
@@ -41,6 +51,32 @@ def main():
     with tempfile.TemporaryDirectory() as tmp:
         clean = fresh_copy(tmp, "clean")
         results.append(("clean repo passes", run_check(clean) == 0))
+        status_code, status_output = run_status(clean)
+        results.append(
+            (
+                "infrastructure does not count as verified progress",
+                status_code == 0
+                and "0 decision/measurement loop(s); 1 infrastructure completion(s); 1 invalidated"
+                in status_output,
+            )
+        )
+
+        measured = fresh_copy(tmp, "measured-progress")
+        (measured / "workflow" / "receipts" / "2026-08-08-measurement.md").write_text(
+            "STATE: DONE\nOBJECT: measured loop\nEXACT_REF: abc123\nEVIDENCE: result.json\n"
+            "PROGRESS: MEASUREMENT\nEFFECT: onboarding time measured at 12 minutes\n"
+            "BLOCKED_ON: none\nNEXT_OWNER: none\n",
+            encoding="utf-8",
+        )
+        status_code, status_output = run_status(measured)
+        results.append(
+            (
+                "measured loop increments verified progress",
+                status_code == 0
+                and "1 decision/measurement loop(s); 1 infrastructure completion(s); 1 invalidated"
+                in status_output,
+            )
+        )
 
         missing_path = fresh_copy(tmp, "missing-path")
         (missing_path / "LAWS.md").unlink()
@@ -58,7 +94,8 @@ def main():
 
         bad_receipt = fresh_copy(tmp, "bad-receipt")
         (bad_receipt / "workflow" / "receipts" / "2026-08-08-bad.md").write_text(
-            "STATE: DONE\nOBJECT: something\nEXACT_REF: abc123\nNEXT_OWNER: none\n",
+            "STATE: DONE\nOBJECT: something\nEXACT_REF: abc123\nPROGRESS: INFRASTRUCTURE\n"
+            "EFFECT: none - infrastructure\nNEXT_OWNER: none\n",
             encoding="utf-8",
         )
         results.append(("receipt without evidence fails", run_check(bad_receipt) != 0))
@@ -66,10 +103,19 @@ def main():
         bad_state = fresh_copy(tmp, "bad-receipt-state")
         (bad_state / "workflow" / "receipts" / "2026-08-08-wishful.md").write_text(
             "STATE: WISHFUL\nOBJECT: something\nEXACT_REF: abc123\n"
-            "EVIDENCE: none\nNEXT_OWNER: none\n",
+            "EVIDENCE: none\nPROGRESS: INFRASTRUCTURE\nEFFECT: none - infrastructure\n"
+            "NEXT_OWNER: none\n",
             encoding="utf-8",
         )
         results.append(("invalid receipt state fails", run_check(bad_state) != 0))
+
+        missing_progress = fresh_copy(tmp, "missing-progress")
+        (missing_progress / "workflow" / "receipts" / "2026-08-08-no-progress.md").write_text(
+            "STATE: DONE\nOBJECT: something\nEXACT_REF: abc123\nEVIDENCE: command passed\n"
+            "EFFECT: none - not classified\nNEXT_OWNER: none\n",
+            encoding="utf-8",
+        )
+        results.append(("completed receipt without progress class fails", run_check(missing_progress) != 0))
 
         retracted = fresh_copy(tmp, "nested-retraction")
         docs = retracted / "docs" / "nested"
@@ -107,6 +153,15 @@ def main():
             encoding="utf-8",
         )
         results.append(("malformed handoff fails", run_check(bad_handoff) != 0))
+
+        unsupported_claim = fresh_copy(tmp, "unsupported-claim")
+        claims = unsupported_claim / "CLAIMS.md"
+        claims.write_text(
+            claims.read_text(encoding="utf-8")
+            + "\n| C-SABOTAGE | This is definitely proven. | SUPPORTED | A test could fail. | none |\n",
+            encoding="utf-8",
+        )
+        results.append(("supported claim without bound evidence fails", run_check(unsupported_claim) != 0))
 
     ok = True
     for name, passed in results:

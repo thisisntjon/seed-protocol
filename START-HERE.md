@@ -31,6 +31,7 @@ commitments:
 | Path | What it is |
 |---|---|
 | `LAWS.md` | The eight proven laws, each with provenance and enforcement |
+| `CLAIMS.md` | Falsifiable public claims, status, falsifier, and bound evidence |
 | `AGENTS.md` | Universal worker contract — paste-portable to any harness |
 | `GATES.md` | Human-key boundary + machine-parsed gate registry with SLA |
 | `workflow/PLAN.md` | The living phased plan (the /phased format) |
@@ -46,7 +47,7 @@ commitments:
 | `workflow/handoffs/` | Dated handoff memos land here |
 | `scripts/onboard_check.py` | Verifies this documentation against reality |
 | `scripts/sabotage_test.py` | Proves the checker fails on seeded defects |
-| `scripts/status.py` | Computes progress from the plan's phase table |
+| `scripts/status.py` | Computes phase status and verified-loop progress from artifacts |
 | `scripts/checkpoint.py` | Refuses a git checkpoint while required checks are red |
 | `.github/workflows/verify.yml` | Runs both verification scripts in CI |
 | `scripts/status.py` | Progress bars from the PLAN's phasing table + gate pressure |

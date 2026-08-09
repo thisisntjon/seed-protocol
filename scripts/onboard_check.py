@@ -14,6 +14,7 @@ ASCII output only (Windows cp1252 console safety).
 """
 import argparse
 import re
+import subprocess
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -22,14 +23,19 @@ SLA_HOURS = 48
 
 TEMPLATE_FIELDS = {
     "DISPATCH.md": ("TO", "OBJECT", "EXACT_REF", "ACTION", "ACCEPTANCE", "FENCES", "NEXT_EVENT"),
-    "RECEIPT.md": ("STATE", "OBJECT", "EXACT_REF", "EVIDENCE", "BLOCKED_ON", "NEXT_OWNER"),
+    "RECEIPT.md": (
+        "STATE", "OBJECT", "EXACT_REF", "EVIDENCE", "PROGRESS", "EFFECT", "BLOCKED_ON",
+        "NEXT_OWNER",
+    ),
     "EXPERIMENT.md": (
         "HYPOTHESIS", "OBJECT", "DEPLOYED_FORM", "MEASUREMENT", "PASS_BAR", "KILL_BAR",
         "COST", "OUTCOME", "INDEPENDENT_REPRO",
     ),
 }
 RECEIPT_STATES = {"DONE", "PARTIAL", "BLOCKED", "KILLED", "INVALIDATED"}
+PROGRESS_KINDS = {"DECISION", "MEASUREMENT", "INFRASTRUCTURE"}
 EXPERIMENT_OUTCOMES = {"PENDING", "PASS", "KILL", "NULL", "INVALID-INSTRUMENT"}
+CLAIM_STATUSES = {"HYPOTHESIS", "SUPPORTED", "REFUTED"}
 HANDOFF_HEADINGS = (
     "## THE WHOLE JOB, IN FOUR LINES",
     "## BINDING RULES RIGHT NOW",
@@ -202,7 +208,7 @@ def check_receipts(root, msgs):
     if not directory.exists():
         fail(msgs, "workflow/receipts/ missing")
         return
-    required = ("STATE", "OBJECT", "EXACT_REF", "EVIDENCE", "NEXT_OWNER")
+    required = ("STATE", "OBJECT", "EXACT_REF", "EVIDENCE", "PROGRESS", "EFFECT", "NEXT_OWNER")
     for path in sorted(directory.glob("*.md")):
         fields = check_required_fields(path, required, msgs)
         state = fields.get("STATE", "").upper()
@@ -210,6 +216,53 @@ def check_receipts(root, msgs):
             fail(msgs, f"receipt {path.name} has invalid STATE '{fields['STATE']}'")
         if state == "BLOCKED" and not fields.get("BLOCKED_ON"):
             fail(msgs, f"receipt {path.name} is BLOCKED but has no BLOCKED_ON")
+        progress = fields.get("PROGRESS", "").upper()
+        if progress and progress not in PROGRESS_KINDS:
+            fail(msgs, f"receipt {path.name} has invalid PROGRESS '{fields['PROGRESS']}'")
+        effect = fields.get("EFFECT", "").lower()
+        if state == "DONE" and progress in {"DECISION", "MEASUREMENT"} and effect.startswith("none"):
+            fail(msgs, f"receipt {path.name} claims {progress} progress but EFFECT is none")
+        exact_ref = fields.get("EXACT_REF", "")
+        if (root / ".git").exists() and re.fullmatch(r"[0-9a-f]{7,40}", exact_ref):
+            result = subprocess.run(
+                ["git", "-C", str(root), "cat-file", "-e", f"{exact_ref}^{{commit}}"],
+                capture_output=True,
+                text=True,
+            )
+            if result.returncode != 0:
+                fail(msgs, f"receipt {path.name} cites missing git commit {exact_ref}")
+
+
+def check_claims(root, msgs):
+    path = root / "CLAIMS.md"
+    if not path.exists():
+        fail(msgs, "CLAIMS.md missing -- public claims have no falsification registry")
+        return
+    rows = parse_table_rows(path.read_text(encoding="utf-8"), id_prefix="C-")
+    if not rows:
+        fail(msgs, "CLAIMS.md contains no claim rows")
+        return
+    seen = set()
+    for cells in rows:
+        if len(cells) != 5:
+            fail(msgs, f"claim row malformed (need exactly 5 cells): {cells}")
+            continue
+        claim_id, claim, status, falsifier, evidence = cells
+        if claim_id in seen:
+            fail(msgs, f"duplicate claim ID: {claim_id}")
+        seen.add(claim_id)
+        if not claim or not falsifier:
+            fail(msgs, f"claim {claim_id} must state both claim and falsifier")
+        normalized = status.upper()
+        if normalized not in CLAIM_STATUSES:
+            fail(msgs, f"claim {claim_id} has invalid status '{status}'")
+        if normalized in {"SUPPORTED", "REFUTED"}:
+            matches = re.findall(r"`([^`]+)`", evidence)
+            if not matches:
+                fail(msgs, f"claim {claim_id} is {normalized} without repository-bound evidence")
+            for token in matches:
+                if not (root / token).exists():
+                    fail(msgs, f"claim {claim_id} cites missing evidence path `{token}`")
 
 
 def check_dispatches(root, msgs):
@@ -277,6 +330,7 @@ def main():
     check_gates(root, msgs)
     check_templates(root, msgs)
     check_receipts(root, msgs)
+    check_claims(root, msgs)
     check_dispatches(root, msgs)
     check_experiments(root, msgs)
     check_handoffs(root, msgs)

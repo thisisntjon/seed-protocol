@@ -74,6 +74,30 @@ def last_checkpoint(root):
     except OSError:
         return "(git unavailable)"
 
+
+def receipt_progress(root):
+    directory = root / "workflow" / "receipts"
+    counts = {"verified_loops": 0, "infrastructure": 0, "invalidated": 0, "other": 0}
+    if not directory.exists():
+        return counts
+    for path in directory.glob("*.md"):
+        fields = {}
+        for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+            match = re.match(r"^([A-Z][A-Z0-9_]*):\s*(.*)$", line)
+            if match:
+                fields[match.group(1)] = match.group(2).strip().upper()
+        state = fields.get("STATE", "")
+        kind = fields.get("PROGRESS", "")
+        if state == "INVALIDATED":
+            counts["invalidated"] += 1
+        elif state == "DONE" and kind in {"DECISION", "MEASUREMENT"}:
+            counts["verified_loops"] += 1
+        elif state == "DONE" and kind == "INFRASTRUCTURE":
+            counts["infrastructure"] += 1
+        else:
+            counts["other"] += 1
+    return counts
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=None)
@@ -94,8 +118,15 @@ def main():
     print("  gates:" if open_gates else "  gates: none open")
     for g in open_gates:
         print(g)
-    receipts = len(list((root / "workflow" / "receipts").glob("*.md"))) if (root / "workflow" / "receipts").exists() else 0
+    progress = receipt_progress(root)
+    receipts = sum(progress.values())
     print(f"  receipts banked: {receipts}")
+    print(
+        "  verified progress: "
+        f"{progress['verified_loops']} decision/measurement loop(s); "
+        f"{progress['infrastructure']} infrastructure completion(s); "
+        f"{progress['invalidated']} invalidated"
+    )
     print(f"  last checkpoint: {last_checkpoint(root)}")
 
 if __name__ == "__main__":
