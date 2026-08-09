@@ -3,7 +3,7 @@
 Format: phased-investigation-workflow (`/phased`).
 Triage depth: **Medium** — the investigation stage was satisfied by the 2026-08-08 twelve-agent
 corpus audit (see Research); this plan records its synthesis and governs the build.
-Current stage: roadmap -> P2 first-transplant design ready
+Current stage: roadmap -> executing P2 first transplant
 Last updated: 2026-08-08
 
 ## Problem
@@ -75,12 +75,18 @@ Pokemon campaign.
 | Phase | Scope | Gate | Status |
 |---|---|---|---|
 | P1 Skeleton | All files + working checks + progress/checkpointing | onboard_check green; sabotage_test proves red-on-defect | DONE |
-| P2 First transplant | Drop skeleton into one real new project | fresh harness onboards ≤15 min from START-HERE alone | TODO |
+| P2 First transplant | Drop skeleton into one real new project | fresh session onboards ≤15 min from START-HERE alone | ACTIVE(20%) |
 | P3 Ablation | Compare a skeleton-run project vs. bare-harness on one comparable task | measured delta recorded here, whatever it shows | TODO |
 | P4 External proof | A second user/machine runs SEED; skeleton published after the Sept 13 fence lifts | one adoption or review by someone who is not Jon | TODO |
 
 ## Phase Log
 
+- 2026-08-08 — P2 and P3 preregistered before transplant results. Exact source is `d609ef9`;
+  exact Human Delta baseline is `04da0ca`. P2 may establish portability only; it cannot establish
+  causal benefit. P3 is the first design capable of supporting or refuting the benefit claim.
+- 2026-08-08 — Verified-progress control closed: status reports one decision/measurement loop,
+  one infrastructure completion, and one invalidated receipt after the encoded behavioral test.
+  This supports only the accounting property, not project effectiveness.
 - 2026-08-08 — P1 truthfulness hardening DONE at `1e5bc7d`: onboard check 0 errors;
   sabotage test 10/10; schema instances, gate states, project-wide Markdown retractions, law
   evidence/enforcement, CI, status, and checkpoint paths verified. Replacement receipt:

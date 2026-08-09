@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import re
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -35,6 +36,15 @@ def run_status(root):
     return result.returncode, result.stdout
 
 
+def progress_counts(output):
+    match = re.search(
+        r"verified progress: (\d+) decision/measurement loop\(s\); "
+        r"(\d+) infrastructure completion\(s\); (\d+) invalidated",
+        output,
+    )
+    return tuple(int(value) for value in match.groups()) if match else None
+
+
 def fresh_copy(tmp, name):
     destination = Path(tmp) / name
     shutil.copytree(ROOT, destination, ignore=shutil.ignore_patterns(".git", "__pycache__"))
@@ -52,12 +62,25 @@ def main():
         clean = fresh_copy(tmp, "clean")
         results.append(("clean repo passes", run_check(clean) == 0))
         status_code, status_output = run_status(clean)
+        baseline_counts = progress_counts(status_output)
+
+        infrastructure = fresh_copy(tmp, "infrastructure-progress")
+        (infrastructure / "workflow" / "receipts" / "2026-08-08-infrastructure.md").write_text(
+            "STATE: DONE\nOBJECT: infrastructure work\nEXACT_REF: abc123\nEVIDENCE: command passed\n"
+            "PROGRESS: INFRASTRUCTURE\nEFFECT: none - infrastructure\n"
+            "BLOCKED_ON: none\nNEXT_OWNER: none\n",
+            encoding="utf-8",
+        )
+        infra_code, infra_output = run_status(infrastructure)
+        infra_counts = progress_counts(infra_output)
         results.append(
             (
                 "infrastructure does not count as verified progress",
                 status_code == 0
-                and "0 decision/measurement loop(s); 1 infrastructure completion(s); 1 invalidated"
-                in status_output,
+                and infra_code == 0
+                and baseline_counts is not None
+                and infra_counts
+                == (baseline_counts[0], baseline_counts[1] + 1, baseline_counts[2]),
             )
         )
 
@@ -69,12 +92,14 @@ def main():
             encoding="utf-8",
         )
         status_code, status_output = run_status(measured)
+        measured_counts = progress_counts(status_output)
         results.append(
             (
                 "measured loop increments verified progress",
                 status_code == 0
-                and "1 decision/measurement loop(s); 1 infrastructure completion(s); 1 invalidated"
-                in status_output,
+                and baseline_counts is not None
+                and measured_counts
+                == (baseline_counts[0] + 1, baseline_counts[1], baseline_counts[2]),
             )
         )
 
