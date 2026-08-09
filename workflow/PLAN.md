@@ -92,6 +92,14 @@ Pokemon campaign.
   with comprehension.
   | Affects: P2 cold-onboarding gate, POC-01, and the scoring architecture for P3
 
+- Assumption: A fact-specific evidence allowlist can remain hidden from the reader without
+  confounding evidentiary quality with path choice.
+  Source: POC-01 v2 contract and second independent run at Human Delta
+  Status: invalidated (2026-08-08) — the reader selected 8/8 correct declared facts and cited the
+  direct P2b experiment plus its terminal receipt, but the scorer awarded 7/8 evidence because its
+  hidden allowlist accepted only START-HERE.md or workflow/PLAN.md for P2b.
+  | Affects: P2 cold-onboarding gate, POC-01, and evidence scoring for P3
+
 ## Phasing
 
 <!-- Status column machine-parsed by scripts/status.py: DONE | ACTIVE | ACTIVE(nn%) | TODO -->
@@ -116,6 +124,16 @@ PASS nor treated as a failure to onboard. Blast radius is local to scoring: the 
 exact-token scoring with a source-bound declared-choice rubric that requires evidence paths,
 preregister v2, then run a new independent reader. Do not reuse the v1 reader for the v2 terminal.
 Roadmap sequencing is unchanged because the failure is local to the scoring instrument.
+
+### Pivot — 2026-08-08 — v2 evidence allowlist is under-scoped
+
+V2 repaired hidden vocabulary but repeated the same class at the evidence layer. A new reader
+returned the exact target, 8/8 correct declared facts, and evidence for every field in 70 seconds.
+The scorer rejected P2b only because the reader cited the specific experiment and terminal receipt
+instead of two hidden summary paths. Preserve v2 as INVALID-INSTRUMENT. Recommended local pivot
+(awaiting Jon): v3 must either disclose the complete accepted path vocabulary before launch or
+validate any cited path that exists at the exact target commit against preregistered fact anchors.
+Use a new reader; do not retrofit or reuse the v2 result. Roadmap sequencing remains unchanged.
 
 - 2026-08-08 — P2 instrument calibration designed from primary sources and implemented without
   altering the frozen P3 causal protocol. The cold-start scorer binds answers to Human Delta's

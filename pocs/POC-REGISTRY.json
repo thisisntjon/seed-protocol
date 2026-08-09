@@ -6,10 +6,10 @@
       "id": "POC-01",
       "name": "Cold-start comprehension",
       "status": "ACTIVE",
-      "progress_percent": 40,
+      "progress_percent": 30,
       "proves": "A fresh reader can recover exact project truth within 15 minutes.",
-      "missing": "V1 was INVALID-INSTRUMENT: exact tokens rejected correct semantic answers. Requires preregistered semantic rubric v2 and a new independent run.",
-      "evidence": "workflow/measurements/2026-08-08-p2c-independent-cold-score-v1.json"
+      "missing": "V1 exact vocabulary and V2 hidden evidence allowlist were INVALID-INSTRUMENT. Requires a disclosed or content-validated evidence policy and a new independent run.",
+      "evidence": "workflow/measurements/2026-08-08-p2c-independent-cold-score-v2.json"
     },
     {
       "id": "POC-02",

@@ -1,0 +1,23 @@
+{
+  "classification": "INVALID_INSTRUMENT",
+  "reason": "The reader cited two direct P2b terminal artifacts, but the hidden evidence allowlist accepted only START-HERE.md or workflow/PLAN.md for that fact.",
+  "contract_version": 2,
+  "contract_commit": "14480a1a01a9880335fff643c27e363b9910d023",
+  "elapsed_seconds": 70,
+  "facts_correct": 8,
+  "facts_total": 8,
+  "evidence_correct": 7,
+  "evidence_total": 8,
+  "identity_ok": true,
+  "within_time": true,
+  "source_contract_verified": true,
+  "scorer_exit": 1,
+  "failed_field": "p2b_status",
+  "reader_evidence": [
+    "workflow/experiments/2026-08-08-seed-transplant-p2b.md",
+    "workflow/receipts/2026-08-08-p2b-invalid-retraction-test.md"
+  ],
+  "hidden_allowlist": ["START-HERE.md", "workflow/PLAN.md"],
+  "independent_finding": "The reader again identified the stale workflow/PLAN.md current-stage header.",
+  "disposition": "Preserve this run; do not relabel PASS or FAIL and do not reuse the reader for a repaired terminal."
+}
