@@ -11,6 +11,7 @@ import sys
 import tempfile
 import re
 import json
+import hashlib
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -63,10 +64,12 @@ def init_target(path):
     return result.returncode == 0
 
 
-def run_transplant(target, apply=False):
+def run_transplant(target, apply=False, upgrade=False):
     command = [sys.executable, str(TRANSPLANT), "--target", str(target)]
     if apply:
         command.append("--apply")
+    if upgrade:
+        command.append("--upgrade")
     return subprocess.run(command, capture_output=True, text=True)
 
 
@@ -254,6 +257,44 @@ def main():
                 and first_result.returncode == 0
                 and conflict_result.returncode != 0
                 and laws.read_text(encoding="utf-8") == "target-owned content\n",
+            )
+        )
+
+        upgrade_target = Path(tmp) / "transplant-upgrade-target"
+        initialized = init_target(upgrade_target)
+        first_result = run_transplant(upgrade_target, apply=True)
+        laws = upgrade_target / "LAWS.md"
+        old_content = "managed old version\n"
+        laws.write_text(old_content, encoding="utf-8")
+        old_hash = hashlib.sha256(laws.read_bytes()).hexdigest()
+        provenance_path = upgrade_target / "workflow" / "SEED-TRANSPLANT.json"
+        provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+        for item in provenance["portable_files"]:
+            if item["path"] == "LAWS.md":
+                item["sha256"] = old_hash
+        provenance_path.write_text(json.dumps(provenance, indent=2) + "\n", encoding="utf-8")
+        subprocess.run(["git", "-C", str(upgrade_target), "add", "-A"], capture_output=True)
+        subprocess.run(
+            [
+                "git", "-C", str(upgrade_target), "-c", "user.name=Test", "-c",
+                "user.email=test@local", "commit", "-m", "old managed core",
+            ],
+            capture_output=True,
+        )
+        upgrade_result = run_transplant(upgrade_target, apply=True, upgrade=True)
+        upgrade_ok = (
+            initialized
+            and first_result.returncode == 0
+            and upgrade_result.returncode == 0
+            and laws.read_bytes() == (ROOT / "LAWS.md").read_bytes()
+        )
+        if not upgrade_ok:
+            print("DETAIL  managed-upgrade stdout:", upgrade_result.stdout.strip())
+            print("DETAIL  managed-upgrade stderr:", upgrade_result.stderr.strip())
+        results.append(
+            (
+                "managed upgrade replaces only provenance-matched bytes",
+                upgrade_ok,
             )
         )
 

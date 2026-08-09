@@ -68,11 +68,31 @@ def target_is_clean_git(target: Path) -> tuple[bool, str]:
     return True, ""
 
 
-def plan(target: Path) -> dict[str, object]:
+def load_previous_provenance(target: Path) -> dict[str, object] | None:
+    path = target / PROVENANCE_PATH
+    if not path.exists():
+        return None
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"existing provenance is unreadable: {exc}") from exc
+    if value.get("source_project") != "Bonkers / SEED" or not isinstance(value.get("portable_files"), list):
+        raise RuntimeError("existing provenance is not a recognized SEED transplant")
+    return value
+
+
+def plan(target: Path, allow_upgrade: bool = False) -> dict[str, object]:
     copied = []
     identical = []
+    managed_upgrades = []
     conflicts = []
     files = []
+    previous = load_previous_provenance(target)
+    previous_hashes = {
+        item.get("path"): item.get("sha256")
+        for item in (previous or {}).get("portable_files", [])
+        if isinstance(item, dict)
+    }
     for relative in PORTABLE_FILES:
         source = ROOT / relative
         destination = target / relative
@@ -82,8 +102,14 @@ def plan(target: Path) -> dict[str, object]:
         files.append({"path": relative, "sha256": digest})
         if not destination.exists():
             copied.append(relative)
-        elif destination.is_file() and sha256(destination) == digest:
-            identical.append(relative)
+        elif destination.is_file():
+            destination_hash = sha256(destination)
+            if destination_hash == digest:
+                identical.append(relative)
+            elif allow_upgrade and previous_hashes.get(relative) == destination_hash:
+                managed_upgrades.append(relative)
+            else:
+                conflicts.append(relative)
         else:
             conflicts.append(relative)
     identity_payload = "\n".join(
@@ -96,6 +122,7 @@ def plan(target: Path) -> dict[str, object]:
         "target": str(target),
         "would_copy": copied,
         "identical": identical,
+        "managed_upgrades": managed_upgrades,
         "conflicts": conflicts,
         "files": files,
     }
@@ -105,7 +132,7 @@ def apply_transplant(target: Path, transplant_plan: dict[str, object]) -> None:
     conflicts = list(transplant_plan["conflicts"])
     if conflicts:
         raise RuntimeError("refusing to overwrite differing target file(s): " + ", ".join(conflicts))
-    for relative in transplant_plan["would_copy"]:
+    for relative in list(transplant_plan["would_copy"]) + list(transplant_plan["managed_upgrades"]):
         source = ROOT / str(relative)
         destination = target / str(relative)
         destination.parent.mkdir(parents=True, exist_ok=True)
@@ -135,6 +162,11 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", required=True, type=Path)
     parser.add_argument("--apply", action="store_true", help="write after a conflict-free preflight")
+    parser.add_argument(
+        "--upgrade",
+        action="store_true",
+        help="replace only managed files whose bytes still match prior provenance",
+    )
     args = parser.parse_args(argv)
     target = args.target.resolve()
     valid, reason = target_is_clean_git(target)
@@ -142,7 +174,7 @@ def main(argv=None) -> int:
         print(f"REFUSED: {reason}", file=sys.stderr)
         return 2
     try:
-        transplant_plan = plan(target)
+        transplant_plan = plan(target, allow_upgrade=args.upgrade)
         if args.apply:
             apply_transplant(target, transplant_plan)
             transplant_plan["applied"] = True
