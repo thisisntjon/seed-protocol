@@ -90,7 +90,7 @@ def receipt_progress(root):
         kind = fields.get("PROGRESS", "")
         if state == "INVALIDATED":
             counts["invalidated"] += 1
-        elif state == "DONE" and kind in {"DECISION", "MEASUREMENT"}:
+        elif state in {"DONE", "KILLED"} and kind in {"DECISION", "MEASUREMENT"}:
             counts["verified_loops"] += 1
         elif state == "DONE" and kind == "INFRASTRUCTURE":
             counts["infrastructure"] += 1

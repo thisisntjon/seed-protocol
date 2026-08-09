@@ -5,8 +5,8 @@ MEASUREMENT:     Record files added/changed, target tests before/after, SEED che
 PASS_BAR:        Existing 8 tests stay green; transplanted checks and sabotages are green; production imports no Pokemon modules; no existing target file is silently replaced; every adaptation is recorded; independent cold onboarding completes within 15 minutes without oral context.
 KILL_BAR:        Any existing target state is destructively overwritten, target tests regress, production imports Pokemon, a required claim cannot be represented honestly, or independent onboarding exceeds 15 minutes because essential state is absent from artifacts.
 COST:            Pre-registered ceiling: 180 agent minutes, zero external spend, zero network actuation; actual cost recorded at outcome.
-OUTCOME:         PENDING
-INDEPENDENT_REPRO: Required before PASS; no reproducer assigned yet.
+OUTCOME:         INVALID-INSTRUMENT — portable manifest omitted `scripts/transplant.py`, a runtime dependency of the transplanted sabotage suite; `workflow/receipts/2026-08-08-p2a-invalid-transplant.md`
+INDEPENDENT_REPRO: Not applicable to the negative terminal; exact failing target state is preserved at `human-delta@e972da4`.
 
 AMENDMENT_BEFORE_RUN: Source advanced from `d609ef9` to `e08c365` solely to include the
 non-destructive transplant implementation and its three passing refutation tests. Hypothesis,
@@ -17,3 +17,8 @@ IDENTITY_AMENDMENT_BEFORE_RUN: The object is now bound to the portable-file Merk
 `e46361e...` rather than repository HEAD, because registration-only commits otherwise move HEAD
 without changing transplanted bytes. The dry-run wrote no target files. All experimental bars and
 the target baseline remain unchanged.
+
+TERMINAL_NOTE: P2a is closed and will not be repaired in place. The project-specific files absent
+at the first raw apply were expected adaptation work; the terminal defect is narrower and
+load-bearing—the supposedly portable verification suite could not carry all of its own runtime
+dependencies.

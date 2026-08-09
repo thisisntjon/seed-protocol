@@ -81,6 +81,10 @@ Pokemon campaign.
 
 ## Phase Log
 
+- 2026-08-08 — P2a terminated INVALID-INSTRUMENT at exact target commit `human-delta@e972da4`:
+  the portable manifest omitted a runtime dependency of its own sabotage suite. The failure is
+  preserved; P2b must use a new identity and registration. This is the first evidence supporting
+  C-005 (negative results remain terminal rather than being narratively rescued).
 - 2026-08-08 — P2 and P3 preregistered before transplant results. Exact source was amended before
   execution to `e08c365` to include the conflict-refusing transplant tool;
   exact Human Delta baseline is `04da0ca`. P2 may establish portability only; it cannot establish

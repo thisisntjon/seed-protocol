@@ -25,6 +25,7 @@ PORTABLE_FILES = (
     "scripts/sabotage_test.py",
     "scripts/status.py",
     "scripts/checkpoint.py",
+    "scripts/transplant.py",
     "workflow/templates/DISPATCH.md",
     "workflow/templates/RECEIPT.md",
     "workflow/templates/HANDOFF.md",

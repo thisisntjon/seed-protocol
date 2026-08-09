@@ -220,7 +220,7 @@ def check_receipts(root, msgs):
         if progress and progress not in PROGRESS_KINDS:
             fail(msgs, f"receipt {path.name} has invalid PROGRESS '{fields['PROGRESS']}'")
         effect = fields.get("EFFECT", "").lower()
-        if state == "DONE" and progress in {"DECISION", "MEASUREMENT"} and effect.startswith("none"):
+        if state in {"DONE", "KILLED"} and progress in {"DECISION", "MEASUREMENT"} and effect.startswith("none"):
             fail(msgs, f"receipt {path.name} claims {progress} progress but EFFECT is none")
         exact_ref = fields.get("EXACT_REF", "")
         if (root / ".git").exists() and re.fullmatch(r"[0-9a-f]{7,40}", exact_ref):
