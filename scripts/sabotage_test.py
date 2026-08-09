@@ -16,6 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CHECK = ROOT / "scripts" / "onboard_check.py"
 STATUS = ROOT / "scripts" / "status.py"
+TRANSPLANT = ROOT / "scripts" / "transplant.py"
 
 
 def run_check(root):
@@ -49,6 +50,23 @@ def fresh_copy(tmp, name):
     destination = Path(tmp) / name
     shutil.copytree(ROOT, destination, ignore=shutil.ignore_patterns(".git", "__pycache__"))
     return destination
+
+
+def init_target(path):
+    path.mkdir(parents=True)
+    result = subprocess.run(
+        ["git", "init", "-b", "main", str(path)],
+        capture_output=True,
+        text=True,
+    )
+    return result.returncode == 0
+
+
+def run_transplant(target, apply=False):
+    command = [sys.executable, str(TRANSPLANT), "--target", str(target)]
+    if apply:
+        command.append("--apply")
+    return subprocess.run(command, capture_output=True, text=True)
 
 
 def add_gate(root, row):
@@ -187,6 +205,53 @@ def main():
             encoding="utf-8",
         )
         results.append(("supported claim without bound evidence fails", run_check(unsupported_claim) != 0))
+
+        dry_target = Path(tmp) / "transplant-dry-target"
+        initialized = init_target(dry_target)
+        dry_result = run_transplant(dry_target)
+        results.append(
+            (
+                "transplant dry-run writes nothing",
+                initialized and dry_result.returncode == 0 and not (dry_target / "LAWS.md").exists(),
+            )
+        )
+
+        apply_target = Path(tmp) / "transplant-apply-target"
+        initialized = init_target(apply_target)
+        apply_result = run_transplant(apply_target, apply=True)
+        results.append(
+            (
+                "transplant copies portable core with provenance",
+                initialized
+                and apply_result.returncode == 0
+                and (apply_target / "LAWS.md").exists()
+                and (apply_target / "workflow" / "SEED-TRANSPLANT.json").exists(),
+            )
+        )
+
+        conflict_target = Path(tmp) / "transplant-conflict-target"
+        initialized = init_target(conflict_target)
+        first_result = run_transplant(conflict_target, apply=True)
+        laws = conflict_target / "LAWS.md"
+        laws.write_text("target-owned content\n", encoding="utf-8")
+        subprocess.run(["git", "-C", str(conflict_target), "add", "-A"], capture_output=True)
+        subprocess.run(
+            [
+                "git", "-C", str(conflict_target), "-c", "user.name=Test", "-c",
+                "user.email=test@local", "commit", "-m", "target state",
+            ],
+            capture_output=True,
+        )
+        conflict_result = run_transplant(conflict_target, apply=True)
+        results.append(
+            (
+                "transplant refuses and preserves differing target files",
+                initialized
+                and first_result.returncode == 0
+                and conflict_result.returncode != 0
+                and laws.read_text(encoding="utf-8") == "target-owned content\n",
+            )
+        )
 
     ok = True
     for name, passed in results:

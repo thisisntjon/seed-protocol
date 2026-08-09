@@ -49,6 +49,7 @@ commitments:
 | `scripts/sabotage_test.py` | Proves the checker fails on seeded defects |
 | `scripts/status.py` | Computes phase status and verified-loop progress from artifacts |
 | `scripts/checkpoint.py` | Refuses a git checkpoint while required checks are red |
+| `scripts/transplant.py` | Non-destructively installs the invariant core into a clean target repo |
 | `.github/workflows/verify.yml` | Runs both verification scripts in CI |
 | `scripts/status.py` | Progress bars from the PLAN's phasing table + gate pressure |
 | `scripts/checkpoint.py` | Verified snapshot: refuses to commit while checks are red |
