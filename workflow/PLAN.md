@@ -75,12 +75,15 @@ Pokemon campaign.
 | Phase | Scope | Gate | Status |
 |---|---|---|---|
 | P1 Skeleton | All files + working checks + progress/checkpointing | onboard_check green; sabotage_test proves red-on-defect | DONE |
-| P2 First transplant | Drop skeleton into one real new project | fresh session onboards ≤15 min from START-HERE alone | ACTIVE(20%) |
+| P2 First transplant | Drop skeleton into one real new project | fresh session onboards ≤15 min from START-HERE alone | ACTIVE(80%) |
 | P3 Ablation | Compare a skeleton-run project vs. bare-harness on one comparable task | measured delta recorded here, whatever it shows | TODO |
 | P4 External proof | A second user/machine runs SEED; skeleton published after the Sept 13 fence lifts | one adoption or review by someone who is not Jon | TODO |
 
 ## Phase Log
 
+- 2026-08-08 — P2c local gates passed at `human-delta@9703c52`: existing tests 8/8,
+  sabotage 18/18, onboard 0 errors, source import scan clean, and no target-owned overwrite.
+  Independent cold onboarding remains load-bearing; portability claim C-003 stays HYPOTHESIS.
 - 2026-08-08 — P2a terminated INVALID-INSTRUMENT at exact target commit `human-delta@e972da4`:
   the portable manifest omitted a runtime dependency of its own sabotage suite. The failure is
   preserved; P2b must use a new identity and registration. This is the first evidence supporting
