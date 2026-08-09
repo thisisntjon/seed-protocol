@@ -79,3 +79,4 @@ four-line job and `workflow/PLAN.md` for the new problem. Open gate `G-001` (fir
 `GATES.md`. Run the checker. You are operational.
 
 Last verified against reality: 2026-08-08.
+
