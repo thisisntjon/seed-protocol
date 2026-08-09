@@ -5,5 +5,8 @@ MEASUREMENT:     Record managed upgrades, new files, conflicts, existing tests b
 PASS_BAR:        Existing 8 tests stay green; onboard and sabotage suites are green; every portable runtime dependency is in provenance; production imports no Pokemon modules; no target-modified byte is overwritten; adaptations are recorded; independent cold onboarding completes within 15 minutes without oral context.
 KILL_BAR:        Any unrecorded overwrite, target-test regression, Pokemon production import, missing portable dependency, unsupported claim, or independent onboarding over 15 minutes because necessary state is absent.
 COST:            Shares P2's original 180-agent-minute ceiling; P2a time counts against it; zero external spend and zero network actuation.
-OUTCOME:         PENDING
-INDEPENDENT_REPRO: Required before PASS; no reproducer assigned yet.
+OUTCOME:         INVALID-INSTRUMENT — retraction sabotage depended on a Bonkers-only ledger token and returned green in a valid empty target ledger; `workflow/receipts/2026-08-08-p2b-invalid-retraction-test.md`
+INDEPENDENT_REPRO: Not required for the negative terminal; exact target state is preserved at `human-delta@ce8aa4b`.
+
+TERMINAL_NOTE: P2b remains closed. The project-specific adaptation itself is preserved; P2c may
+upgrade only provenance-matched portable bytes and must retain this result.

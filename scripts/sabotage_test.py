@@ -165,10 +165,16 @@ def main():
         results.append(("completed receipt without progress class fails", run_check(missing_progress) != 0))
 
         retracted = fresh_copy(tmp, "nested-retraction")
+        ledger = retracted / "workflow" / "canon" / "RETRACTIONS.md"
+        ledger.write_text(
+            ledger.read_text(encoding="utf-8")
+            + "\n| SABOTAGE-RETRACTED-TOKEN | replacement | seeded test token | 2026-08-08 |\n",
+            encoding="utf-8",
+        )
         docs = retracted / "docs" / "nested"
         docs.mkdir(parents=True)
         (docs / "notes.md").write_text(
-            "The obsolete score was EXAMPLE-999.9.\n",
+            "The obsolete value was SABOTAGE-RETRACTED-TOKEN.\n",
             encoding="utf-8",
         )
         results.append(("retracted token in nested docs fails", run_check(retracted) != 0))
