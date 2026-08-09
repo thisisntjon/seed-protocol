@@ -1,0 +1,9 @@
+HYPOTHESIS:      A fresh reader with no inherited conversation can recover Human Delta's mission, authority boundary, phase, next action, experiment states, and causal-claim status from repository evidence within 900 seconds.
+OBJECT:          Human Delta commit `2ff86b509c120f4070c41493a0745baf1f74c6d1`; semantic contract SHA256 `8c7b54b1868e22858b57ccb80c5f5b6936c03f7df829021da589f1925965f1d5`; scorer SHA256 `709f50596b0d00ce06af6516451eae0f9e6f9a001ee229b566ff807b19c1bd30`.
+DEPLOYED_FORM:   One new independent read-only session, not the v1 reader, starts at `START-HERE.md`, may inspect only the Human Delta repository, receives the complete allowed choice vocabulary but not expected choices, and returns one choice plus repository evidence path(s) for each of eight facts.
+MEASUREMENT:     `score-v2.py` checks exact target identity, elapsed time, declared vocabulary, frozen expected choice, and at least one allowed source-bound evidence path per fact. `verify-contract-v2.py` must first reproduce all six git blob identities at the target commit.
+PASS_BAR:        Contract-source verification PASS; target identity PASS; elapsed <=900 seconds; 8/8 facts correct; 8/8 facts evidence-bound; no live clarification or oral reconstruction.
+KILL_BAR:        Any identity, time, fact, or evidence failure is a terminal FAIL. Any scorer exception, source-blob mismatch, hidden vocabulary, or unavailable required artifact is INVALID-INSTRUMENT. Results are never repaired in place.
+COST:            One fresh agent run; no external actuation, platform access, spending, or target-repository writes.
+OUTCOME:         PENDING
+INDEPENDENT_REPRO: The reader must have no inherited conversation and may not be the v1 reader. A later external-provider replication remains P4 evidence, not a condition for this P2 terminal.

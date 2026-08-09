@@ -70,6 +70,42 @@ def main():
         overtime = run(cold / "score.py", overtime_path)
         check("cold-start enforces time ceiling", overtime.returncode == 1, overtime.stdout + overtime.stderr)
 
+    valid_v2 = run(cold / "score-v2.py", cold / "example-valid-v2.json")
+    valid_v2_record = json.loads(valid_v2.stdout)
+    check(
+        "cold-start v2 declared rubric passes",
+        valid_v2.returncode == 0
+        and valid_v2_record["facts_correct"] == 8
+        and valid_v2_record["evidence_correct"] == 8,
+        valid_v2.stdout + valid_v2.stderr,
+    )
+
+    invalid_v2 = run(cold / "score-v2.py", cold / "example-invalid-v2.json")
+    check("cold-start v2 rejects wrong choices", invalid_v2.returncode == 1, invalid_v2.stdout + invalid_v2.stderr)
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        v2_payload = json.loads((cold / "example-valid-v2.json").read_text(encoding="utf-8"))
+        missing_evidence_path = Path(temp_dir) / "missing-evidence.json"
+        v2_payload["evidence"]["causal_benefit"] = []
+        missing_evidence_path.write_text(json.dumps(v2_payload), encoding="utf-8")
+        missing_evidence = run(cold / "score-v2.py", missing_evidence_path)
+        check(
+            "cold-start v2 requires per-fact evidence",
+            missing_evidence.returncode == 1,
+            missing_evidence.stdout + missing_evidence.stderr,
+        )
+
+        unknown_value_path = Path(temp_dir) / "unknown-value.json"
+        v2_payload = json.loads((cold / "example-valid-v2.json").read_text(encoding="utf-8"))
+        v2_payload["answers"]["current_phase"] = "FOUNDATION_VALIDATION"
+        unknown_value_path.write_text(json.dumps(v2_payload), encoding="utf-8")
+        unknown_value = run(cold / "score-v2.py", unknown_value_path)
+        check(
+            "cold-start v2 rejects undeclared vocabulary",
+            unknown_value.returncode == 1,
+            unknown_value.stdout + unknown_value.stderr,
+        )
+
     trap = ROOT / "pocs" / "deceptive-green"
     weak = run(trap / "weak_check.py")
     check("deceptive-green weak evaluator is green", weak.returncode == 0, weak.stdout + weak.stderr)
@@ -82,7 +118,7 @@ def main():
         protected.stdout + protected.stderr,
     )
 
-    print("POC CHECK PASSED: 10/10 controls behaved as predeclared")
+    print("POC CHECK PASSED: 14/14 controls behaved as predeclared")
     return 0
 
 

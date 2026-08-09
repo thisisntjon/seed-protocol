@@ -1,0 +1,56 @@
+{
+  "contract_version": 2,
+  "target_project": "human-delta",
+  "target_commit": "2ff86b509c120f4070c41493a0745baf1f74c6d1",
+  "time_limit_seconds": 900,
+  "sources": {
+    "START-HERE.md": "087d86868a353a99e6b225f7a45bcf61f1e495b4",
+    "GATES.md": "c0750faa110fe601ddeb2aae67d7acfa9ff7298b",
+    "CLAIMS.md": "5dab60b98ccbf936e0c0aaa6262ee49ddfd0eb8a",
+    "workflow/PLAN.md": "ffc8ad22b0e39dcd7138ff949e598f4cc21ecc0a",
+    "workflow/experiments/2026-08-08-seed-transplant-p2c.md": "dbdb64f9b4f743574f4ed048c3fe499bb66cae81",
+    "workflow/receipts/2026-08-08-p2c-local-verification.md": "a1e34c942e29c5cbbc0524e30a25f15b3357989f"
+  },
+  "rubric": {
+    "mission_category": {
+      "allowed": ["HUMAN_CONTRIBUTION_MEASUREMENT", "COMPETITION_SUBMISSION_AUTOMATION", "GENERAL_PROJECT_MANAGEMENT"],
+      "expected": "HUMAN_CONTRIBUTION_MEASUREMENT",
+      "evidence_any": ["START-HERE.md", "CLAIMS.md"]
+    },
+    "external_actuation": {
+      "allowed": ["AUTHORIZED", "NOT_AUTHORIZED", "UNCLEAR"],
+      "expected": "NOT_AUTHORIZED",
+      "evidence_any": ["START-HERE.md", "GATES.md"]
+    },
+    "current_phase": {
+      "allowed": ["P0_SCAFFOLD", "P1_FOUNDATION", "P2_PILOT", "P3_BENCHMARK", "P4_COLLABORATION"],
+      "expected": "P1_FOUNDATION",
+      "evidence_any": ["START-HERE.md", "workflow/PLAN.md"]
+    },
+    "next_action": {
+      "allowed": ["INDEPENDENT_COLD_ONBOARDING", "RUN_MATCHED_ABLATION", "PUBLISH_RESULTS", "EXTERNAL_PLATFORM_ACTION"],
+      "expected": "INDEPENDENT_COLD_ONBOARDING",
+      "evidence_any": ["START-HERE.md", "workflow/PLAN.md", "workflow/receipts/2026-08-08-p2c-local-verification.md"]
+    },
+    "p2a_status": {
+      "allowed": ["PASS", "FAIL", "INVALID_INSTRUMENT", "PENDING"],
+      "expected": "INVALID_INSTRUMENT",
+      "evidence_any": ["START-HERE.md", "workflow/PLAN.md"]
+    },
+    "p2b_status": {
+      "allowed": ["PASS", "FAIL", "INVALID_INSTRUMENT", "PENDING"],
+      "expected": "INVALID_INSTRUMENT",
+      "evidence_any": ["START-HERE.md", "workflow/PLAN.md"]
+    },
+    "p2c_status": {
+      "allowed": ["PASS", "FAIL", "INVALID_INSTRUMENT", "PENDING_INDEPENDENT_ONBOARDING"],
+      "expected": "PENDING_INDEPENDENT_ONBOARDING",
+      "evidence_any": ["START-HERE.md", "workflow/PLAN.md", "workflow/experiments/2026-08-08-seed-transplant-p2c.md", "workflow/receipts/2026-08-08-p2c-local-verification.md"]
+    },
+    "causal_benefit": {
+      "allowed": ["SUPPORTED", "REFUTED", "UNSUPPORTED_PENDING_ABLATION"],
+      "expected": "UNSUPPORTED_PENDING_ABLATION",
+      "evidence_any": ["START-HERE.md", "CLAIMS.md", "workflow/PLAN.md"]
+    }
+  }
+}

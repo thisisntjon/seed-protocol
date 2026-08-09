@@ -112,10 +112,10 @@ The first independent reader returned the correct substantive state at exact Hum
 v1 scorer rejects the run because five semantically equivalent uppercase codes do not equal its
 hidden canonical strings. The run is preserved as INVALID-INSTRUMENT; it is neither retrofitted to
 PASS nor treated as a failure to onboard. Blast radius is local to scoring: the transplant bytes,
-15-minute endpoint, and P3 causal protocol remain intact. Recommended pivot (awaiting Jon): replace
-exact-token scoring with a source-bound fact rubric that accepts declared aliases and requires
-evidence paths, preregister v2, then run a new independent reader. Do not reuse this reader for the
-v2 terminal.
+15-minute endpoint, and P3 causal protocol remain intact. Jon approved the pivot. Replace hidden
+exact-token scoring with a source-bound declared-choice rubric that requires evidence paths,
+preregister v2, then run a new independent reader. Do not reuse the v1 reader for the v2 terminal.
+Roadmap sequencing is unchanged because the failure is local to the scoring instrument.
 
 - 2026-08-08 — P2 instrument calibration designed from primary sources and implemented without
   altering the frozen P3 causal protocol. The cold-start scorer binds answers to Human Delta's
