@@ -5,5 +5,5 @@ MEASUREMENT:     `score-v2.py` checks exact target identity, elapsed time, decla
 PASS_BAR:        Contract-source verification PASS; target identity PASS; elapsed <=900 seconds; 8/8 facts correct; 8/8 facts evidence-bound; no live clarification or oral reconstruction.
 KILL_BAR:        Any identity, time, fact, or evidence failure is a terminal FAIL. Any scorer exception, source-blob mismatch, hidden vocabulary, or unavailable required artifact is INVALID-INSTRUMENT. Results are never repaired in place.
 COST:            One fresh agent run; no external actuation, platform access, spending, or target-repository writes.
-OUTCOME:         PENDING
+OUTCOME:         INVALID-INSTRUMENT — the reader returned 8/8 correct facts in 70 seconds and cited direct evidence for every field, but the scorer rejected the P2b experiment and terminal receipt because neither was in its hidden path allowlist. Receipt: `workflow/receipts/2026-08-08-p2c-cold-v2-invalid-instrument.md`.
 INDEPENDENT_REPRO: The reader must have no inherited conversation and may not be the v1 reader. A later external-provider replication remains P4 evidence, not a condition for this P2 terminal.

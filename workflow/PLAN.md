@@ -131,9 +131,9 @@ V2 repaired hidden vocabulary but repeated the same class at the evidence layer.
 returned the exact target, 8/8 correct declared facts, and evidence for every field in 70 seconds.
 The scorer rejected P2b only because the reader cited the specific experiment and terminal receipt
 instead of two hidden summary paths. Preserve v2 as INVALID-INSTRUMENT. Recommended local pivot
-(awaiting Jon): v3 must either disclose the complete accepted path vocabulary before launch or
-validate any cited path that exists at the exact target commit against preregistered fact anchors.
-Use a new reader; do not retrofit or reuse the v2 result. Roadmap sequencing remains unchanged.
+Jon approved v3: validate any safe cited path that exists at the exact target commit against
+preregistered fact anchors. Use a new reader; do not retrofit or reuse the v2 result. Roadmap
+sequencing remains unchanged because the failure remains local to the scoring instrument.
 
 - 2026-08-08 — P2 instrument calibration designed from primary sources and implemented without
   altering the frozen P3 causal protocol. The cold-start scorer binds answers to Human Delta's

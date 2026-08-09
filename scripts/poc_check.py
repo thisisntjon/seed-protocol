@@ -26,6 +26,10 @@ def check(name, condition, detail):
     print(f"PASS  {name}")
 
 
+def run_command(parts, cwd):
+    return subprocess.run(parts, cwd=cwd, capture_output=True, text=True)
+
+
 def main():
     registry = json.loads((ROOT / "pocs" / "POC-REGISTRY.json").read_text(encoding="utf-8"))
     pocs = registry["pocs"]
@@ -106,6 +110,82 @@ def main():
             unknown_value.stdout + unknown_value.stderr,
         )
 
+    with tempfile.TemporaryDirectory() as temp_dir:
+        fixture_repo = Path(temp_dir) / "fixture-repo"
+        fixture_repo.mkdir()
+        for command in (
+            ["git", "init", "--quiet"],
+            ["git", "config", "user.name", "POC Fixture"],
+            ["git", "config", "user.email", "poc@example.invalid"],
+        ):
+            result = run_command(command, fixture_repo)
+            check("cold-start v3 fixture setup", result.returncode == 0, result.stdout + result.stderr)
+        (fixture_repo / "state.md").write_text("| P1 Foundation | ACTIVE |\n", encoding="utf-8")
+        (fixture_repo / "irrelevant.md").write_text("Nothing about the current phase.\n", encoding="utf-8")
+        result = run_command(["git", "add", "."], fixture_repo)
+        check("cold-start v3 fixture add", result.returncode == 0, result.stdout + result.stderr)
+        result = run_command(["git", "commit", "--quiet", "-m", "fixture"], fixture_repo)
+        check("cold-start v3 fixture commit", result.returncode == 0, result.stdout + result.stderr)
+        commit = run_command(["git", "rev-parse", "HEAD"], fixture_repo).stdout.strip()
+
+        fixture_contract = {
+            "contract_version": 3,
+            "target_project": "fixture",
+            "target_commit": commit,
+            "time_limit_seconds": 900,
+            "rubric": {
+                "current_phase": {
+                    "allowed": ["P1_FOUNDATION", "P2_PILOT"],
+                    "expected": "P1_FOUNDATION",
+                    "evidence_anchor_any": [[r"P1\s+Foundation", "ACTIVE"]],
+                }
+            },
+        }
+        fixture_answer = {
+            "target_commit": commit,
+            "elapsed_seconds": 60,
+            "answers": {"current_phase": "P1_FOUNDATION"},
+            "evidence": {"current_phase": ["state.md"]},
+        }
+        contract_path = Path(temp_dir) / "contract.json"
+        answer_path = Path(temp_dir) / "answer.json"
+        contract_path.write_text(json.dumps(fixture_contract), encoding="utf-8")
+        answer_path.write_text(json.dumps(fixture_answer), encoding="utf-8")
+
+        valid_v3 = run(
+            cold / "score-v3.py",
+            answer_path,
+            "--target-repo",
+            fixture_repo,
+            "--contract",
+            contract_path,
+        )
+        check("cold-start v3 validates committed evidence content", valid_v3.returncode == 0, valid_v3.stdout + valid_v3.stderr)
+
+        fixture_answer["evidence"]["current_phase"] = ["irrelevant.md"]
+        answer_path.write_text(json.dumps(fixture_answer), encoding="utf-8")
+        irrelevant_v3 = run(
+            cold / "score-v3.py",
+            answer_path,
+            "--target-repo",
+            fixture_repo,
+            "--contract",
+            contract_path,
+        )
+        check("cold-start v3 rejects irrelevant evidence", irrelevant_v3.returncode == 1, irrelevant_v3.stdout + irrelevant_v3.stderr)
+
+        fixture_answer["evidence"]["current_phase"] = ["../state.md"]
+        answer_path.write_text(json.dumps(fixture_answer), encoding="utf-8")
+        traversal_v3 = run(
+            cold / "score-v3.py",
+            answer_path,
+            "--target-repo",
+            fixture_repo,
+            "--contract",
+            contract_path,
+        )
+        check("cold-start v3 rejects path traversal", traversal_v3.returncode == 1, traversal_v3.stdout + traversal_v3.stderr)
+
     trap = ROOT / "pocs" / "deceptive-green"
     weak = run(trap / "weak_check.py")
     check("deceptive-green weak evaluator is green", weak.returncode == 0, weak.stdout + weak.stderr)
@@ -118,7 +198,7 @@ def main():
         protected.stdout + protected.stderr,
     )
 
-    print("POC CHECK PASSED: 14/14 controls behaved as predeclared")
+    print("POC CHECK PASSED: 22/22 controls behaved as predeclared")
     return 0
 
 

@@ -1,0 +1,66 @@
+{
+  "contract_version": 3,
+  "target_project": "human-delta",
+  "target_commit": "2ff86b509c120f4070c41493a0745baf1f74c6d1",
+  "time_limit_seconds": 900,
+  "rubric": {
+    "mission_category": {
+      "allowed": ["HUMAN_CONTRIBUTION_MEASUREMENT", "COMPETITION_SUBMISSION_AUTOMATION", "GENERAL_PROJECT_MANAGEMENT"],
+      "expected": "HUMAN_CONTRIBUTION_MEASUREMENT",
+      "evidence_anchor_any": [
+        ["measur", "competitive\\s+AI", "people"],
+        ["human", "contribution", "measur"]
+      ]
+    },
+    "external_actuation": {
+      "allowed": ["AUTHORIZED", "NOT_AUTHORIZED", "UNCLEAR"],
+      "expected": "NOT_AUTHORIZED",
+      "evidence_anchor_any": [
+        ["no\\s+external\\s+actuation\\s+authority"],
+        ["human\\s+decision\\s+is\\s+required", "external\\s+publication"]
+      ]
+    },
+    "current_phase": {
+      "allowed": ["P0_SCAFFOLD", "P1_FOUNDATION", "P2_PILOT", "P3_BENCHMARK", "P4_COLLABORATION"],
+      "expected": "P1_FOUNDATION",
+      "evidence_anchor_any": [["P1\\s+Foundation", "ACTIVE"]]
+    },
+    "next_action": {
+      "allowed": ["INDEPENDENT_COLD_ONBOARDING", "RUN_MATCHED_ABLATION", "PUBLISH_RESULTS", "EXTERNAL_PLATFORM_ACTION"],
+      "expected": "INDEPENDENT_COLD_ONBOARDING",
+      "evidence_anchor_any": [
+        ["P2c", "independent\\s+cold[- ]onboarding"],
+        ["Current\\s+next\\s+action", "cold[- ]onboarding"]
+      ]
+    },
+    "p2a_status": {
+      "allowed": ["PASS", "FAIL", "INVALID_INSTRUMENT", "PENDING"],
+      "expected": "INVALID_INSTRUMENT",
+      "evidence_anchor_any": [["P2a", "INVALID-INSTRUMENT"]]
+    },
+    "p2b_status": {
+      "allowed": ["PASS", "FAIL", "INVALID_INSTRUMENT", "PENDING"],
+      "expected": "INVALID_INSTRUMENT",
+      "evidence_anchor_any": [
+        ["P2b", "INVALID-INSTRUMENT"],
+        ["OUTCOME:\\s+INVALID-INSTRUMENT", "retraction"]
+      ]
+    },
+    "p2c_status": {
+      "allowed": ["PASS", "FAIL", "INVALID_INSTRUMENT", "PENDING_INDEPENDENT_ONBOARDING"],
+      "expected": "PENDING_INDEPENDENT_ONBOARDING",
+      "evidence_anchor_any": [
+        ["P2c", "independent\\s+cold[- ]onboarding", "pending|remain"],
+        ["OUTCOME:\\s+PENDING", "independent\\s+cold[- ]onboarding"]
+      ]
+    },
+    "causal_benefit": {
+      "allowed": ["SUPPORTED", "REFUTED", "UNSUPPORTED_PENDING_ABLATION"],
+      "expected": "UNSUPPORTED_PENDING_ABLATION",
+      "evidence_anchor_any": [
+        ["causal\\s+benefit", "pending|not\\s+proof|cannot\\s+establish"],
+        ["C-002", "HYPOTHESIS", "Pending\\s+Bonkers\\s+P3\\s+ablation"]
+      ]
+    }
+  }
+}
