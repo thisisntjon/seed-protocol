@@ -17,3 +17,4 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python scripts/onboard_check.py
       - run: python scripts/sabotage_test.py
+      - run: python scripts/poc_check.py

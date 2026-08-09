@@ -3,7 +3,7 @@
 Format: phased-investigation-workflow (`/phased`).
 Triage depth: **Medium** — the investigation stage was satisfied by the 2026-08-08 twelve-agent
 corpus audit (see Research); this plan records its synthesis and governs the build.
-Current stage: roadmap -> executing P2 first transplant
+Current stage: phase P2 — executing transplant and onboarding instruments
 Last updated: 2026-08-08
 
 ## Problem
@@ -68,6 +68,21 @@ Pokemon campaign.
   Status: holding
   | Affects: scope — additions require a named incident, per Law 6
 
+- Assumption: A credible autonomy thermometer must separate task, solver, deployed artifact,
+  protected scorer, and human intervention record; an agent's own completion claim is not an
+  outcome.
+  Source: UK AISI Inspect component model + SWE-bench-Live executable environments + Pokemon
+  false-green incidents; `workflow/research/2026-08-08-poc-foundations.md`
+  Status: holding — instrument calibration implemented; prospective runs pending
+  | Affects: P2 cold onboarding, P3 ablation, Human Delta pilot schema
+
+- Assumption: Success should be reported against expert-human task time and total expenditure
+  (human time, tokens, and experiment compute), not throughput alone.
+  Source: METR time horizon and expenditure horizon; MLE-bench human leaderboard baselines;
+  `workflow/research/2026-08-08-poc-foundations.md`
+  Status: holding — adopted as measurement design; no Human Delta curve measured yet
+  | Affects: P3 endpoints and later public thermometer
+
 ## Phasing
 
 <!-- Status column machine-parsed by scripts/status.py: DONE | ACTIVE | ACTIVE(nn%) | TODO -->
@@ -81,6 +96,11 @@ Pokemon campaign.
 
 ## Phase Log
 
+- 2026-08-08 — P2 instrument calibration designed from primary sources and implemented without
+  altering the frozen P3 causal protocol. The cold-start scorer binds answers to Human Delta's
+  exact commit and 15-minute ceiling; the deceptive-green fixture proves a source-tree check can
+  pass while the deployable artifact fails. These are controls, not evidence of SEED benefit;
+  P2c still requires an independent cold run.
 - 2026-08-08 — P2c local gates passed at `human-delta@9703c52`: existing tests 8/8,
   sabotage 18/18, onboard 0 errors, source import scan clean, and no target-owned overwrite.
   Independent cold onboarding remains load-bearing; portability claim C-003 stays HYPOTHESIS.

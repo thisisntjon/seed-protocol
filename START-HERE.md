@@ -50,13 +50,21 @@ commitments:
 | `scripts/status.py` | Computes phase status and verified-loop progress from artifacts |
 | `scripts/checkpoint.py` | Refuses a git checkpoint while required checks are red |
 | `scripts/transplant.py` | Non-destructively installs the invariant core into a clean target repo |
-| `.github/workflows/verify.yml` | Runs both verification scripts in CI |
+| `scripts/poc_check.py` | Calibrates POC scorers against passing and expected-red controls |
+| `scripts/poc_status.py` | Renders functionality progress from the ten-POC registry |
+| `pocs/POC-REGISTRY.json` | Machine-readable status, evidence, and missing condition for ten POCs |
+| `pocs/README.md` | POC ordering and truthfulness rules |
+| `pocs/cold-start/` | Frozen truth contract and scorer for the 15-minute onboarding test |
+| `pocs/deceptive-green/` | Source-vs-deployed-artifact false-green calibration fixture |
+| `workflow/research/2026-08-08-poc-foundations.md` | Primary-source rationale for the POC architecture |
+| `.github/workflows/verify.yml` | Runs onboarding, sabotage, and POC calibration in CI |
 | `scripts/status.py` | Progress bars from the PLAN's phasing table + gate pressure |
 | `scripts/checkpoint.py` | Verified snapshot: refuses to commit while checks are red |
 
 ## Onboarding a fresh harness (any vendor)
 
-1. Run `python scripts/onboard_check.py` and `python scripts/sabotage_test.py`. Red means a claimed
+1. Run `python scripts/onboard_check.py`, `python scripts/sabotage_test.py`, and
+   `python scripts/poc_check.py`. Red means a claimed
    invariant or its refutation test is broken — fix that first.
 2. Read `LAWS.md`, `AGENTS.md`, `GATES.md`, `workflow/PLAN.md`, and the newest file in
    `workflow/handoffs/` (if any). That is the complete state. Do not ask a human to re-explain.

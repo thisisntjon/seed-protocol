@@ -1,0 +1,96 @@
+{
+  "registry_version": 1,
+  "status_vocabulary": ["DONE", "ACTIVE", "TODO"],
+  "pocs": [
+    {
+      "id": "POC-01",
+      "name": "Cold-start comprehension",
+      "status": "ACTIVE",
+      "progress_percent": 70,
+      "proves": "A fresh reader can recover exact project truth within 15 minutes.",
+      "missing": "Independent cold run at the bound Human Delta commit.",
+      "evidence": "pocs/cold-start/contract.json"
+    },
+    {
+      "id": "POC-02",
+      "name": "Deceptive-green evaluator",
+      "status": "DONE",
+      "progress_percent": 100,
+      "proves": "A protected artifact scorer catches a defect that a source-tree check misses.",
+      "missing": "none",
+      "evidence": "pocs/deceptive-green/artifact_check.py"
+    },
+    {
+      "id": "POC-03",
+      "name": "Context-loss recovery",
+      "status": "TODO",
+      "progress_percent": 0,
+      "proves": "A new session resumes correctly from repository state without oral reconstruction.",
+      "missing": "Frozen interruption scenario and blinded recovery scorer.",
+      "evidence": "workflow/templates/HANDOFF.md"
+    },
+    {
+      "id": "POC-04",
+      "name": "Verified-loop accounting",
+      "status": "DONE",
+      "progress_percent": 100,
+      "proves": "Infrastructure output and invalidated work do not inflate verified progress.",
+      "missing": "none",
+      "evidence": "workflow/receipts/2026-08-08-verified-progress-control.md"
+    },
+    {
+      "id": "POC-05",
+      "name": "Retraction propagation",
+      "status": "DONE",
+      "progress_percent": 100,
+      "proves": "A forbidden retracted token turns the project verification red.",
+      "missing": "none",
+      "evidence": "scripts/sabotage_test.py"
+    },
+    {
+      "id": "POC-06",
+      "name": "Second-project transplant",
+      "status": "ACTIVE",
+      "progress_percent": 80,
+      "proves": "The portable core installs without overwriting target-owned files.",
+      "missing": "Independent cold onboarding; local technical checks alone cannot close it.",
+      "evidence": "workflow/receipts/2026-08-08-p2c-local-verification.md"
+    },
+    {
+      "id": "POC-07",
+      "name": "Safe upgrade and fork protection",
+      "status": "DONE",
+      "progress_percent": 100,
+      "proves": "An upgrade replaces only provenance-matched bytes and refuses local modifications.",
+      "missing": "none",
+      "evidence": "scripts/transplant.py"
+    },
+    {
+      "id": "POC-08",
+      "name": "Human intervention capture",
+      "status": "TODO",
+      "progress_percent": 0,
+      "proves": "Human actions, latency, and purpose can be captured without retrospective invention.",
+      "missing": "Event schema, low-friction logger, and missingness control.",
+      "evidence": "workflow/research/2026-08-08-poc-foundations.md"
+    },
+    {
+      "id": "POC-09",
+      "name": "Bare-versus-SEED calibration",
+      "status": "ACTIVE",
+      "progress_percent": 15,
+      "proves": "SEED changes invalid claims, correctness, recovery cost, or human time causally.",
+      "missing": "Task corpus, priced execution, twelve matched pairs, and blinded analysis.",
+      "evidence": "workflow/experiments/2026-08-08-p3-bare-vs-seed-ablation.md"
+    },
+    {
+      "id": "POC-10",
+      "name": "Public thermometer",
+      "status": "TODO",
+      "progress_percent": 0,
+      "proves": "The evidence can be rendered as an honest, legible capability-and-human-delta surface.",
+      "missing": "Validated upstream measurements and a non-actuating public prototype.",
+      "evidence": "workflow/research/2026-08-08-poc-foundations.md"
+    }
+  ]
+}

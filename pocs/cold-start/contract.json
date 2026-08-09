@@ -1,0 +1,16 @@
+{
+  "contract_version": 1,
+  "target_project": "human-delta",
+  "target_commit": "2ff86b509c120f4070c41493a0745baf1f74c6d1",
+  "time_limit_seconds": 900,
+  "required": {
+    "mission_code": "MEASURE_HUMAN_CONTRIBUTION",
+    "external_actuation": "NOT_AUTHORIZED",
+    "current_phase": "P1_FOUNDATION",
+    "next_action": "INDEPENDENT_COLD_ONBOARDING",
+    "p2a": "INVALID_INSTRUMENT",
+    "p2b": "INVALID_INSTRUMENT",
+    "p2c": "PENDING_INDEPENDENT_ONBOARDING",
+    "causal_benefit": "UNSUPPORTED"
+  }
+}
