@@ -100,7 +100,8 @@ Pokemon campaign.
   altering the frozen P3 causal protocol. The cold-start scorer binds answers to Human Delta's
   exact commit and 15-minute ceiling; the deceptive-green fixture proves a source-tree check can
   pass while the deployable artifact fails. These are controls, not evidence of SEED benefit;
-  P2c still requires an independent cold run.
+  P2c still requires an independent cold run. Calibration terminal:
+  `workflow/receipts/2026-08-08-poc-instrument-calibration.md` at `9cec215` (10/10 controls).
 - 2026-08-08 — P2c local gates passed at `human-delta@9703c52`: existing tests 8/8,
   sabotage 18/18, onboard 0 errors, source import scan clean, and no target-owned overwrite.
   Independent cold onboarding remains load-bearing; portability claim C-003 stays HYPOTHESIS.
