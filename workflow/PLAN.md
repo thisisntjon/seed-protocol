@@ -91,6 +91,8 @@ Pokemon campaign.
   sabotage assumed a Bonkers-only example token and therefore stayed green against Human Delta's
   valid empty ledger. P2c must seed both the retraction and its forbidden citation inside the
   disposable target.
+- 2026-08-08 — P2c preregistered against portable identity `bed1e9e...`; it changes only the
+  provenance-matched sabotage file and seeds its own disposable retraction fixture.
 - 2026-08-08 — P2 and P3 preregistered before transplant results. Exact source was amended before
   execution to `e08c365` to include the conflict-refusing transplant tool;
   exact Human Delta baseline is `04da0ca`. P2 may establish portability only; it cannot establish
