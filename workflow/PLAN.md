@@ -81,7 +81,8 @@ Pokemon campaign.
 
 ## Phase Log
 
-- 2026-08-08 — P2 and P3 preregistered before transplant results. Exact source is `d609ef9`;
+- 2026-08-08 — P2 and P3 preregistered before transplant results. Exact source was amended before
+  execution to `e08c365` to include the conflict-refusing transplant tool;
   exact Human Delta baseline is `04da0ca`. P2 may establish portability only; it cannot establish
   causal benefit. P3 is the first design capable of supporting or refuting the benefit claim.
 - 2026-08-08 — Verified-progress control closed: status reports one decision/measurement loop,
