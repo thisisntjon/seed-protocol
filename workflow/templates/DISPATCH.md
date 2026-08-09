@@ -10,5 +10,7 @@ EXACT_REF:   <commit hash / artifact hash / version this work is against>
 ACTION:      <what to do, in one sentence>
 ACCEPTANCE:  <the command(s) or observable(s) that define done — runnable, not vibes>
 FENCES:      <what is out of bounds: files not to touch, decisions not to make, spend limits>
+FORECAST:    <predicted duration / tokens / attempts BEFORE work starts — every dispatch is a
+              bet; the receipt's ACTUAL grades it (Law 9, calibration flywheel)>
 NEXT_EVENT:  <what happens when done: who consumes the receipt, what it unblocks>
 ```

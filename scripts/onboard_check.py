@@ -22,7 +22,7 @@ from pathlib import Path
 SLA_HOURS = 48
 
 TEMPLATE_FIELDS = {
-    "DISPATCH.md": ("TO", "OBJECT", "EXACT_REF", "ACTION", "ACCEPTANCE", "FENCES", "NEXT_EVENT"),
+    "DISPATCH.md": ("TO", "OBJECT", "EXACT_REF", "ACTION", "ACCEPTANCE", "FENCES", "FORECAST", "NEXT_EVENT"),
     "RECEIPT.md": (
         "STATE", "OBJECT", "EXACT_REF", "EVIDENCE", "PROGRESS", "EFFECT", "BLOCKED_ON",
         "NEXT_OWNER",
@@ -222,6 +222,12 @@ def check_receipts(root, msgs):
         effect = fields.get("EFFECT", "").lower()
         if state in {"DONE", "KILLED"} and progress in {"DECISION", "MEASUREMENT"} and effect.startswith("none"):
             fail(msgs, f"receipt {path.name} claims {progress} progress but EFFECT is none")
+        # SESSION_ID required for receipts dated after 2026-08-08 (Law 9 / refinery P2:
+        # verdicts must be pairable to trajectories; retroactive requirement would break
+        # pre-existing receipts, so the cutoff is the day the rule was encoded)
+        date_match = re.match(r"(\d{4}-\d{2}-\d{2})", path.name)
+        if date_match and date_match.group(1) > "2026-08-08" and not fields.get("SESSION_ID"):
+            fail(msgs, f"receipt {path.name} missing SESSION_ID (required for receipts after 2026-08-08)")
         exact_ref = fields.get("EXACT_REF", "")
         if (root / ".git").exists() and re.fullmatch(r"[0-9a-f]{7,40}", exact_ref):
             result = subprocess.run(

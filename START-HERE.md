@@ -60,6 +60,7 @@ commitments:
 | `.github/workflows/verify.yml` | Runs onboarding, sabotage, and POC calibration in CI |
 | `scripts/status.py` | Progress bars from the PLAN's phasing table + gate pressure |
 | `scripts/checkpoint.py` | Verified snapshot: refuses to commit while checks are red |
+| `scripts/spend_check.py` | Law 9: fails when compute burns without closed loops |
 
 ## Onboarding a fresh harness (any vendor)
 

@@ -82,3 +82,16 @@ max-throughput fleet work producing zero confirmed improvements; 2026 public evi
 ~3× tokens, up to −70% on interdependent tasks).
 **Enforcement:** PROSE (debt) — P3 of `workflow/PLAN.md` schedules the first ablation; encode a
 recurring one per project.
+
+## Law 9 — Spend buys closed loops, and it is always metered
+Compute consumption is measured on a cadence (a stale meter is itself a failure), every window
+of spend must name the loops it closed, and every dispatch carries a FORECAST that its receipt's
+ACTUAL grades. Spend above threshold with zero closed loops fails the build. Dollar figures
+derived from token counts are always labeled API-LIST-EQUIVALENT, never presented as cash.
+**Earned by:** the 2026-08-08 metering of the origin corpus — ~$49,686 API-list-equivalent
+consumed across the surviving transcript window while the campaign's own verdict was "zero
+confirmed agent improvements", and playbook/COST.md's spend table was empty checkboxes: an
+evidence culture that demanded receipts for everything exempted its own cost from evidence.
+**Enforcement:** ENCODED — `scripts/spend_check.py` (fails on unmetered, stale, or loop-less
+spend; selftest proves refutation power) + FORECAST required on dispatches and SESSION_ID on
+new receipts by `scripts/onboard_check.py`.
