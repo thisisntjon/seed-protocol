@@ -2,6 +2,13 @@
 
 **Bonkers** is the project. **SEED** is the small, portable protocol it contains.
 
+> **Current effort, 2026-08-18:** the **blueprint** — a clone-and-go repository template for
+> agentic projects that survive usage limits, provider switches, and session death. It
+> **supersedes SEED**; SEED is an input to it. Draft architecture:
+> [`workflow/blueprint/ARCHITECTURE.md`](workflow/blueprint/ARCHITECTURE.md). SEED's own roadmap
+> in `workflow/PLAN.md` is paused. SEED's laws, gates, receipts and checkers remain in force for
+> work done in this repo.
+
 SEED is designed to help a capable coding agent cold-onboard, preserve trustworthy state, expose
 false progress, and escalate only irreversible decisions. It is not an agent runtime, scheduler,
 or proof of autonomy; those claims require the transplant and ablation phases in
