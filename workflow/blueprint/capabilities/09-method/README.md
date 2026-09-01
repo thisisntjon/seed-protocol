@@ -14,7 +14,7 @@ incident to add structure.
 ## Output location
 
 Any project's `workflow/PLAN.md`; this repo's harvest + blueprint PLANs;
-`~/.claude/skills/phased/`.
+`user-skills/phased/` (operator skills directory; not a path in this repo).
 
 ## Quality bar
 

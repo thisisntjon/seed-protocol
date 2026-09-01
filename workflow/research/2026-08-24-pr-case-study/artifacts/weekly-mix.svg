@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="380" viewBox="0 0 760 380" role="img" aria-labelledby="t d">
+<title id="t">Weekly file-shape mix of PR-linked commits (poketcg pin)</title>
+<desc id="d">Grouped bars per week for docs_only, has_code, and n. Source artifacts/summary.json field weekly.</desc>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="380.0" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#111">Weekly file-shape mix of PR-linked commits (poketcg pin)</text>
+<text x="16" y="182.0" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333" transform="rotate(-90 16 182.0)">PR-linked first-parent commits</text>
+<text x="396.0" y="372" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">Week start date (ISO; Wednesdays)</text>
+<line x1="56" y1="316.0" x2="736" y2="316.0" stroke="#e6e6e6"/>
+<text x="48" y="320.0" text-anchor="end" font-family="system-ui,sans-serif" font-size="10" fill="#555">0</text>
+<line x1="56" y1="239.4" x2="736" y2="239.4" stroke="#e6e6e6"/>
+<text x="48" y="243.4" text-anchor="end" font-family="system-ui,sans-serif" font-size="10" fill="#555">200</text>
+<line x1="56" y1="162.9" x2="736" y2="162.9" stroke="#e6e6e6"/>
+<text x="48" y="166.9" text-anchor="end" font-family="system-ui,sans-serif" font-size="10" fill="#555">400</text>
+<line x1="56" y1="86.3" x2="736" y2="86.3" stroke="#e6e6e6"/>
+<text x="48" y="90.3" text-anchor="end" font-family="system-ui,sans-serif" font-size="10" fill="#555">600</text>
+<line x1="56" y1="48" x2="56" y2="316" stroke="#333"/>
+<line x1="56" y1="316" x2="736" y2="316" stroke="#333"/>
+<rect x="73.5" y="170.1" width="18.7" height="145.9" fill="#3d5a80"/>
+<rect x="92.2" y="241.7" width="18.7" height="74.3" fill="#c9a227"/>
+<rect x="110.8" y="66.4" width="18.7" height="249.6" fill="#2b2b2b"/>
+<text x="101.5" y="332" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#333">07-08</text>
+<rect x="170.6" y="230.6" width="18.7" height="85.4" fill="#3d5a80"/>
+<rect x="189.3" y="262.8" width="18.7" height="53.2" fill="#c9a227"/>
+<rect x="208.0" y="129.2" width="18.7" height="186.8" fill="#2b2b2b"/>
+<text x="198.7" y="332" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#333">07-15</text>
+<rect x="267.8" y="310.6" width="18.7" height="5.4" fill="#3d5a80"/>
+<rect x="286.5" y="301.5" width="18.7" height="14.5" fill="#c9a227"/>
+<rect x="305.1" y="290.0" width="18.7" height="26.0" fill="#2b2b2b"/>
+<text x="295.8" y="332" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#333">07-22</text>
+<rect x="364.9" y="241.3" width="18.7" height="74.7" fill="#3d5a80"/>
+<rect x="383.6" y="209.9" width="18.7" height="106.1" fill="#c9a227"/>
+<rect x="402.3" y="97.4" width="18.7" height="218.6" fill="#2b2b2b"/>
+<text x="392.9" y="332" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#333">07-29</text>
+<rect x="462.1" y="303.4" width="18.7" height="12.6" fill="#3d5a80"/>
+<rect x="480.7" y="302.6" width="18.7" height="13.4" fill="#c9a227"/>
+<rect x="499.4" y="282.7" width="18.7" height="33.3" fill="#2b2b2b"/>
+<text x="490.1" y="332" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#333">08-05</text>
+<rect x="559.2" y="314.1" width="18.7" height="1.9" fill="#3d5a80"/>
+<rect x="577.9" y="292.6" width="18.7" height="23.4" fill="#c9a227"/>
+<rect x="596.6" y="285.8" width="18.7" height="30.2" fill="#2b2b2b"/>
+<text x="587.2" y="332" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#333">08-12</text>
+<rect x="656.3" y="314.5" width="18.7" height="1.5" fill="#3d5a80"/>
+<rect x="675.0" y="309.5" width="18.7" height="6.5" fill="#c9a227"/>
+<rect x="693.7" y="303.0" width="18.7" height="13.0" fill="#2b2b2b"/>
+<text x="684.4" y="332" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#333">08-19</text>
+<rect x="96" y="30" width="10" height="10" fill="#3d5a80"/>
+<text x="110" y="39" font-family="system-ui,sans-serif" font-size="11" fill="#111">docs_only</text>
+<rect x="184" y="30" width="10" height="10" fill="#c9a227"/>
+<text x="198" y="39" font-family="system-ui,sans-serif" font-size="11" fill="#111">has_code</text>
+<rect x="272" y="30" width="10" height="10" fill="#2b2b2b"/>
+<text x="286" y="39" font-family="system-ui,sans-serif" font-size="11" fill="#111">n</text>
+</svg>

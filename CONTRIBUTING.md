@@ -2,7 +2,7 @@
 
 This repository is a measurement protocol, not a product backlog.
 
-1. **Read `START-HERE.md` and run the reproduce commands in `README.md`.** Red onboard means the docs are lying; fix that before adding work.
+1. **Read `START-HERE.md`, `JUDGES.md`, and run the reproduce commands in `README.md`.** Red onboard means the docs are lying; fix that before adding work. Score this tree as an instrument; C-004 stays HYPOTHESIS.
 2. **Pre-register before results exist.** New empirical work uses `workflow/templates/EXPERIMENT.md`. Outcomes are PASS / KILL / NULL / INVALID-INSTRUMENT only.
 3. **Author XOR verifier.** The session that produces a positive claim does not grade it. Independent reproduction is required to treat a PASS as scientific.
 4. **Do not cite numbers** that appear in `workflow/canon/RETRACTIONS.md`. Check the ledger first.

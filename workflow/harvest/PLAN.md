@@ -15,16 +15,16 @@ culture, session-death continuity, fleet ops, promotion gates) are trapped insid
 campaign mill and a 10-file CORE pack. A file list is not the factory. The factory is a
 growing ledger of ideas that other projects can encode as they hit the same incidents.
 
-**Why now:** Jon asked for an inventory of everything that can be repurposed. The first
+**Why now:** The principal asked for an inventory of everything that can be repurposed. The first
 pass inventoried files to copy. The correction: inventory the ideas used *during* the
 project — thousands of human hours of research — so Bonkers becomes an evolving factory.
 
-**Original hypothesis:** (Jon, 2026-08-23)
+**Original hypothesis:** (principal, 2026-08-23)
 
 > Please create an inventory of everything that can be repurposed and create a clean
 > package for it in the bonkers project.
 
-**Corrected hypothesis:** (Jon, 2026-08-23)
+**Corrected hypothesis:** (principal, 2026-08-23)
 
 > Take all of the valuable development ideas that were used DURING the project and create
 > that inventory for bonkers. The idea is to have a growing evolving factory that can be
@@ -74,14 +74,14 @@ existing projects still use `transplant.py`.
 
 - Assumption: The harvest object is portable *files* (CORE/OPTIONAL/CANDIDATE/NEVER paths).
   Source: harvest Phase 1 goal
-  Status: invalidated (2026-08-23) — Jon: "take all of the valuable development ideas that
+  Status: invalidated (2026-08-23) — principal: "take all of the valuable development ideas that
   were used DURING the project"; "growing evolving factory"; file inventory was trees not forest.
   Evidence: playbook eight load-bearing ideas, EVAL_PROTOCOL, DEAD-ENDS scope guards,
   START-HERE field facts, Law 1–9.
   | Affects: Phase 1 (files remain substrate), Phase 2 (ideas ledger is the product)
 
 - Assumption: If a dollar price is hard to quote, the harvest has little value.
-  Source: 2026-08-23 valuation reply (sale price of 10 files ≈ $0)
+  Source: 2026-08-23 valuation reply (sale price of git files is the wrong lens; rejected)
   Status: invalidated (2026-08-23) — replacement cost of the *ideas* is the campaign tuition
   (thousands of human hours). Sale price of git files is the wrong lens.
   | Affects: how value is stated in IDEAS.md
@@ -92,7 +92,7 @@ existing projects still use `transplant.py`.
 **Produces:** INVENTORY.json/md, pack/README.md, pack/MANIFEST.json, identity templates,
 candidate extracts, assemble.py
 **Verifies:** success criteria 1–6
-**Note:** necessary substrate; not the harvest Jon asked for.
+**Note:** necessary substrate; not the harvest the principal asked for.
 
 ### Phase 2 — Development-ideas ledger  [status: done]
 **Produces:** `workflow/harvest/IDEAS.md` + `IDEAS.json` (145 ideas across 10 families)

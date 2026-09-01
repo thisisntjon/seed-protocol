@@ -15,5 +15,5 @@
   "clarifications": 0,
   "target_writes": 0,
   "independent_finding": "The reader independently identified the stale workflow/PLAN.md current-stage header for the third consecutive run.",
-  "reproduce": "python pocs/cold-start/score-v3.py workflow/measurements/2026-08-08-p2c-independent-cold-answer-v3.json --target-repo C:/Users/thisi/Desktop/Pokemon/human-delta"
+  "reproduce": "python pocs/cold-start/score-v3.py workflow/measurements/2026-08-08-p2c-independent-cold-answer-v3.json --target-repo <human-delta-clone>"
 }

@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """spend_check.py -- Law 9: spend must convert to closed loops.
 
-Incident this encodes: ~$49,686 API-list-equivalent compute was consumed across the surviving
+Incident this encodes: API-list-equivalent compute was consumed across the surviving
 transcript window while the campaign's own verdict was "zero confirmed agent improvements",
 and the project's COST.md was empty checkboxes. Unmeasured spend with no consumption test is
-the failure mode; this check makes it impossible to repeat silently.
+the failure mode; this check makes it impossible to repeat silently. Do not cite a Law-9
+dollar figure; the previously circulated metering number is unverified.
 
-Reads the newest ccusage JSON export (the metering instrument), sums window spend, counts
-closed loops from workflow/receipts (DONE with PROGRESS decision/measurement, or KILLED --
-a kill on evidence is a closed loop), and FAILS when spend exceeds the threshold with zero
-loops closed. A missing or stale export is itself a failure: unmetered spend is the incident.
+Reads a ccusage JSON export passed with --json or --data-dir (no home-directory default),
+sums window spend, counts closed loops from workflow/receipts (DONE with PROGRESS
+decision/measurement, or KILLED -- a kill on evidence is a closed loop), and FAILS when
+spend exceeds the threshold with zero loops closed. A missing or stale export is itself a
+failure: unmetered spend is the incident.
 
 All dollar figures are API-LIST-EQUIVALENT (token counts x list prices), not subscription cash.
 ASCII output only. --selftest proves refutation power (Law 2) before green is trusted.
@@ -21,7 +23,6 @@ import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
-DEFAULT_DATA_DIR = Path.home() / ".claude" / "planning" / "refinery" / "data"
 CLOSED_STATES_PROGRESS = {"DECISION", "MEASUREMENT"}
 
 
@@ -96,7 +97,7 @@ def check_freshness(export_path, max_age_days, now=None):
         return False, (
             f"ERROR   newest usage export is {age}d old (max {max_age_days}d). Unmetered spend "
             f"is the incident this check exists for. Run: npx ccusage@latest daily --json "
-            f"--sections daily,session > {DEFAULT_DATA_DIR}\\ccusage-YYYY-MM-DD.json"
+            f"--sections daily,session > <data-dir>\\ccusage-YYYY-MM-DD.json"
         )
     return True, f"ok      usage export is {age}d old (max {max_age_days}d)"
 
@@ -124,7 +125,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=None, help="repo root (default: parent of this script)")
     parser.add_argument("--json", default=None, help="ccusage export path (default: newest in data dir)")
-    parser.add_argument("--data-dir", default=str(DEFAULT_DATA_DIR))
+    parser.add_argument(
+        "--data-dir",
+        default=None,
+        help="directory of ccusage-*.json exports (required unless --json or --selftest)",
+    )
     parser.add_argument("--window-days", type=int, default=7)
     parser.add_argument("--max-unconsumed-usd", type=float, default=100.0,
                         help="window spend at/above this with zero closed loops = failure")
@@ -135,11 +140,22 @@ def main():
         return selftest()
 
     root = Path(args.root).resolve() if args.root else Path(__file__).resolve().parent.parent
-    export = Path(args.json) if args.json else newest_export(Path(args.data_dir))
+    if args.json:
+        export = Path(args.json)
+        data_dir_label = str(export.parent)
+    elif args.data_dir:
+        data_dir_label = args.data_dir
+        export = newest_export(Path(args.data_dir))
+    else:
+        print(
+            "ERROR   pass --json PATH or --data-dir DIR -- this check does not "
+            "default to a home-directory meter path"
+        )
+        return 1
     if not export or not export.exists():
-        print(f"ERROR   no usage export found in {args.data_dir} -- unmetered spend is the "
+        print(f"ERROR   no usage export found in {data_dir_label} -- unmetered spend is the "
               f"incident this check exists for. Run: npx ccusage@latest daily --json "
-              f"--sections daily,session > {args.data_dir}\\ccusage-YYYY-MM-DD.json")
+              f"--sections daily,session > {data_dir_label}\\ccusage-YYYY-MM-DD.json")
         return 1
     ok_fresh, msg = check_freshness(export, args.max_export_age_days)
     print(msg)

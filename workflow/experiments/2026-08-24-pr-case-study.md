@@ -8,7 +8,7 @@ HYPOTHESIS:      Merged PR volume in thisisntjon/poketcg is a poor proxy for ver
 OBJECT:          git object origin/main of thisisntjon/poketcg at SHA
                  9522a8a37078d00f46b99a586b825b789b01387d (2026-08-24T11:29:23-07:00)
                  plus GitHub PR search totals at measurement time.
-DEPLOYED_FORM:   Local clone C:\Users\thisi\Desktop\Pokemon after git fetch origin;
+DEPLOYED_FORM:   Operator-supplied clone of thisisntjon/poketcg after git fetch origin;
                  GitHub REST via `gh` authenticated as the repo owner.
 MEASUREMENT:     (1) GitHub search totals: is:pr / is:merged / is:closed is:unmerged /
                  is:open. (2) First-parent commits on origin/main whose subject ends in

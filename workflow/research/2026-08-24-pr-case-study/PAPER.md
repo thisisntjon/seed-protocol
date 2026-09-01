@@ -61,7 +61,7 @@ origin/main = 9522a8a37078d00f46b99a586b825b789b01387d
 # 2026-08-24T11:29:23-07:00
 ```
 
-Local clone: `C:\Users\thisi\Desktop\Pokemon`. GitHub: `gh api search/issues` the same calendar day.
+Local clone: an operator-supplied checkout of `thisisntjon/poketcg` (not this repository). GitHub: `gh api search/issues` the same calendar day.
 
 ### 3.2 PR-linked commits
 

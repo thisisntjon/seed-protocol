@@ -1,5 +1,5 @@
 STATE:       DONE
-OBJECT:      Law 9 encoded -- the $49.7k lesson written as code (refinery Phase 2, first slice)
+OBJECT:      Law 9 encoded -- the metering lesson written as code (refinery Phase 2, first slice)
 EXACT_REF:   working tree following checkpoint 2708972
 EVIDENCE:    scripts/spend_check.py --selftest 5/5 PASS; spend_check real run against
              ccusage-2026-08-08.json (see checkpoint for output); onboard_check green with
@@ -10,5 +10,5 @@ EFFECT:      future spend cannot accrue unmetered or loop-less without failing t
              every dispatch is now a forecast the receipt grades
 SESSION_ID:  1b93e85f-97cc-41bb-b849-74464d7d2b2c
 ACTUAL:      ~40 minutes, one session, first attempt
-NEXT_OWNER:  refinery PLAN Phase 2 (remaining slice: named-consumer/read-by check); Jon reads
-             the first real spend_check verdict
+NEXT_OWNER:  refinery PLAN Phase 2 (remaining slice: named-consumer/read-by check); the principal
+             reads the first real spend_check verdict

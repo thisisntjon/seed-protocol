@@ -68,7 +68,7 @@ Agents research, build, and verify without asking. Humans decide only what `GATE
 spend, publication, deletion, submission, production flips. BUT: a gate pending past its SLA is
 an incident, surfaced loudly — because "waiting on the human" is the #1 documented project killer.
 **Earned by:** TheHolyGrail (died at "register the GitHub App"), The Village ("GATE PENDING
-(Jon)", dormant for a month) — the methodology's safety feature was also its abandonment vector.
+(principal)", dormant for a month) — the methodology's safety feature was also its abandonment vector.
 **Enforcement:** ENCODED — `GATES.md` carries a machine-parsed registry; the checker fails on any
 OPEN gate older than its SLA.
 
@@ -88,10 +88,12 @@ Compute consumption is measured on a cadence (a stale meter is itself a failure)
 of spend must name the loops it closed, and every dispatch carries a FORECAST that its receipt's
 ACTUAL grades. Spend above threshold with zero closed loops fails the build. Dollar figures
 derived from token counts are always labeled API-LIST-EQUIVALENT, never presented as cash.
-**Earned by:** the 2026-08-08 metering of the origin corpus — ~$49,686 API-list-equivalent
+**Earned by:** the 2026-08-08 metering of the origin corpus — API-list-equivalent compute
 consumed across the surviving transcript window while the campaign's own verdict was "zero
 confirmed agent improvements", and playbook/COST.md's spend table was empty checkboxes: an
 evidence culture that demanded receipts for everything exempted its own cost from evidence.
+Do not cite a Law-9 dollar figure; the previously circulated metering number is unverified
+(`workflow/canon/DECISIONS.md`).
 **Enforcement:** ENCODED — `scripts/spend_check.py` (fails on unmetered, stale, or loop-less
 spend; selftest proves refutation power) + FORECAST required on dispatches and SESSION_ID on
 new receipts by `scripts/onboard_check.py`.

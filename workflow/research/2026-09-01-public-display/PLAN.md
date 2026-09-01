@@ -3,7 +3,7 @@
 Format: `/phased`. Triage: **Medium** — the contest-readiness score (47/100) and
 Pokemon operating loop are already known; this investigation decides the *public
 object*, not whether SEED is causally useful.
-Current stage: parallel investigation (T-001–T-005), then synthesis (T-006)
+Current stage: Wave A applied (front door + hygiene); H2 dest-poison still later
 Last updated: 2026-09-01
 
 ## Problem
@@ -44,7 +44,7 @@ does not flip repo visibility (GATES publication).
 
 | Phase | Scope | Status |
 |---|---|---|
-| I0 Board | board/ + these tickets | ACTIVE |
-| I1 Parallel briefs | T-001–T-005 | TODO |
-| I2 Synthesis | T-006 SPEC.md | TODO (depends I1) |
+| I0 Board | board/ + these tickets | DONE |
+| I1 Parallel briefs | T-001–T-005 | DONE |
+| I2 Synthesis | T-006 SPEC.md | DONE (lead session; needs independent review) |
 | I3 Build | later board — implement SPEC | not this investigation |

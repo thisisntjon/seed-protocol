@@ -295,7 +295,13 @@ def review_sample(slim: list[dict], k: int = 40) -> dict:
 def main() -> int:
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     flags = set(a for a in sys.argv[1:] if a.startswith("--"))
-    repo = Path(args[0] if args else r"C:\Users\thisi\Desktop\Pokemon")
+    if not args:
+        print(
+            "usage: measure_pr_census.py <poketcg-clone> [--no-reviews]",
+            file=sys.stderr,
+        )
+        return 2
+    repo = Path(args[0])
     out_dir = Path(__file__).resolve().parent / "artifacts"
     summary, slim = census(repo, out_dir)
     print(json.dumps({k: summary[k] for k in summary if k != "shortlog_all_names"}, indent=2))

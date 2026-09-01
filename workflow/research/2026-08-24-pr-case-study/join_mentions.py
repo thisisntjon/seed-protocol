@@ -4,19 +4,20 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
 PIN_INDEX = Path(__file__).resolve().parent / "artifacts" / "pr_index.jsonl"
-POKE = Path(r"C:\Users\thisi\Desktop\Pokemon")
 PR_RE = re.compile(r"#(\d{1,4})\b")
 
-# Surfaces that would implement "incident → check" if the join existed.
-ROOTS = [
-    POKE / "workflow",
-    POKE / "playbook",
-    POKE / "ptcg-agent" / "docs",
-]
+
+def poke_roots(poke: Path) -> list[Path]:
+    return [
+        poke / "workflow",
+        poke / "playbook",
+        poke / "ptcg-agent" / "docs",
+    ]
 
 
 def iter_md(root: Path):
@@ -33,6 +34,9 @@ def iter_md(root: Path):
 
 
 def main() -> None:
+    if len(sys.argv) < 2 or sys.argv[1].startswith("-"):
+        sys.exit("usage: join_mentions.py <poketcg-clone>")
+    poke = Path(sys.argv[1])
     prs = set()
     for line in PIN_INDEX.read_text(encoding="utf-8").splitlines():
         if line.strip():
@@ -41,7 +45,7 @@ def main() -> None:
     files_hit = Counter()
     cited = set()
     by_bucket = Counter()
-    for root in ROOTS:
+    for root in poke_roots(poke):
         bucket = root.name
         for path in iter_md(root):
             try:
@@ -52,7 +56,7 @@ def main() -> None:
             found &= prs
             if not found:
                 continue
-            rel = str(path.relative_to(POKE)).replace("\\", "/")
+            rel = str(path.relative_to(poke)).replace("\\", "/")
             for n in found:
                 hits[n] += 1
                 cited.add(n)
@@ -67,7 +71,7 @@ def main() -> None:
         "workflow/GATES.md",
         "ptcg-agent/docs/EVAL_PROTOCOL.md",
     ):
-        path = POKE / rel
+        path = poke / rel
         if not path.exists():
             special[rel] = None
             continue

@@ -1,13 +1,14 @@
-# Harden the recovered $120k — ten moves
+# Harden the factory — ten moves
 
 **Stamped:** 2026-08-23
 **Triage:** Light. No mill import, no fleet mailbox, no P3 spend, no PORTABLE_FILES growth.
 **Plan:** `PLAN.md` (this directory). SEED `workflow/PLAN.md` stays paused.
 
-The $120k is cost-to-recreate portable yield ($30k executable + $70k named mistakes +
-$20k expected avoided waste). It expires if CI does not bind it, if bootstrap is only a
-story, and if measurement rules stay prose. These ten items lock that value in **this
-repo**. Each is reversible, stdlib, and done when a command is green.
+This is a replacement-cost memo with no dollar figure. Portable yield here means an
+executable protocol, named mistakes, and avoided waste. It expires if CI does not bind
+it, if bootstrap is only a story, and if measurement rules stay prose. These ten items
+lock that value in **this repo**. Each is reversible, stdlib, and done when a command
+is green.
 
 Skip on purpose: Pokémon harness mill, thebus, answer-map YAML as default, `queue_worker`,
 growing default transplant, any dollar spend.
@@ -16,7 +17,7 @@ growing default transplant, any dollar spend.
 
 ## H1 — Bind the factory in CI
 
-**Hardens:** $30k executable (rot)
+**Hardens:** executable protocol (rot)
 **Risk:** trivial. Add three lines to `.github/workflows/verify.yml`.
 **Do:** run `workflow/blueprint/bin/selftest.py`, `workflow/harvest/pack/assemble.py --check`,
 `workflow/blueprint/bin/orient.py` on every push, same job as onboard/sabotage.
@@ -26,7 +27,7 @@ growing default transplant, any dollar spend.
 
 ## H2 — Bootstrap round-trip inside selftest
 
-**Hardens:** $30k install path
+**Hardens:** install path
 **Risk:** low. Temp git, already proven by hand; encode Law 2.
 **Do:** `selftest.py` creates a temp repo, runs `bootstrap.py --dest`, then dest
 `onboard_check.py` and dest `orient.py`. Fail if either is green-without-START-HERE (already)
@@ -37,7 +38,7 @@ a fixture.
 
 ## H3 — Append-only factory ledger
 
-**Hardens:** $70k inspectability (Miracle run ledger, lite)
+**Hardens:** inspectability (Miracle run ledger, lite)
 **Risk:** low. One jsonl, size-capped, no second source of truth for PLAN.
 **Do:** `workflow/blueprint/events.jsonl`. `orient.py`, `selftest.py`, `bootstrap.py` append
 one JSON object: ts, tool, sha, exit. Receipts already live in `workflow/receipts/`; do not
@@ -49,7 +50,7 @@ fuel, not status.
 
 ## H4 — Three frozen recipes (composition without a DAG)
 
-**Hardens:** $20k option (use, not admire)
+**Hardens:** option value (use, not admire)
 **Risk:** low. Markdown + JSON. No graph runner.
 **Do:** `workflow/blueprint/recipes/`
 
@@ -66,18 +67,19 @@ capabilities. Recipes are the cheapest compose layer.
 
 ## H5 — Path-free copies of two skills
 
-**Hardens:** $30k+$70k portability (second machine)
-**Risk:** low. Copy markdown; strip `C:\Users\thisi`.
-**Do:** `workflow/blueprint/skills/phased/` and `skills/handoff/` from `~/.claude/skills`,
+**Hardens:** portability (second machine)
+**Risk:** low. Copy markdown; strip author home-directory paths.
+**Do:** `workflow/blueprint/skills/phased/` and `skills/handoff/` from the operator
+skills directory (not a path in this repo),
 with helpers invoked as `python skills/handoff/handoff.py` relative to the repo. Do **not**
 copy peek, godot, comfy, grail.
-**Done when:** grep of those copies finds no `C:\Users\thisi`. `orient.py` can point at them.
+**Done when:** grep of those copies finds no author home-directory paths. `orient.py` can point at them.
 **Why:** `master-skills-catalog.md` already marked this as the porting failure. The factory
 that only works on this desktop is not recovered value.
 
 ## H6 — Spend and approval as objects
 
-**Hardens:** $20k + C12 (empty COST.md checkboxes)
+**Hardens:** C12 (empty COST.md checkboxes)
 **Risk:** low. Templates only. No API keys, no auto-spend.
 **Do:** `templates/BUDGET.md` (window, loops-closed, $/closed-loop, source = principal
 note — never invent cash). `templates/APPROVAL.json` (id, what, irreversible class,
@@ -89,7 +91,7 @@ had prose. Do not cite unverified Law-9 dollars.
 
 ## H7 — Three measurement tripwires, with sabotage
 
-**Hardens:** $70k C-family (the expensive mistakes)
+**Hardens:** C-family (the expensive mistakes)
 **Risk:** low if scoped to *this* repo’s receipts and START-HERE. Law 2 required.
 **Do:** `scripts/measure_guard.py` (or `blueprint/bin/measure_guard.py`):
 
@@ -108,7 +110,7 @@ preflight, dormant switches, and bus-comment “evidence.”
 
 ## H8 — `switch.py`: escrow + paste block
 
-**Hardens:** original unused pain (usage limit / vendor change) — $30k continuity gap
+**Hardens:** original unused pain (usage limit / vendor change) — continuity gap
 **Risk:** low-medium. Git refs only; no push; no hook install by default.
 **Do:** `bin/switch.py --to claude|codex`. If dirty: `git stash push -u` or commit to
 `refs/factory/escrow/<utc>` locally. Print a paste-ready boot: read START-HERE, run
@@ -147,7 +149,7 @@ are how we stop repeating “portable” without a falsifier.
 
 ## Sequence (do in order; each is its own receipt)
 
-H1 → H2 → H3 → H7 are the **lock**. They turn $120k from a memo into CI.
+H1 → H2 → H3 → H7 are the **lock**. They turn the replacement-cost memo into CI.
 H4 → H5 → H6 are **use**. They make the next project able to consume it.
 H8 → H9 are **continuity**. They close the poketcg hole.
 H10 can run parallel with H1 (handoff now; C-006 after H2).

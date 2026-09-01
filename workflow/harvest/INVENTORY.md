@@ -83,7 +83,7 @@ Portable **patterns**. Full rows in `INVENTORY.json`. Condensed here.
 | Shipping to a runtime | `preflight.py` **rebuilt for that runtime**, SHA identity before spend |
 | One north-star science graph | answer-map method (GSN/AIEG) as docs, not YAML from PTCG |
 
-**Skills (live in `~/.claude/skills`, not this pack):** `phased`, `board-*`, `qol-baseline`,
+**Skills (live in `user-skills`, not this pack):** `phased`, `board-*`, `qol-baseline`,
 `handoff`, `daemon`, `progress`, `align`, `end-session-closeout`, `spec` / `spec-critic` / `tdd`.
 Copy a skill into a project only if that harness cannot see user skills.
 

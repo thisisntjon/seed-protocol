@@ -82,15 +82,15 @@ plus thousands of human hours. The mill is the waste product. These files are th
 
 | Source | Taken | Landed | Left behind |
 |---|---|---|---|
-| `~/.claude/skills/phased/` | Frame → investigate → roadmap → phase-loop; pivot-check | `capabilities/09-method/` | Skill runner paths |
-| `~/.claude/skills/qol-baseline/` | 22 operational features; scale to project; N/A is valid | `capabilities/05-operations/` | — |
-| `~/.claude/skills/board-lead|watch|work/` | Git-file board + worktree tickets | `capabilities/11-fleet/` deferred | board.py until 2nd agent |
-| `~/.claude/skills/handoff/` | Wrapup/pickup between PLAN and memory | CORE HANDOFF.md | hardcoded paths |
-| `~/.claude/skills/daemon/` | Registry of long-lived processes | `capabilities/05-operations/` | machine registry |
-| `~/.claude/skills/progress/` | Honest % from completed weights | optional | statusline wiring |
-| `~/.claude/skills/align/` | 3 steering questions when ambiguous | `capabilities/09-method/` | — |
-| `~/.claude/skills/spec` / `spec-critic` / `tdd` | Design/review/test loop | `capabilities/09-method/` | — |
-| `~/.claude/skills/end-session-closeout/` | Evidence-based close | HANDOFF + receipts | UI-QA stages |
+| `user-skills/`phased/` | Frame → investigate → roadmap → phase-loop; pivot-check | `capabilities/09-method/` | Skill runner paths |
+| `user-skills/`qol-baseline/` | 22 operational features; scale to project; N/A is valid | `capabilities/05-operations/` | — |
+| `user-skills/`board-lead|watch|work/` | Git-file board + worktree tickets | `capabilities/11-fleet/` deferred | board.py until 2nd agent |
+| `user-skills/`handoff/` | Wrapup/pickup between PLAN and memory | CORE HANDOFF.md | hardcoded paths |
+| `user-skills/`daemon/` | Registry of long-lived processes | `capabilities/05-operations/` | machine registry |
+| `user-skills/`progress/` | Honest % from completed weights | optional | statusline wiring |
+| `user-skills/`align/` | 3 steering questions when ambiguous | `capabilities/09-method/` | — |
+| `user-skills/`spec` / `spec-critic` / `tdd` | Design/review/test loop | `capabilities/09-method/` | — |
+| `user-skills/`end-session-closeout/` | Evidence-based close | HANDOFF + receipts | UI-QA stages |
 
 ## Explicitly not extracted
 

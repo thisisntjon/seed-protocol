@@ -10,15 +10,15 @@ Last updated: 2026-08-31
 
 ## Problem
 
-**Problem:** ~$120k of recovered portable yield (executable protocol + named mistakes +
+**Problem:** recovered portable yield (executable protocol + named mistakes +
 expected avoided waste) sits in a catalog that CI does not bind, that a second machine
 cannot copy without path edits, and that measurement rules will not fire because they are
-prose. Unused insurance expires.
+prose. Unused insurance expires. This is a replacement-cost memo with no dollar figure.
 
 **Why now:** Extract and ideas ledger are done. Further file-by-file harvest has diminishing
-returns. Hardening is how the $120k stays real.
+returns. Hardening is how that portable yield stays real.
 
-**Original hypothesis:** (Jon, 2026-08-23)
+**Original hypothesis:** (principal, 2026-08-23)
 
 > How do we harden that value? Please think of 10 things we should do in the bonkers
 > project to increase the value. These should be real high value opportunities that are
@@ -60,7 +60,7 @@ Detail and done-when: `HARDENING.md`.
   Status: holding
   | Affects: H8
 
-- Assumption: P3 ablation is the wrong tool to harden $120k now.
+- Assumption: P3 ablation is the wrong tool to harden the factory now.
   Source: C-004 pending; GATES spend
   Status: holding
   | Affects: exclusion list
@@ -75,7 +75,7 @@ Detail and done-when: `HARDENING.md`.
 | H2 Bootstrap round-trip | selftest temp dest onboard+orient | fixture red on broken assemble | TODO |
 | H3 Event jsonl | orient/selftest/bootstrap append | cap + grep | TODO |
 | H4 Recipes | greenfield / incident / promotion | dry-run prints commands | TODO |
-| H5 Path-free skills | phased + handoff copies | no C:\Users\thisi in copies | TODO |
+| H5 Path-free skills | phased + handoff copies | no author home paths in copies | TODO |
 | H6 Budget/approval objects | templates; spend_check skip if absent | missing BUDGET ≠ onboard red | TODO |
 | H7 Measure tripwires | three guards + sabotage | 3/3 red fixtures | TODO |
 | H8 switch.py | escrow + paste boot | restore dirty tree | TODO |

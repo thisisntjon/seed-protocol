@@ -5,8 +5,8 @@ limits, provider switches, and session death, without manual context management.
 
 Status: **v0.1 building.** Written 2026-08-18; first executable extract 2026-08-23.
 Catalog, file-by-file extract log, orient/bootstrap/selftest live under this directory.
-Published view of the draft:
-https://claude.ai/code/artifact/89126001-74c0-40a0-a00d-3ac69fe14a40
+The executable extract lives in this directory (`README.md`, `CAPABILITY-CATALOG.md`,
+`EXTRACT-LOG.md`, `bin/`). There is no external session URL.
 
 Relationship to this repo: **the blueprint supersedes SEED.** SEED is an input to it, not a peer.
 See `workflow/canon/DECISIONS.md` (2026-08-18). Source material is `poketcg/playbook/` — 73 rules,

@@ -58,8 +58,9 @@ commitments:
 
 | Path | What it is |
 |---|---|
-| `LAWS.md` | The eight proven laws, each with provenance and enforcement |
+| `LAWS.md` | Incident-earned laws, each with provenance and enforcement |
 | `README.md` | Research abstract for humans landing from GitHub |
+| `JUDGES.md` | Score the instrument, not C-004 |
 | `CITATION.cff` | How to cite this repository and the case study |
 | `LICENSE` | MIT |
 | `CONTRIBUTING.md` | Research norms (pre-register, author XOR verifier) |

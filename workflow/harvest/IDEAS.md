@@ -2,7 +2,7 @@
 
 **Stamped:** 2026-08-23
 **Machine file:** `IDEAS.json`
-**This is the harvest Jon asked for.** The file pack (`INVENTORY.md`, `pack/`) is how some of
+**This is the harvest the principal asked for.** The file pack (`INVENTORY.md`, `pack/`) is how some of
 these ideas are *already encoded*. This ledger is the asset: development ideas used during
 the PTCG campaign (and the year of projects behind it), stripped of Pokémon, so the next
 project does not re-derive them.
@@ -136,7 +136,7 @@ The *premium already paid* is the research.
 | ID | Idea | Earned by | Encode |
 |---|---|---|---|
 | I-D01 | **Phased investigation:** frame → investigate → assumption registry → roadmap → phase loop. PLAN.md is state. Gates are approve/adjust, not approve/reject. | `/phased`; Bonkers PLAN | CANDIDATE skill; Bonkers PLAN format |
-| I-D02 | **Existence-check before building.** Research whether the thing exists. | Jon operating contract | Doctrine |
+| I-D02 | **Existence-check before building.** Research whether the thing exists. | principal operating contract | Doctrine |
 | I-D03 | **Incident → rule → machine check, within one cycle.** | Playbook empirical claim (encode-recurrence still unverified as a *statistic*; encoding remains the cheap default) | CORE: Law 1 + meta-law |
 | I-D04 | **Rule diet.** Incidents add a check or a checklist line, never a new prose rule. Prose gets compiled and retired. | Ceremony pathology: lots of experiments/cards/tools → few submissions | CORE: Law 1 |
 | I-D05 | **Additions require a named incident.** No speculative structure. 646-tool sprawl is the anti-pattern. | Skeleton-size decision | CORE: LAWS meta-law |
@@ -188,9 +188,9 @@ The *premium already paid* is the research.
 | I-F14 | **Remove the router from the loop.** Repeating routing pattern → standing order. Standing re-verify, class-token self-engage, movement audit. Agents cheap/parallel; lead attention serial. | 2026-07-18 movement wave; three finished items queued on routing | CANDIDATE |
 | I-F15 | **TO:-header delivery.** Mid-body mentions are not delivery. | ACTIVE-COMMS / seq-132 | Doctrine |
 | I-F16 | **Attribution is seat:field, not GitHub identity.** Same identity posts for every harness. | 07-29 verifier wrongly suspended | Doctrine |
-| I-F17 | **Liveness is three-state:** advancing output, answered nonce, or lawfully-quiet (do not escalate as dead). | Jon-direct-busy stand-down | Doctrine |
+| I-F17 | **Liveness is three-state:** advancing output, answered nonce, or lawfully-quiet (do not escalate as dead). | principal-direct-busy stand-down | Doctrine |
 | I-F18 | **O(1) backlog:** assign the top unassigned item only to an idle seat with empty queue. | BACKLOG.md | Doctrine |
-| I-F19 | **main is lead-write-only.** Inbox authenticity is structural. | Agent wrote another's inbox claiming Jon approved | When 2nd agent |
+| I-F19 | **main is lead-write-only.** Inbox authenticity is structural. | Agent wrote another's inbox claiming the principal approved | When 2nd agent |
 | I-F20 | **Identity fixed, function fluid.** Names never change; functions re-sort around competence; org formalizes the re-sort. | "Leader" nickname drifted into implementation | Doctrine |
 | I-F21 | **Repair worktrees BEFORE prune; KEEP ambiguous.** | Stray prune deregistered 22 worktrees | CANDIDATE: wt_sweep |
 | I-F22 | **Watchers live OUTSIDE git worktrees.** Branch checkouts clobber in-tree watchers. | Windows-update deaths | FLEET |
@@ -244,7 +244,7 @@ The *premium already paid* is the research.
 | I-K01 | **The mill.** Hundreds of domain scripts are the waste product of discovery, not the factory. | Copy `ptcg-agent/harness/*` |
 | I-K02 | **thebus.** A separate fleet-governance product, retired. Design retracted. | Rebuild a bus repo |
 | I-K03 | **Mega-merge.** Pokemon + Career + Bonkers as one repo. | Union the trees |
-| I-K04 | **Invented rubrics / prize structures.** | 14/14/14 splits; false BO3/$50k |
+| I-K04 | **Invented rubrics / prize structures.** | 14/14/14 splits; false BO3 / invented prize |
 | I-K05 | **Provenance novels as current truth.** AGENTS.md 500-line supersede stacks. | Onboard from the novel |
 | I-K06 | **Second state file** that drifts from PLAN. | A STATUS.md that is not derived |
 | I-K07 | **Bulk `--apply` on a header-driven board.** | board_sync --apply |

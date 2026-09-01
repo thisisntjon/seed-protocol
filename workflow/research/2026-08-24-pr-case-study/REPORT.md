@@ -97,7 +97,7 @@ Repo created 2026-07-09. Calendar span to pin: **46 days**. Merged PRs / calenda
 | empty | 1 | |
 | churn &lt; 100 | 786 | **39.7%** |
 
-Prior Write-Up figures: **44.7% docs-only, 39.6% under 100 lines** (census date ~2026-08-16, ~2,293 merged). This rerun, on a later pin and a slightly different PR-token rule, lands **43.2% / 39.7%**. The lore numbers were not a hallucination. They also were not a law of nature: see §4.3.
+Prior external-memo figures: **44.7% docs-only, 39.6% under 100 lines** (census date ~2026-08-16, ~2,293 merged). This rerun, on a later pin and a slightly different PR-token rule, lands **43.2% / 39.7%**. The lore numbers were not a hallucination. They also were not a law of nature: see §4.3.
 
 Churn is heavy-tailed: median 146; p90 1,349; p99 8,879; max 135,280. A mean “lines per PR” would be a lie.
 
@@ -225,10 +225,10 @@ Do not put 2,338 or 103 in a marketing sentence. Put **43.2% docs-only (N=1,979,
 ## Reproduce
 
 ```text
-git -C C:\Users\thisi\Desktop\Pokemon fetch origin
-git -C C:\Users\thisi\Desktop\Pokemon rev-parse origin/main
+git -C <poketcg-clone> fetch origin
+git -C <poketcg-clone> rev-parse origin/main
 # expect 9522a8a37078d00f46b99a586b825b789b01387d at the time of this report
-python workflow/research/2026-08-24-pr-case-study/measure_pr_census.py C:\Users\thisi\Desktop\Pokemon --no-reviews
+python workflow/research/2026-08-24-pr-case-study/measure_pr_census.py <poketcg-clone> --no-reviews
 python workflow/research/2026-08-24-pr-case-study/postprocess.py
 ```
 

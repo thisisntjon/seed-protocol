@@ -9,16 +9,19 @@ from __future__ import annotations
 import hashlib
 import json
 import subprocess
+import sys
 from collections import Counter
 from pathlib import Path
 
 PIN = "9522a8a37078d00f46b99a586b825b789b01387d"
-REPO = Path(r"C:\Users\thisi\Desktop\Pokemon")
+REPO: Path | None = None
 HERE = Path(__file__).resolve().parent
 N_PER = 20
 
 
 def git(*args: str) -> str:
+    if REPO is None:
+        raise RuntimeError("clone path not set; pass it as the first argument")
     r = subprocess.run(
         ["git", "-C", str(REPO), *args],
         capture_output=True,
@@ -110,6 +113,10 @@ def draw() -> list[dict]:
 
 
 def main() -> None:
+    global REPO
+    if len(sys.argv) < 2 or sys.argv[1].startswith("-"):
+        sys.exit("usage: label_sample.py <poketcg-clone>")
+    REPO = Path(sys.argv[1])
     sample = draw()
     labeled = []
     for row in sample:

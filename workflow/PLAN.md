@@ -52,7 +52,7 @@ Pokemon campaign.
   | Affects: AGENTS.md default operating mode
 
 - Assumption: The gate-SLA check (surface any OPEN human gate older than 48h) prevents the
-  corpus's #1 project-death mode (TheHolyGrail, The Village both died at "pending Jon").
+  corpus's #1 project-death mode (TheHolyGrail, The Village both died at "pending the principal").
   Source: 2026-08-08 audit, skeptic finding
   Status: unverified — this skeleton is the first implementation
   | Affects: GATES.md + onboard_check.py
@@ -129,7 +129,7 @@ Pokemon campaign.
 | P1 Skeleton | All files + working checks + progress/checkpointing | onboard_check green; sabotage_test proves red-on-defect | DONE |
 | P2 First transplant | Drop skeleton into one real new project | fresh session onboards ≤15 min from START-HERE alone | DONE |
 | P3 Ablation | Compare SEED vs. bare instructions across twelve matched task pairs | blinded fixed-sample terminal, including an honest null | ACTIVE(20%) |
-| P4 External proof | A second user/machine runs SEED; skeleton published after the Sept 13 fence lifts | one adoption or review by someone who is not Jon | TODO |
+| P4 External proof | A second user/machine runs SEED; skeleton published after the Sept 13 fence lifts | one adoption or review by someone who is not the principal | TODO |
 
 ## Phase Log
 
@@ -151,7 +151,7 @@ The first independent reader returned the correct substantive state at exact Hum
 v1 scorer rejects the run because five semantically equivalent uppercase codes do not equal its
 hidden canonical strings. The run is preserved as INVALID-INSTRUMENT; it is neither retrofitted to
 PASS nor treated as a failure to onboard. Blast radius is local to scoring: the transplant bytes,
-15-minute endpoint, and P3 causal protocol remain intact. Jon approved the pivot. Replace hidden
+15-minute endpoint, and P3 causal protocol remain intact. The principal approved the pivot. Replace hidden
 exact-token scoring with a source-bound declared-choice rubric that requires evidence paths,
 preregister v2, then run a new independent reader. Do not reuse the v1 reader for the v2 terminal.
 Roadmap sequencing is unchanged because the failure is local to the scoring instrument.
@@ -161,7 +161,7 @@ Roadmap sequencing is unchanged because the failure is local to the scoring inst
 V2 repaired hidden vocabulary but repeated the same class at the evidence layer. A new reader
 returned the exact target, 8/8 correct declared facts, and evidence for every field in 70 seconds.
 The scorer rejected P2b only because the reader cited the specific experiment and terminal receipt
-instead of two hidden summary paths. Preserve v2 as INVALID-INSTRUMENT. Jon approved v3: validate
+instead of two hidden summary paths. Preserve v2 as INVALID-INSTRUMENT. The principal approved v3: validate
 any safe cited path that exists at the exact target commit against
 preregistered fact anchors. Use a new reader; do not retrofit or reuse the v2 result. Roadmap
 sequencing remains unchanged because the failure remains local to the scoring instrument.
@@ -216,8 +216,8 @@ HYPOTHESIS and moves to P3's fixed matched ablation. P2 is DONE; P3 begins in in
   an external artifact rather than a repository-bound evidence pack. P2 may cite it as context,
   but cannot treat its universal claims as independently reproducible until exported or rebuilt.
 - 2026-08-08 — Investigation satisfied by the twelve-agent corpus audit (8 local readers, 3 web
-  researchers, 1 adversarial skeptic). Report:
-  https://claude.ai/code/artifact/a82abedd-c7de-4407-9a4c-b9e5bfb1cf86
+  researchers, 1 adversarial skeptic). Report is not a portable citation; treat
+  `workflow/PLAN.md` research notes and banked receipts as the in-repo record.
 - 2026-08-08 — Synthesis: the durable value is the verification/orchestration methodology;
   this skeleton is its extraction. Roadmap approved implicitly by the build directive. P1 started.
 
@@ -226,8 +226,7 @@ HYPOTHESIS and moves to P3's fixed matched ablation. P2 is DONE; P3 begins in in
 - P3 ablation design and pivot: `workflow/research/phase-P3-ablation-design.md`
 - P3 gated execution plan: `workflow/phases/P3.md`
 
-- Corpus audit report (primary): https://claude.ai/code/artifact/a82abedd-c7de-4407-9a4c-b9e5bfb1cf86
-- Origin exemplars: `Desktop\Pokemon\START-HERE.md` + `scripts\onboard_check.py` (machine-checked
-  onboarding), `Desktop\Pokemon\playbook\` (portable factory), `Desktop\Pokemon\workflow\canon\RETRACTIONS.md`
-  (retraction ledger), `Desktop\Python\CAD-v2.1-final.md` (protected oracles, budgeted-fix-then-revert),
-  `Desktop\Python\BWA\archive\LEARNINGS-REPORT.md` (the controlled A/B experiment).
+- Corpus audit report (primary): in-repo receipts and this plan; no external session URL
+- Origin exemplars: `poketcg/START-HERE.md` + `scripts/onboard_check.py` (machine-checked
+  onboarding), `poketcg/playbook/` (portable factory), `poketcg/workflow/canon/RETRACTIONS.md`
+  (retraction ledger), CAD protected-oracles memo, BWA learnings report (the controlled A/B experiment).
