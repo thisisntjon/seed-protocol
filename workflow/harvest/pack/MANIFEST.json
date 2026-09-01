@@ -1,0 +1,89 @@
+{
+  "schema": "bonkers.factory_pack/v2",
+  "stamped": "2026-08-23",
+  "name": "SEED portable factory pack",
+  "note": "CORE paths are relative to the Bonkers repo root and must match scripts/transplant.py PORTABLE_FILES. Identity templates live in this pack. OPTIONAL paths exist in this repo. NEVER paths must not appear in core or optional.",
+  "install_existing": "python scripts/transplant.py --target <clean-git-target> --apply",
+  "install_greenfield": "python workflow/harvest/pack/assemble.py --dest <clean-git-target>",
+  "check": "python workflow/harvest/pack/assemble.py --check",
+  "core": [
+    "LAWS.md",
+    "scripts/onboard_check.py",
+    "scripts/sabotage_test.py",
+    "scripts/status.py",
+    "scripts/checkpoint.py",
+    "scripts/transplant.py",
+    "workflow/templates/DISPATCH.md",
+    "workflow/templates/RECEIPT.md",
+    "workflow/templates/HANDOFF.md",
+    "workflow/templates/EXPERIMENT.md"
+  ],
+  "identity_templates": {
+    "workflow/harvest/pack/identity/START-HERE.template.md": "START-HERE.md",
+    "workflow/harvest/pack/identity/AGENTS.template.md": "AGENTS.md",
+    "workflow/harvest/pack/identity/GATES.template.md": "GATES.md",
+    "workflow/harvest/pack/identity/CLAIMS.template.md": "CLAIMS.md",
+    "workflow/harvest/pack/identity/PLAN.template.md": "workflow/PLAN.md",
+    "workflow/harvest/pack/identity/DECISIONS.template.md": "workflow/canon/DECISIONS.md",
+    "workflow/harvest/pack/identity/RETRACTIONS.template.md": "workflow/canon/RETRACTIONS.md"
+  },
+  "optional": {
+    "comms": [
+      "scripts/relay.py",
+      "scripts/relay_selftest.py",
+      "workflow/relay/README.md",
+      "workflow/relay/profiles/claude-code.md",
+      "workflow/relay/profiles/codex.md"
+    ],
+    "ops": [
+      "scripts/spend_check.py",
+      "scripts/stress_test.py"
+    ],
+    "poc": [
+      "scripts/poc_check.py",
+      "scripts/poc_status.py",
+      "pocs/POC-REGISTRY.json",
+      "pocs/README.md",
+      "pocs/cold-start",
+      "pocs/deceptive-green"
+    ],
+    "ci": [
+      ".github/workflows/verify.yml"
+    ],
+    "canon": [
+      "workflow/harvest/pack/identity/RETRACTIONS.template.md",
+      "workflow/harvest/pack/identity/DECISIONS.template.md",
+      "workflow/harvest/pack/identity/CLAIMS.template.md",
+      "workflow/harvest/pack/identity/GATES.template.md"
+    ],
+    "pack": [
+      "workflow/harvest/pack/assemble.py",
+      "workflow/harvest/pack/MANIFEST.json",
+      "workflow/harvest/pack/README.md"
+    ]
+  },
+  "candidate_docs": [
+    "workflow/harvest/pack/candidate/UNIV-RULES.md",
+    "workflow/harvest/pack/candidate/TOOL-REBUILD.md",
+    "workflow/harvest/IDEAS.md",
+    "workflow/harvest/IDEAS.json"
+  ],
+  "identity_never_copy_from_live_repo": [
+    "START-HERE.md",
+    "AGENTS.md",
+    "CLAIMS.md",
+    "GATES.md",
+    "workflow/PLAN.md",
+    "README.md",
+    "workflow/canon/DECISIONS.md",
+    "workflow/canon/RETRACTIONS.md",
+    "workflow/blueprint/ARCHITECTURE.md"
+  ],
+  "never": [
+    "scripts/humanizer_engine.py",
+    "scripts/humanizer_council.py",
+    "scripts/humanizer_app.py",
+    "web/",
+    "workflow/relay/beliefs/"
+  ]
+}

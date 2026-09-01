@@ -1,0 +1,25 @@
+{
+  "n": 80,
+  "pass2": {
+    "GOVERNANCE": 26,
+    "EVIDENCE": 29,
+    "CEREMONY": 4,
+    "OTHER": 4,
+    "INSTRUMENT": 15,
+    "PRODUCT": 2
+  },
+  "pass1": {
+    "GOVERNANCE": 23,
+    "EVIDENCE": 40,
+    "CEREMONY": 3,
+    "OTHER": 3,
+    "CONSTRUCTION": 4,
+    "MIXED": 7
+  },
+  "exact_agree": 50,
+  "exact_agree_rate": 0.625,
+  "product_or_instrument": 17,
+  "governance_or_ceremony": 30,
+  "evidence": 29,
+  "note": "Sample is stratified by file_class (20 docs/code/other + 20 extra small). Not a simple random sample of all merges."
+}

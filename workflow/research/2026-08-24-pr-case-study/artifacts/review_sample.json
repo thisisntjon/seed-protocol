@@ -1,0 +1,446 @@
+{
+  "k": 40,
+  "with_any_review": 17,
+  "with_human_review": 1,
+  "review_logins": {
+    "chatgpt-codex-connector[bot]": 17,
+    "thisisntjon": 1
+  },
+  "rows": [
+    {
+      "pr": 91,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 86,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2780,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 1818,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 1024,
+      "file_class": "other",
+      "title_class": "none",
+      "churn": 190,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2096,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 342,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 853,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 4,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2334,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 71,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 350,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 128,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 1278,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 24,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 1145,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 44,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 705,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 82,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 1151,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 38,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 1072,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 96,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 987,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 401,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 1287,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 743,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 1039,
+      "file_class": "other",
+      "title_class": "none",
+      "churn": 367,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 812,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 367,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2463,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 234,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 781,
+      "file_class": "other",
+      "title_class": "none",
+      "churn": 38,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 765,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 15,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2143,
+      "file_class": "other",
+      "title_class": "none",
+      "churn": 422,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2590,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 121,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 961,
+      "file_class": "other",
+      "title_class": "none",
+      "churn": 457,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2778,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 2114,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2644,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 210,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2328,
+      "file_class": "other",
+      "title_class": "none",
+      "churn": 347,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2772,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 232,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 734,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 813,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 326,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 84,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 1283,
+      "file_class": "other",
+      "title_class": "none",
+      "churn": 114,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 376,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 93,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 1346,
+      "file_class": "other",
+      "title_class": "none",
+      "churn": 157,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 807,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 1868,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 769,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 17,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2556,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 107,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 113,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 145,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2377,
+      "file_class": "docs_only",
+      "title_class": "none",
+      "churn": 70,
+      "gh_user": "thisisntjon",
+      "n_reviews": 2,
+      "review_logins": [
+        "thisisntjon",
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": true
+    },
+    {
+      "pr": 198,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 122,
+      "gh_user": "thisisntjon",
+      "n_reviews": 0,
+      "review_logins": [],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2460,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 687,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 977,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 1123,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    },
+    {
+      "pr": 2912,
+      "file_class": "has_code",
+      "title_class": "none",
+      "churn": 17082,
+      "gh_user": "thisisntjon",
+      "n_reviews": 1,
+      "review_logins": [
+        "chatgpt-codex-connector[bot]"
+      ],
+      "human_reviewer": false
+    }
+  ]
+}

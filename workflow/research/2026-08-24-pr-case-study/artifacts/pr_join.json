@@ -1,0 +1,95 @@
+{
+  "census_n": 1979,
+  "cited_in_protocol_tree": 1230,
+  "cite_rate": 0.6215,
+  "by_root": {
+    "workflow": 4121,
+    "playbook": 5,
+    "docs": 170
+  },
+  "top_files": [
+    [
+      "workflow/KANBAN.md",
+      301
+    ],
+    [
+      "workflow/DECISIONS.md",
+      226
+    ],
+    [
+      "workflow/mailbox/INBOX-fable-lead.md",
+      147
+    ],
+    [
+      "workflow/research/2026-08-07-atlas-timeline.md",
+      89
+    ],
+    [
+      "workflow/PLAN-HISTORY-2026-07.md",
+      68
+    ],
+    [
+      "workflow/research/2026-08-07-atlas-agents.md",
+      50
+    ],
+    [
+      "workflow/reports/2026-07-17-pr-sweep-brock.md",
+      47
+    ],
+    [
+      "workflow/writeup/REPORT_CHANGELOG-brock.md",
+      47
+    ],
+    [
+      "workflow/GATES.md",
+      46
+    ],
+    [
+      "workflow/research/2026-07-16-project-history-timeline-redteam.md",
+      46
+    ],
+    [
+      "workflow/research/2026-07-18-apprentice-momentum-audit-appendix.json",
+      41
+    ],
+    [
+      "workflow/RUN_GATES.json",
+      37
+    ],
+    [
+      "workflow/mailbox/INBOX-overseer.md",
+      37
+    ],
+    [
+      "workflow/handoffs/2026-07-20-apprentice-night-journal.md",
+      32
+    ],
+    [
+      "workflow/ATTEMPTS-LEDGER.md",
+      30
+    ]
+  ],
+  "special": {
+    "playbook/RULES-LEDGER.md": {
+      "raw_tokens": 7,
+      "in_census": 3
+    },
+    "playbook/PLAYBOOK.md": {
+      "raw_tokens": 0,
+      "in_census": 0
+    },
+    "workflow/DEAD-ENDS.md": {
+      "raw_tokens": 6,
+      "in_census": 5
+    },
+    "workflow/GATES.md": {
+      "raw_tokens": 78,
+      "in_census": 46
+    },
+    "ptcg-agent/docs/EVAL_PROTOCOL.md": {
+      "raw_tokens": 6,
+      "in_census": 5
+    }
+  },
+  "uncited": 749
+}

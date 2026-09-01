@@ -1,0 +1,13 @@
+{
+  "_comment": "Survives lead-session death: any new session re-arms every timer from this file. Closed timers are REMOVED (history = git log).",
+  "updated": "fill on copy",
+  "deadlines": [],
+  "recurring": [
+    {
+      "id": "daily-digest",
+      "cadence": "daily (OS scheduler, session-independent)",
+      "what": "orient + stall watch + unconfirmed dispatches",
+      "owner": "machine"
+    }
+  ]
+}

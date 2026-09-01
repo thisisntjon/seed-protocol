@@ -3,7 +3,9 @@
 A clone-and-go repository template for running agentic development projects that survive usage
 limits, provider switches, and session death, without manual context management.
 
-Status: **draft, pre-triage.** Written 2026-08-18. Published view:
+Status: **v0.1 building.** Written 2026-08-18; first executable extract 2026-08-23.
+Catalog, file-by-file extract log, orient/bootstrap/selftest live under this directory.
+Published view of the draft:
 https://claude.ai/code/artifact/89126001-74c0-40a0-a00d-3ac69fe14a40
 
 Relationship to this repo: **the blueprint supersedes SEED.** SEED is an input to it, not a peer.
@@ -104,35 +106,27 @@ Bracketed steps do not exist today.
 ## Repository layout
 
 ```
-blueprint/
-  bootstrap.py           one command; idempotent; safe to re-run
-  orient.py              cold-boot state read, budget-bounded
-  switch.py              provider handoff + working-tree escrow
+workflow/blueprint/          (this directory — Miracle-style capability catalog)
+  README.md                  factory front door
+  ARCHITECTURE.md            this file
+  CAPABILITY-CATALOG.md      SHIPS / PARTIAL / DOCUMENTED / DEFERRED
+  EXTRACT-LOG.md             file-by-file provenance of the extract
+  PLAN.md                    factory build plan (not SEED PLAN.md)
+  bin/bootstrap.py           greenfield install (wraps harvest assemble)
+  bin/orient.py              cold-boot; refuses missing START-HERE
+  bin/selftest.py            catalog + ledger paths + orient sabotage
+  capabilities/C00–C17       five-question READMEs (Miracle deliverable standard)
+  rules/LEDGER.md            idea → check → sabotage
+  templates/                 DEAD-ENDS, METRICS, EVAL-DISCIPLINE, ARCHIVE, fleet/
 
-  state/                 LAYER 1 -- the repo is the memory
-    PLAN.md              goal, phases, next action
-    GATES.md             what needs a human; what is proven
-    DECISIONS.md         closed questions + reopen conditions
-    LEDGER.jsonl         append-only event log (grep target)
-
-  rules/                 LAYER 4 -- a rule is code or it is not a rule
-    LEDGER.md            rule, origin incident, enforcement, portability
-    checks/              one executable check per enforced rule
-    test_checks.py       sabotage tests: every check must fail on a seeded defect
-
-  ops/                   LAYER 5
-    spend.py             usage visibility + switch threshold
-    heartbeat.py         long-job progress + atomic checkpoint
-    tick.py              OS-scheduler entry point (no session required)
-
-  harness/               LAYER 6 -- written once, rendered per vendor
-    conventions.yml      the single source
-    render.py
-    claude-code/  codex/  cursor/
-
-  templates/             PLAN, GATE, RECEIPT, DISPATCH, HANDOFF
-  selftest.py            proves the template works before you trust it
+SEED CORE (already at repo root — not duplicated here)
+  LAWS.md AGENTS.md GATES.md CLAIMS.md
+  scripts/{onboard_check,sabotage_test,status,checkpoint,transplant}.py
+  workflow/templates/{DISPATCH,RECEIPT,HANDOFF,EXPERIMENT}.md
 ```
+
+Deferred vs the 2026-08-18 drawing: `switch.py`, `conventions.yml`+render, OS `tick.py`.
+Those are PLAN B2. Do not pretend they ship.
 
 ## The enforcement invariant
 

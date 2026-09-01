@@ -1,44 +1,94 @@
-# Bonkers / SEED — an epistemic control plane for AI-driven projects
+# Bonkers / SEED
 
-**Bonkers** is the project. **SEED** is the small, portable protocol it contains.
+**Repository:** [thisisntjon/thefleet](https://github.com/thisisntjon/thefleet) (private).  
+**Object:** a portable measurement protocol for agentic software work, plus one pinned case study.  
+**Not:** an agent runtime, a fleet orchestrator, or a claim of autonomy.
 
-> **Current effort, 2026-08-18:** the **blueprint** — a clone-and-go repository template for
-> agentic projects that survive usage limits, provider switches, and session death. It
-> **supersedes SEED**; SEED is an input to it. Draft architecture:
-> [`workflow/blueprint/ARCHITECTURE.md`](workflow/blueprint/ARCHITECTURE.md). SEED's own roadmap
-> in `workflow/PLAN.md` is paused. SEED's laws, gates, receipts and checkers remain in force for
-> work done in this repo.
+Agents cold-start at [`START-HERE.md`](START-HERE.md) and trust nothing until `python scripts/onboard_check.py` is green. This file is the research abstract.
 
-SEED is designed to help a capable coding agent cold-onboard, preserve trustworthy state, expose
-false progress, and escalate only irreversible decisions. It is not an agent runtime, scheduler,
-or proof of autonomy; those claims require the transplant and ablation phases in
-`workflow/PLAN.md`.
+## Abstract
 
-**Start at `START-HERE.md`. Trust nothing until `python scripts/onboard_check.py` is green.**
+Implementation throughput is a poor proxy for verified progress in agent-driven software work. Bonkers records that finding as a small, incident-bounded protocol (**SEED**): claims have falsifiers, guards are sabotage-tested before they are trusted, state lives in git artifacts, humans gate only irreversibles, and spend is scored against closed loops.
 
-## What it encodes
+The protocol is an *epistemic control plane*. It does not schedule agents. A later factory extract (`workflow/blueprint/`) packages the portable ideas so a second project does not re-derive them. Whether using SEED improves recovery time, false-progress rate, or human intervention versus a bare project is **hypothesis C-004** and is not claimed.
 
-Every rule here was earned by a documented incident in a year-long experiment (41 projects plus
-a 30-day multi-agent campaign, audited 2026-08-08 by a twelve-agent investigation). The audit's
-core finding: *implementation throughput is not an optimization gradient* — the scarce thing is
-knowing whether work actually mattered. So the skeleton ships verification, not ceremony:
+## Research question
 
-- **Machine-checked onboarding** — concrete documentation, workflow artifacts, gates, and
-  retractions are checked against the repository; red identifies a known contradiction class.
-- **Retraction ledger** — false numbers get a grave marker so they can't reinfect new sessions.
-- **Gate SLA** — human-approval gates older than 48h fail the build, because "pending on the
-  human" killed more origin-corpus projects than any bug.
-- **Sabotage-tested guards** — `scripts/sabotage_test.py` proves the checker fails on the
-  defects it claims to catch. A green guard without demonstrated refutation power is decorative.
-- **Linted communication** — dispatch, receipt, handoff, and experiment instances are validated;
-  "done" without evidence is not a state.
+Does an incident-earned, machine-checked control plane reduce invalid completion claims, recovery cost, or unnecessary human intervention relative to a bare repository, without a material drop in correct task completion?
 
-The checker proves only its named checks. `scripts/sabotage_test.py` exists to demonstrate that
-each claimed defect class can actually turn the repository red.
+Registered as C-004. Status: **HYPOTHESIS**. The matched ablation is designed and paused (`workflow/experiments/2026-08-08-p3-bare-vs-seed-ablation.md`). A null result is a valid outcome.
 
-## Provenance
+## What is supported
 
-Distilled from: the Pokemon PTCG campaign's playbook and canon (`RULES-LEDGER`, `RETRACTIONS`,
-`onboard_check` patterns), CAD v2.1 (protected oracles, budgeted-fix-then-revert), the BWA
-build-it-twice experiment (3 -> 0 logic bugs under the framework), and the 2026-08-08 corpus
-audit. Laws cite their incidents in `LAWS.md`.
+| ID | Claim | Status |
+|---|---|---|
+| C-001 | Verified decision/measurement loops are distinguishable from infrastructure activity | SUPPORTED |
+| C-002 | The checker detects every defect class in its sabotage suite | SUPPORTED |
+| C-003 | The portable core transplants into a second project without domain import or overwrite | SUPPORTED |
+| C-004 | Using SEED improves false progress, recovery, or human load versus bare | HYPOTHESIS |
+| C-005 | A negative result can be published without being rewritten as success | SUPPORTED |
+
+Falsifiers and bound evidence: [`CLAIMS.md`](CLAIMS.md). Do not upgrade a row by repetition.
+
+## Evidence in this tree
+
+**Case study (author-run, not independently reproduced).**  
+[Throughput is not progress](workflow/research/2026-08-24-pr-case-study/PAPER.md) — a census of 1,979 PR-linked commits on `thisisntjon/poketcg` at pin `9522a8a`. Pre-registration: [`workflow/experiments/2026-08-24-pr-case-study.md`](workflow/experiments/2026-08-24-pr-case-study.md). Artifacts: [`workflow/research/2026-08-24-pr-case-study/artifacts/`](workflow/research/2026-08-24-pr-case-study/artifacts/).
+
+Observed on that pin (see `artifacts/summary.json`): 43.2% of PR-linked commits were docs-only; independent human GitHub review in a 40-PR sample was 0/40; a stratified 80-PR inspection found 2 PRs that changed the playing agent. The paper’s estimand is composition and identity, not merge rate.
+
+**Instrument calibration.** Cold-start comprehension and deceptive-green scoring are registered under [`pocs/`](pocs/). Transplant of the invariant core is receipt-bound (C-003).
+
+**Doctrine ledger, not a tool dump.** [`workflow/harvest/IDEAS.md`](workflow/harvest/IDEAS.md) lists 145 development ideas earned in production. The mill (domain eval scripts, wake drivers) is excluded on purpose.
+
+## Limitations
+
+- C-004 is untested. Supported rows are about the instrument, not causal benefit.
+- The PR case study is n = 1 repository, n = 1 principal, author-run. It does not support a treatment-effect claim.
+- The playbook line “encoded rules never failed again” is **unverified** (`workflow/canon/DECISIONS.md`). Recurrence was not tracked in the source ledger.
+- Factory bootstrap (`workflow/blueprint/bin/bootstrap.py`) is not yet a CI fixture. Continuity (`switch.py`) is not built.
+- This GitHub repository is private. Private backup is not public publication.
+
+## Reproduce
+
+```text
+python scripts/onboard_check.py
+python scripts/sabotage_test.py
+python scripts/poc_check.py
+python workflow/blueprint/bin/selftest.py
+python workflow/harvest/pack/assemble.py --check
+python workflow/blueprint/bin/orient.py
+```
+
+CI runs the same commands (`.github/workflows/verify.yml`). A green onboard check means the docs match this tree. It does not mean the research question is answered.
+
+To rerun the case-study instrument against the pinned poketcg SHA, see the paper’s methods and `workflow/research/2026-08-24-pr-case-study/measure_pr_census.py`. That clone is not this repository.
+
+## How a researcher should read the tree
+
+| Path | Role |
+|---|---|
+| `CLAIMS.md` | Public claims, status, falsifier, bound evidence |
+| `LAWS.md` | Incident-earned rules and enforcement grade |
+| `workflow/experiments/` | Pre-registrations (PASS / KILL / NULL / INVALID-INSTRUMENT) |
+| `workflow/research/` | Methods, paper, measurement artifacts |
+| `workflow/receipts/` | Banked work; “done” without evidence is invalid |
+| `workflow/canon/RETRACTIONS.md` | Numbers that were published and are now false |
+| `workflow/blueprint/` | Factory extract (capabilities, plan, hardening) |
+| `workflow/harvest/IDEAS.md` | Portable doctrine ledger |
+
+## Related work
+
+Watanabe et al. (arXiv:2509.14745) study merge rates of Claude Code pull requests. MSR 2026 mining-challenge papers taxonomize agent-PR communication and human intervention. Those datasets answer acceptance. The case study here asks a different question: what a single-operator factory’s merges *are made of* when GitHub is the coordination substrate.
+
+## Cite
+
+Use [`CITATION.cff`](CITATION.cff). Preferred citation is the case-study report, with the author-run caveat attached.
+
+## License
+
+MIT. See [`LICENSE`](LICENSE).
+
+## Contributing
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md). Default mode is one strong agent. Fleet work is opt-in for independent, worktree-isolatable tickets only.

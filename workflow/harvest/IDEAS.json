@@ -1,0 +1,1471 @@
+{
+  "schema": "bonkers.factory_ideas/v1",
+  "stamped": "2026-08-23",
+  "rule": "This ledger is the factory. New incidents add rows. Files in pack/CORE encode a subset. Do not grow by importing the mill.",
+  "source_note": "Extracted from poketcg playbook, EVAL_PROTOCOL, DEAD-ENDS, START-HERE field facts, Bonkers LAWS, DOC-ROLES, ARCHIVE-POLICY, TOOLS.md, METRICS, COST, AUTONOMY/GATES/GRAPH templates, qol-baseline.",
+  "counts": {
+    "total": 145,
+    "substrate": 12,
+    "evidence": 24,
+    "measurement": 21,
+    "method": 15,
+    "autonomy": 12,
+    "fleet": 25,
+    "continuity": 7,
+    "cost": 9,
+    "tooling": 8,
+    "anti-pattern": 12
+  },
+  "rows": [
+    {
+      "id": "I-A01",
+      "name": "Git is the only control plane.",
+      "detail": "Claim by push, dispatch by inbox-on-main, report on status branches. Authenticity, locking, audit, crash recovery come free.",
+      "family": "substrate",
+      "earned_by": "Clipboard courier; inbox forgery; hub checkout hijack",
+      "encode": "Doctrine; mailbox when 2nd agent",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A02",
+      "name": "The repo is the memory.",
+      "detail": "Sessions die constantly. State in artifacts, not context windows. Successor re-orients in minutes.",
+      "family": "substrate",
+      "earned_by": "Three lead-session deaths in three days",
+      "encode": "CORE: templates + START-HERE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A03",
+      "name": "START-HERE contains no sentence a later sentence corrects.",
+      "detail": "Historical contradiction lives in provenance files. Checker wins.",
+      "family": "substrate",
+      "earned_by": "66 files still citing a retracted figure; AGENTS.md as 500-line supersede stack",
+      "encode": "CORE: onboard_check paths + retractions",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A04",
+      "name": "Correct by editing; retract by ledger.",
+      "detail": "Grep finds the wrong answer first if you append-only-correct.",
+      "family": "substrate",
+      "earned_by": "Same",
+      "encode": "CORE: RETRACTIONS token scan",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A05",
+      "name": "Never delete documentation.",
+      "detail": "Archive banner + supersession register. Missing files look like \"n=0 / never done.\"",
+      "family": "substrate",
+      "earned_by": "Fleet re-deriving from vanished citations",
+      "encode": "CANDIDATE (conflict: Bonkers overwrites *current* truth; archive research)",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A06",
+      "name": "Wake pack, not the novel.",
+      "detail": "Inventories + NOW + CURRENT-TRUTH. Do not open 600 research files on wake.",
+      "family": "substrate",
+      "earned_by": "Harness accessibility; 44% of PRs were markdown-only",
+      "encode": "CANDIDATE: inventory_validate pattern",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A07",
+      "name": "Governance is origin/main, not the hub working copy.",
+      "detail": "",
+      "family": "substrate",
+      "earned_by": "Local RUN_GATES 33 sequences stale",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A08",
+      "name": "No shallow git in the hub.",
+      "detail": "Shallow fetch destroyed merge-base, stranded 15h of read-side.",
+      "family": "substrate",
+      "earned_by": "2026-07-29 hub incident",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A09",
+      "name": "Dates cite their source artifact or are void.",
+      "detail": "Derived ceilings are not walls.",
+      "family": "substrate",
+      "earned_by": "DATES.md D4 wrongly propagated as a schedule",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A10",
+      "name": "Handoffs shrink over time.",
+      "detail": "That trend is the health metric.",
+      "family": "substrate",
+      "earned_by": "Lead handoff memos",
+      "encode": "CORE: HANDOFF.md",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A11",
+      "name": "Path-exists inventories beat hand maps for existence; a CURRENT file beats inventories for meaning.",
+      "detail": "",
+      "family": "substrate",
+      "earned_by": "HARNESS_MAP product story went stale while paths were fine",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-A12",
+      "name": "Forward slashes in every manifest on every OS.",
+      "detail": "",
+      "family": "substrate",
+      "earned_by": "Third backslash incident",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B01",
+      "name": "Freeze the bar before the run.",
+      "detail": "Gate = pre-result commit on the shared remote. Self-asserted timestamps are unverifiable.",
+      "family": "evidence",
+      "earned_by": "7-second cross-machine timestamp",
+      "encode": "CANDIDATE: gate_pin",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B02",
+      "name": "One failed frozen criterion banks the negative.",
+      "detail": "No repair cycle, no post-hoc threshold. Amendments only pre-result.",
+      "family": "evidence",
+      "earned_by": "\"#819 pending full matrix\" already failed \u22656 criteria",
+      "encode": "CORE: EXPERIMENT.md outcomes",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B03",
+      "name": "Exactly one machine-readable verdict token.",
+      "detail": "Hedge prose is not a verdict.",
+      "family": "evidence",
+      "earned_by": "Same incident",
+      "encode": "CANDIDATE: verdict_lint",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B04",
+      "name": "Author XOR verifier.",
+      "detail": "Positives and first-use instruments need non-author reproduction. Negatives bank author-only same-cycle. Extended even to *hardware*: the box that built it never issues its verdict.",
+      "family": "evidence",
+      "earned_by": "E016, #44, #48 in one day",
+      "encode": "CORE: AGENTS roles",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B05",
+      "name": "Sabotage before trust.",
+      "detail": "A guard is decorative until it fails the defect it claims to catch. Fresh fixtures, never the author's tests.",
+      "family": "evidence",
+      "earned_by": "`0*64` hash gate; screen harness testing the wrong agent; PREFLIGHT PASSED with 14/23 skipped",
+      "encode": "CORE: sabotage_test",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B06",
+      "name": "Identity by hash, never label.",
+      "detail": "",
+      "family": "evidence",
+      "earned_by": "\"parity-v3\" label pinned to generic-arm bytes",
+      "encode": "CORE: Law 3; transplant provenance",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B07",
+      "name": "Measure the deployed artifact, not the repo.",
+      "detail": "",
+      "family": "evidence",
+      "earned_by": "Kaggle bundle silently played skip-bot while local evals looked fine (E016/E022); 133 deck files \u2192 26 lists",
+      "encode": "CORE: Law 3; rebuild preflight per runtime",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B08",
+      "name": "CI-green \u2260 gate-green \u2260 admitted.",
+      "detail": "Compare number *and shape* to the frozen row before \"pending/trending.\"",
+      "family": "evidence",
+      "earned_by": "C-R0 pending-matrix hedge",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B09",
+      "name": "A number in a report is backed by an artifact committed in the same change.",
+      "detail": "Disk, worktree, and bus comments are not evidence.",
+      "family": "evidence",
+      "earned_by": "Contaminated PRs that passed clean-diff",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B10",
+      "name": "No arm is spoken about before its matched control exists.",
+      "detail": "An n=20 look is not a result.",
+      "family": "evidence",
+      "earned_by": "\"940 kernel wins at 85%\" reversed at n=300",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B11",
+      "name": "Equation-bearing claims get arithmetic recompute",
+      "detail": "(units, denominators, freeze/maturity, one parameter model, ref/archive/sha joins). Clean diff cannot catch a cross-family join.",
+      "family": "evidence",
+      "earned_by": "Four contaminated PRs in a day",
+      "encode": "CANDIDATE: SEMANTIC_EQUATION_VERIFY pattern",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B12",
+      "name": "Register discipline: append corrections; never rewrite banked history.",
+      "detail": "Original claim + error mechanism stay visible.",
+      "family": "evidence",
+      "earned_by": "Actor/name errors vs source table",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B13",
+      "name": "Default disposition: NOT promotion-eligible",
+      "detail": "until author + independent verify + scope + power.",
+      "family": "evidence",
+      "earned_by": "GATES template",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B14",
+      "name": "Reads are advisory the moment data exists; only SPENDS wait for confirmation.",
+      "detail": "",
+      "family": "evidence",
+      "earned_by": "SD-13.2",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B15",
+      "name": "A HOLD whose premise is withdrawn does not bind.",
+      "detail": "Silence is not a veto.",
+      "family": "evidence",
+      "earned_by": "#1980 after superseding ruling",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B16",
+      "name": "Per-seat LATEST verdict at the exact head governs.",
+      "detail": "Older PASSes on moved heads are void.",
+      "family": "evidence",
+      "earned_by": "Mid-review head moves",
+      "encode": "CANDIDATE: merge_head_guard",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B17",
+      "name": "Merging command re-reads full verdict set + head in one command.",
+      "detail": "Sample-then-merge is a defect.",
+      "family": "evidence",
+      "earned_by": "#1980 trio complete while merge prose claimed HOLD",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B18",
+      "name": "Bank a binding change BEFORE the verifier polls.",
+      "detail": "",
+      "family": "evidence",
+      "earned_by": "#1981 third bounce",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B19",
+      "name": "Delivery is claimed only after reading the artifact back from the consumer's surface.",
+      "detail": "A write landing is not delivery.",
+      "family": "evidence",
+      "earned_by": "Fleet deafness / write-without-wake",
+      "encode": "I-F05 producer-owns-bridge",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B20",
+      "name": "Every byte a verifier reads is identity-bound",
+      "detail": "(bound path + sha before parse).",
+      "family": "evidence",
+      "earned_by": "Journal/path forgery class #1980",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B21",
+      "name": "Suspect leakage FIRST on any surprise positive.",
+      "detail": "",
+      "family": "evidence",
+      "earned_by": "Cross-fold leakage turned +3.3pp into +0.50pp",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B22",
+      "name": "Transcribe, don't paraphrase, when folding findings into pre-regs.",
+      "detail": "",
+      "family": "evidence",
+      "earned_by": "Round-3 integrity flag",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B23",
+      "name": "Pre-register families/sweeps, not single configs, when iteration is expected.",
+      "detail": "",
+      "family": "evidence",
+      "earned_by": "3-round refusal ping-pong",
+      "encode": "CORE: EXPERIMENT.md",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-B24",
+      "name": "PREREG-CHECKLIST from YOUR refusals",
+      "detail": ", numbered, self-attested. Do not copy another project's refusal list.",
+      "family": "evidence",
+      "earned_by": "Rep-3 negotiation",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-C01",
+      "name": "Local eval is a filter, not a predictor",
+      "detail": "until a live calibration exists.",
+      "family": "measurement",
+      "earned_by": "Ladder *inverted* local eval (v1.1 below random)",
+      "encode": "Doctrine; rebuild calibration per domain",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C02",
+      "name": "Power the instrument for the effect you care about.",
+      "detail": "Underpowered \"null\" is UNKNOWN, not refuted. +5\u20138pp claims need N that actually has power (here: \u22651200/arm; N=400 ~40% power at +6pp).",
+      "family": "measurement",
+      "earned_by": "MDE 9.84pp at n=400 vs protocol needing 5\u20138pp",
+      "encode": "Doctrine; plug in *your* SE",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C03",
+      "name": "Cite the powered study, not the smoke.",
+      "detail": "n=20 \"20-0\" was labeled directional in its own source; the load-bearing result was N=100.",
+      "family": "measurement",
+      "earned_by": "Search autopsy; 940-at-85% retraction",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C04",
+      "name": "Reachable \u2260 selected \u2260 executed.",
+      "detail": "Search body unreachable; policy branch never taken; 12/16 switches OFF in the shipped bundle. Ask which agent and demand the sha.",
+      "family": "measurement",
+      "earned_by": "Two agents, fielded \u2260 built",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C05",
+      "name": "Age-in-hours does not catch a frozen arm.",
+      "detail": "Need froze_at + matured. Pull poll history, never just the value.",
+      "family": "measurement",
+      "earned_by": "815.1 frozen pre-maturity quoted as best",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C06",
+      "name": "Pair-mean, not winner's curse.",
+      "detail": "Quoting the better copy of two is forbidden.",
+      "family": "measurement",
+      "earned_by": "Protected floor 753.1 dropped the 711.2 draw",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C07",
+      "name": "Do not quote a point bar when the estimate is n=2\u20133.",
+      "detail": "Publish an interval.",
+      "family": "measurement",
+      "earned_by": "729.10 published as point four times",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C08",
+      "name": "A path you cannot read is not a path that is empty.",
+      "detail": "Name the box.",
+      "family": "measurement",
+      "earned_by": "False \"n=0, closed\" from the other machine",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C09",
+      "name": "Self-similarity is not an opponent.",
+      "detail": "Scoring 97\u201399% against your own heuristic piloting their decks is not a field result.",
+      "family": "measurement",
+      "earned_by": "Band-pool reclassification 2026-07-31",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C10",
+      "name": "The ship path must carry the logic.",
+      "detail": "A knob experiment on a module the loader never imports is measuring a ghost. Config/env/flag that the deployed object cannot see does not exist.",
+      "family": "measurement",
+      "earned_by": "rules_lucario knobs vs fielded single file; lazy imports stripped post-init",
+      "encode": "Law 3; capability manifest",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C11",
+      "name": "Vacuous counters.",
+      "detail": "An eager-default seam that bumps on every call is not evidence the candidate ran. Require verify() AND a nonzero *candidate* hook-resolution counter.",
+      "family": "measurement",
+      "earned_by": "Three studies died; generic counter",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C12",
+      "name": "Skipped checks are not a pass.",
+      "detail": "Print how many checks actually ran.",
+      "family": "measurement",
+      "earned_by": "PREFLIGHT PASSED 14/23 skip",
+      "encode": "Law 2",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C13",
+      "name": "If the environment exposes no seed, seed-paired eval is impossible.",
+      "detail": "Don't pretend pairing. Throughput is the variance lever.",
+      "family": "measurement",
+      "earned_by": "battle_start(deck0,deck1) only",
+      "encode": "Doctrine per ABI",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C14",
+      "name": "A flat pooled score can hide the band that matters.",
+      "detail": "FarmScore vs EliteFloor; harmonic mean so one easy band cannot hide a transition weakness.",
+      "family": "measurement",
+      "earned_by": "Leaders farm the field and survive peers",
+      "encode": "CANDIDATE per domain",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C15",
+      "name": "Latency claims only from the mode that can support them.",
+      "detail": "Parallel runner outputs are WR-only.",
+      "family": "measurement",
+      "earned_by": "pin2 vs workers",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C16",
+      "name": "Config overrides go through one API, then assert they landed.",
+      "detail": "Direct mutation of a module that can load twice is a silent no-op.",
+      "family": "measurement",
+      "earned_by": "#96: 2,400 games on the default while claiming otherwise",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C17",
+      "name": "Dead-end rows carry a SCOPE GUARD:",
+      "detail": "what the evidence supports AND what it does not. Overstating a negative is the more expensive failure because it is invisible.",
+      "family": "measurement",
+      "earned_by": "DEAD-ENDS.md purpose statement; A6 VOID almost closed the live lane",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C18",
+      "name": "Arithmetic can close a door independently of cell count.",
+      "detail": "Teacher \u03bc below the wall means perfect imitation still loses; six failed cells were corroboration, not the ruling.",
+      "family": "measurement",
+      "earned_by": "PLAN-LEARNING-LOOP criterion 8 / A13",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C19",
+      "name": "Agreement-with-champion is ceilinged at reproducing the champion.",
+      "detail": "It can never demonstrate improvement *on* it.",
+      "family": "measurement",
+      "earned_by": "SK-332/354 value-net",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C20",
+      "name": "\"It imported\" is not \"it ran.\"",
+      "detail": "Symbols present, engagement vacuous, then 24-0 to its own fallback.",
+      "family": "measurement",
+      "earned_by": "V13 search seq-89/90",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-C21",
+      "name": "Artifact identity chain:",
+      "detail": "code hash, data hash, config, experiment id, in every result file.",
+      "family": "measurement",
+      "earned_by": "K-EVAL-25 provenance stamp",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-D01",
+      "name": "Phased investigation:",
+      "detail": "frame \u2192 investigate \u2192 assumption registry \u2192 roadmap \u2192 phase loop. PLAN.md is state. Gates are approve/adjust, not approve/reject.",
+      "family": "method",
+      "earned_by": "`/phased`; Bonkers PLAN",
+      "encode": "CANDIDATE skill; Bonkers PLAN format",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D02",
+      "name": "Existence-check before building.",
+      "detail": "Research whether the thing exists.",
+      "family": "method",
+      "earned_by": "Jon operating contract",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D03",
+      "name": "Incident \u2192 rule \u2192 machine check, within one cycle.",
+      "detail": "",
+      "family": "method",
+      "earned_by": "Playbook empirical claim (encode-recurrence still unverified as a *statistic*; encoding remains the cheap default)",
+      "encode": "CORE: Law 1 + meta-law",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D04",
+      "name": "Rule diet.",
+      "detail": "Incidents add a check or a checklist line, never a new prose rule. Prose gets compiled and retired.",
+      "family": "method",
+      "earned_by": "Ceremony pathology: lots of experiments/cards/tools \u2192 few submissions",
+      "encode": "CORE: Law 1",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D05",
+      "name": "Additions require a named incident.",
+      "detail": "No speculative structure. 646-tool sprawl is the anti-pattern.",
+      "family": "method",
+      "earned_by": "Skeleton-size decision",
+      "encode": "CORE: LAWS meta-law",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D06",
+      "name": "Pivot-check when a load-bearing assumption flips.",
+      "detail": "Do not absorb silently.",
+      "family": "method",
+      "earned_by": "`/phased` pivot-check",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D07",
+      "name": "Official scoring is the rubric.",
+      "detail": "Do not invent a 14/14/14 split or a Second-Round/BO3 prize.",
+      "family": "method",
+      "earned_by": "ARCHIVE-CORRECTIONS; Strategy evaluation",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D08",
+      "name": "One north-star, then an answer map",
+      "detail": "(claims as a graph: requires / tests / supports / refutes / unlocks). Optional; not default factory.",
+      "family": "method",
+      "earned_by": "2026-08-23 answer-map work",
+      "encode": "CANDIDATE docs-only",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D09",
+      "name": "Control vs treatment identity.",
+      "detail": "Public baseline is a control, not the mission win. Ask which object.",
+      "family": "method",
+      "earned_by": "OWNED-CORE vs public c61; two agents",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D10",
+      "name": "Process judgment, not domain expertise, is the human's job.",
+      "detail": "Persistence, irreversibles, priority. The team learns the domain from sources and measurement.",
+      "family": "method",
+      "earned_by": "HOW-WE-GOT-HERE",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D11",
+      "name": "Genuinely different perspectives are load-bearing.",
+      "detail": "Adversarial second opinions; different model families that disagree usefully.",
+      "family": "method",
+      "earned_by": "Playbook transferable claim 3",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D12",
+      "name": "The learning loop is the product.",
+      "detail": "Week two runs on autopilot where week one ran on paste *because of the ledger*.",
+      "family": "method",
+      "earned_by": "Playbook transferable claim 4",
+      "encode": "This file",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D13",
+      "name": "It is teachable because it is written down.",
+      "detail": "Join, roster, idle behavior, orders, what counts as true, why each rule exists \u2014 an afternoon.",
+      "family": "method",
+      "earned_by": "Playbook transferable claim 5",
+      "encode": "START-HERE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D14",
+      "name": "SOTA wins by default against calcified scar tissue.",
+      "detail": "A finding must earn its place against current evidence.",
+      "family": "method",
+      "earned_by": "Bonkers DECISIONS 2026-08-18",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-D15",
+      "name": "Minimum viable subset:",
+      "detail": "solo operator + two agents yields the headline properties at roughly a fifth of the tooling. Default one strong agent; fleet is opt-in.",
+      "family": "method",
+      "earned_by": "Playbook + Bonkers DECISIONS",
+      "encode": "CORE: Law 8",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E01",
+      "name": "Humans gate irreversibles only",
+      "detail": "(spend, publication, deletion, production, scope). Everything else: proceed, leave receipts. Asking permission for reversible in-scope work is a contract violation.",
+      "family": "autonomy",
+      "earned_by": "TheHolyGrail died at \"register the GitHub App\"; The Village GATE PENDING a month",
+      "encode": "CORE: GATES.md + Law 7",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E02",
+      "name": "An OPEN gate older than its SLA is an incident.",
+      "detail": "Waiting on the human is the #1 documented project killer.",
+      "family": "autonomy",
+      "earned_by": "Same",
+      "encode": "CORE: onboard_check SLA",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E03",
+      "name": "STOP table is tiny; everything else is LOG-AND-CONTINUE.",
+      "detail": "\"If clearance doesn't check it, it cannot block.\"",
+      "family": "autonomy",
+      "earned_by": "Rule-diet finding",
+      "encode": "CANDIDATE: AUTONOMY template",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E04",
+      "name": "Staging ladder: autonomy proportional to reversibility.",
+      "detail": "Zero-key scratch \u2192 one-key candidacy \u2192 two-key promotion \u2192 Principal-key ship.",
+      "family": "autonomy",
+      "earned_by": "Playbook \u00a74",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E05",
+      "name": "Error budgets loosen when healthy.",
+      "detail": "Governance is not a one-way ratchet.",
+      "family": "autonomy",
+      "earned_by": "Ceremony pathology",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E06",
+      "name": "Rigor lives at promotion boundaries; construction runs free.",
+      "detail": "",
+      "family": "autonomy",
+      "earned_by": "Proven +15.2pp artifact sat 5\u20136 days unshipped; 4 zero-submission days",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E07",
+      "name": "Two-strike parks the LANE, never the box.",
+      "detail": "Fall through to the next runway item.",
+      "family": "autonomy",
+      "earned_by": "Fleet-wide idle over one blocked lane",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E08",
+      "name": "\"Awaiting adjudication\" is not a legal idle",
+      "detail": "while a pre-authorized runway exists.",
+      "family": "autonomy",
+      "earned_by": "Overnight rule",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E09",
+      "name": "The Principal is never the courier.",
+      "detail": "One aggregated \ud83d\udd14 block per cycle.",
+      "family": "autonomy",
+      "earned_by": "Action items buried across terminals",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E10",
+      "name": "Escalation tiers.",
+      "detail": "SEV0 pages the human; SEV1 lead; SEV2 batched advisor. Nothing else pages.",
+      "family": "autonomy",
+      "earned_by": "Principal-channel noise",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E11",
+      "name": "Ask the team where it hurts",
+      "detail": "before buying compute or adding process.",
+      "family": "autonomy",
+      "earned_by": "Jul-16 interviews: coordination, not compute, was the constraint",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-E12",
+      "name": "Worker dissent has standing.",
+      "detail": "Less-privileged alternative can win.",
+      "family": "autonomy",
+      "earned_by": "Roach objected to SSH elevation; watchdog without new privileges won",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-F01",
+      "name": "Claim-by-push; branch existence is the lock.",
+      "detail": "Alphabetically-first wins ties; post-work collisions ruled by pushed evidence.",
+      "family": "fleet",
+      "earned_by": "Day-one collisions",
+      "encode": "When 2nd writer",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F02",
+      "name": "Files owned is the mutex.",
+      "detail": "Two live cards, same file = ERROR.",
+      "family": "fleet",
+      "earned_by": "File-ownership collisions",
+      "encode": "CANDIDATE: board linter",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F03",
+      "name": "One persistent worktree per handle.",
+      "detail": "New card = branch switch, not a new folder. Never checkout the hub.",
+      "family": "fleet",
+      "earned_by": "Hub hijack 2026-07-09; dirty-source copies",
+      "encode": "CANDIDATE: new_harness",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F04",
+      "name": "Idle is illegal. Flywheel = default job that never waits on another box.",
+      "detail": "",
+      "family": "fleet",
+      "earned_by": "GRAPH.md",
+      "encode": "CANDIDATE",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F05",
+      "name": "Producer owns the bridge.",
+      "detail": "DONE = consumer's exact filename, sha-verified, on the watched surface, + ledger row. Broker put is not delivery.",
+      "family": "fleet",
+      "earned_by": "Both directions of a cross-box transfer stalled",
+      "encode": "CANDIDATE",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F06",
+      "name": "15-minute handoff SLA",
+      "detail": "on every declared edge, including the lead's merge queue.",
+      "family": "fleet",
+      "earned_by": "Stall forensics: lead review + one unowned handoff were the only bottlenecks",
+      "encode": "CANDIDATE",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F07",
+      "name": "Dual-trigger wake:",
+      "detail": "own-inbox SHA diff + \u226430 min time baseline. Events for speed, time for worst case; each covers the other's death. Firing on every main push is a spend leak.",
+      "family": "fleet",
+      "earned_by": "Misty over-wake; time-only loop hour-scale latency + two false dead-watchers",
+      "encode": "Policy; do not copy .ps1",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F08",
+      "name": "Waits are fields, not prose.",
+      "detail": "`blocked_on=\"<target>: <what>\"`. `bg:` for parked secondary waits.",
+      "family": "fleet",
+      "earned_by": "45-min wait on an already-merged PR, invisible to every detector",
+      "encode": "CANDIDATE",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F09",
+      "name": "Stale-order rule:",
+      "detail": "on any wake, consume the ENTIRE inbox backlog. Later entries supersede.",
+      "family": "fleet",
+      "earned_by": "Agent ran a superseded screen for hours",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F10",
+      "name": "Unblock-notify:",
+      "detail": "when a blocker clears, write the waiting agent an inbox entry the same cycle.",
+      "family": "fleet",
+      "earned_by": "Ash and Brock sat silent on cleared blockers",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F11",
+      "name": "Cadence:",
+      "detail": "event-driven; chain every already-authorized step in one wake. Fixed intervals are fallbacks only.",
+      "family": "fleet",
+      "earned_by": "\"5080 metronome\" sleeping between authorized steps",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F12",
+      "name": "VALUE-delta, not ACTIVITY-delta.",
+      "detail": "WORKING + zero value progress >2h = STALLED. Freshness of a PID is not health.",
+      "family": "fleet",
+      "earned_by": "Harvest 0 eps for 11h as WORKING; dry harvest's activity counter defeated the flag",
+      "encode": "CORE: Law 8 spirit; encode in heartbeats",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F13",
+      "name": "Silence is an event.",
+      "detail": "Stale WORKING heartbeat is not \"fine.\"",
+      "family": "fleet",
+      "earned_by": "Lead-monitor design",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F14",
+      "name": "Remove the router from the loop.",
+      "detail": "Repeating routing pattern \u2192 standing order. Standing re-verify, class-token self-engage, movement audit. Agents cheap/parallel; lead attention serial.",
+      "family": "fleet",
+      "earned_by": "2026-07-18 movement wave; three finished items queued on routing",
+      "encode": "CANDIDATE",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F15",
+      "name": "TO:-header delivery.",
+      "detail": "Mid-body mentions are not delivery.",
+      "family": "fleet",
+      "earned_by": "ACTIVE-COMMS / seq-132",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F16",
+      "name": "Attribution is seat:field, not GitHub identity.",
+      "detail": "Same identity posts for every harness.",
+      "family": "fleet",
+      "earned_by": "07-29 verifier wrongly suspended",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F17",
+      "name": "Liveness is three-state:",
+      "detail": "advancing output, answered nonce, or lawfully-quiet (do not escalate as dead).",
+      "family": "fleet",
+      "earned_by": "Jon-direct-busy stand-down",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F18",
+      "name": "O(1) backlog:",
+      "detail": "assign the top unassigned item only to an idle seat with empty queue.",
+      "family": "fleet",
+      "earned_by": "BACKLOG.md",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F19",
+      "name": "main is lead-write-only.",
+      "detail": "Inbox authenticity is structural.",
+      "family": "fleet",
+      "earned_by": "Agent wrote another's inbox claiming Jon approved",
+      "encode": "When 2nd agent",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F20",
+      "name": "Identity fixed, function fluid.",
+      "detail": "Names never change; functions re-sort around competence; org formalizes the re-sort.",
+      "family": "fleet",
+      "earned_by": "\"Leader\" nickname drifted into implementation",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F21",
+      "name": "Repair worktrees BEFORE prune; KEEP ambiguous.",
+      "detail": "",
+      "family": "fleet",
+      "earned_by": "Stray prune deregistered 22 worktrees",
+      "encode": "CANDIDATE: wt_sweep",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F22",
+      "name": "Watchers live OUTSIDE git worktrees.",
+      "detail": "Branch checkouts clobber in-tree watchers.",
+      "family": "fleet",
+      "earned_by": "Windows-update deaths",
+      "encode": "FLEET",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F23",
+      "name": "Dual-channel box liveness",
+      "detail": "(git + beacon). Git-silent+beacon-alive = CHANNEL_ISSUE, not BOX_OFFLINE.",
+      "family": "fleet",
+      "earned_by": "Remote git silence \u2260 box death",
+      "encode": "FLEET",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F24",
+      "name": "Support lanes when the queue is empty",
+      "detail": "(research / investigate / propose / verify). Never idle, never invent scope.",
+      "family": "fleet",
+      "earned_by": "Universal harness prompt",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-F25",
+      "name": "Commit author is the handle",
+      "detail": ", per-command, never via shared git config.",
+      "family": "fleet",
+      "earned_by": "Unattributable-commit incident",
+      "encode": "Doctrine",
+      "solo": false,
+      "fleet": true
+    },
+    {
+      "id": "I-G01",
+      "name": "Orient before acting.",
+      "detail": "Never on remembered state.",
+      "family": "continuity",
+      "earned_by": "Session blocked on a blocker resolved 12h earlier",
+      "encode": "CANDIDATE: orient.py",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-G02",
+      "name": "OS scheduler, not a model session,",
+      "detail": "for digest and courier. Overnight work cannot depend on a chat being open.",
+      "family": "continuity",
+      "earned_by": "Session-death blindness",
+      "encode": "CANDIDATE: ops_digest, queue_worker",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-G03",
+      "name": "Dispatch ledger",
+      "detail": "recovers orders lost to crashes.",
+      "family": "continuity",
+      "earned_by": "Windows update killed a dispatch in flight",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-G04",
+      "name": "Deadlines file survives lead-session death.",
+      "detail": "New session re-arms from the file.",
+      "family": "continuity",
+      "earned_by": "BOOTSTRAP",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-G05",
+      "name": "LEAD-STATE pane",
+      "detail": "a successor lead resumes from. Do not trust older memos.",
+      "family": "continuity",
+      "earned_by": "Successor-lead recovery cost",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-G06",
+      "name": "Queue worker: fail-closed admission, caps, PARK on failure.",
+      "detail": "Authorization is declared state, not a cryptographic signature. Irreversible-shaped argv refused.",
+      "family": "continuity",
+      "earned_by": "Runaway 35\u201342 GiB/h writers; force-bypass smuggling",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-G07",
+      "name": "Long jobs: observable heartbeat AND incremental atomic checkpoint.",
+      "detail": "When blind to progress, check the checkpoint \u2014 don't kill.",
+      "family": "continuity",
+      "earned_by": "Finished 9,726-row run nearly killed blind",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-H01",
+      "name": "Spend buys closed loops, and it is always metered.",
+      "detail": "Stale meter is a failure. Dollar figures from tokens are API-list-equivalent, never cash.",
+      "family": "cost",
+      "earned_by": "Evidence culture that exempted its own cost; COST.md empty checkboxes. *The specific dollar figure in Law 9 is unverified \u2014 keep the idea, not the number.*",
+      "encode": "OPTIONAL: spend_check",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-H02",
+      "name": "Throughput is not progress.",
+      "detail": "Commits, PRs, tools, documents are activity. Progress = hypothesis \u2192 pre-registered test \u2192 verified result \u2192 decision.",
+      "family": "cost",
+      "earned_by": "2,199 PRs with zero closed experiment loops for 24 days; 30-day fleet, zero confirmed improvements",
+      "encode": "CORE: Law 8, status.py",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-H03",
+      "name": "Ceremony ratio",
+      "detail": "(governance:construction) as a dashboard number.",
+      "family": "cost",
+      "earned_by": "~3:1 during pathology",
+      "encode": "METRICS pattern",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-H04",
+      "name": "Wake efficiency.",
+      "detail": "Over-waking is a direct spend leak.",
+      "family": "cost",
+      "earned_by": "Misty watcher",
+      "encode": "I-F07",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-H05",
+      "name": "Model turns on courier/heartbeat work that a shell could do \u2192 ~0.",
+      "detail": "",
+      "family": "cost",
+      "earned_by": "Daemon-heartbeat rule",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-H06",
+      "name": "Tier-match mechanical lanes.",
+      "detail": "Verifier reproductions of mechanical claims do not need frontier models.",
+      "family": "cost",
+      "earned_by": "COST.md lever 5",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-H07",
+      "name": "GPU duty cycle while everyone reports busy",
+      "detail": "is a diagnostic.",
+      "family": "cost",
+      "earned_by": "10\u201320% measured",
+      "encode": "METRICS",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-H08",
+      "name": "Banked\u2192shipped latency",
+      "detail": "is the number that caught the 5\u20136 day stall of a proven artifact.",
+      "family": "cost",
+      "earned_by": "Stall forensics",
+      "encode": "METRICS",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-H09",
+      "name": "Forecast every dispatch; grade actual on the receipt.",
+      "detail": "Calibration flywheel.",
+      "family": "cost",
+      "earned_by": "Law 9 FORECAST/ACTUAL",
+      "encode": "CORE: DISPATCH + RECEIPT",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-J01",
+      "name": "stdlib-only where the artifact ships.",
+      "detail": "Reviewable, no hidden deps.",
+      "family": "tooling",
+      "earned_by": "Bundle constraints",
+      "encode": "Doctrine per runtime",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-J02",
+      "name": "Exit codes are the API.",
+      "detail": "Everything gates on everything else.",
+      "family": "tooling",
+      "earned_by": "TOOLS.md pattern",
+      "encode": "CORE checkers",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-J03",
+      "name": "Fail closed, loudly.",
+      "detail": "Cannot measure \u21d2 failure, never silence. \"SKIPPED \u2014 not reporting clean.\"",
+      "family": "tooling",
+      "earned_by": "status.py git-unavailable",
+      "encode": "CORE",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-J04",
+      "name": "Each check cites its incident in-source.",
+      "detail": "Tools are the fossil record.",
+      "family": "tooling",
+      "earned_by": "TOOLS.md",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-J05",
+      "name": "Ambiguity resolves to KEEP or PARK, never proceed.",
+      "detail": "",
+      "family": "tooling",
+      "earned_by": "wt_sweep; queue_worker",
+      "encode": "Doctrine",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-J06",
+      "name": "QoL baseline for unattended jobs:",
+      "detail": "dry-run, idempotency, checkpoints, resume, timeouts, structured logs, cancellation, machine-readable output. Scale to project size; N/A is a valid verdict.",
+      "family": "tooling",
+      "earned_by": "qol-baseline skill (22 items)",
+      "encode": "CANDIDATE checklist",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-J07",
+      "name": "Non-destructive install.",
+      "detail": "Transplant refuses differing targets; identity files are never overwritten.",
+      "family": "tooling",
+      "earned_by": "P2 transplant work",
+      "encode": "CORE: transplant.py",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-J08",
+      "name": "Capability / switch manifest",
+      "detail": "for any product with dormant paths. Which switches are ON in the *shipped* object.",
+      "family": "tooling",
+      "earned_by": "12/16 switches OFF",
+      "encode": "CANDIDATE",
+      "solo": true,
+      "fleet": false
+    },
+    {
+      "id": "I-K01",
+      "name": "The mill.",
+      "detail": "Hundreds of domain scripts are the waste product of discovery, not the factory.",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 Copy `ptcg-agent/harness/*`",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K02",
+      "name": "thebus.",
+      "detail": "A separate fleet-governance product, retired. Design retracted.",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 Rebuild a bus repo",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K03",
+      "name": "Mega-merge.",
+      "detail": "Pokemon + Career + Bonkers as one repo.",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 Union the trees",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K04",
+      "name": "Invented rubrics / prize structures.",
+      "detail": "",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 14/14/14 splits; false BO3/$50k",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K05",
+      "name": "Provenance novels as current truth.",
+      "detail": "AGENTS.md 500-line supersede stacks.",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 Onboard from the novel",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K06",
+      "name": "Second state file",
+      "detail": "that drifts from PLAN.",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 A STATUS.md that is not derived",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K07",
+      "name": "Bulk `--apply` on a header-driven board.",
+      "detail": "",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 board_sync --apply",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K08",
+      "name": "Copying another project's live CLAIMS/PLAN/retractions.",
+      "detail": "",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 Identity overwrite",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K09",
+      "name": "Humanizer / product UI as protocol.",
+      "detail": "",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 Bonkers web/ + VoiceCraft in CORE",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K10",
+      "name": "Watcher scripts inside worktrees.",
+      "detail": "",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 I-F22",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K11",
+      "name": "Treating a frozen or never-polled number as a score.",
+      "detail": "",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 I-C05",
+      "solo": true,
+      "fleet": true
+    },
+    {
+      "id": "I-K12",
+      "name": "Closing a mechanism class because one implementation failed.",
+      "detail": "Scope guard or don't cite.",
+      "family": "anti-pattern",
+      "earned_by": "negative corpus",
+      "encode": "NEVER \u2014 DEAD-ENDS A1/A2",
+      "solo": true,
+      "fleet": true
+    }
+  ]
+}

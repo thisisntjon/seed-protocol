@@ -18,3 +18,6 @@ jobs:
       - run: python scripts/onboard_check.py
       - run: python scripts/sabotage_test.py
       - run: python scripts/poc_check.py
+      - run: python workflow/blueprint/bin/selftest.py
+      - run: python workflow/harvest/pack/assemble.py --check
+      - run: python workflow/blueprint/bin/orient.py

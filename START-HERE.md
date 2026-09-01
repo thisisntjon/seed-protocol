@@ -6,20 +6,26 @@ this file is edited, not appended. `scripts/onboard_check.py` verifies its claim
 ## THE WHOLE JOB, IN FOUR LINES
 
 ```
-1. This repo is Bonkers. SEED is the protocol it contains. The BLUEPRINT supersedes SEED
-   and is the current work: workflow/blueprint/ARCHITECTURE.md.
-2. Read workflow/blueprint/ARCHITECTURE.md (what is being built), then LAWS.md (the proven
-   rules), AGENTS.md (your contract), and workflow/PLAN.md (SEED's phases, now paused).
-3. Run: python scripts/onboard_check.py   — it must pass before you act on anything written here.
+1. This repo is Bonkers. The BLUEPRINT is the factory for building other systems
+   (workflow/blueprint/README.md). SEED is the protocol it contains.
+2. Run python workflow/blueprint/bin/orient.py, then read LAWS.md, AGENTS.md, GATES.md.
+   SEED workflow/PLAN.md is paused.
+3. Run python scripts/onboard_check.py — it must pass before you act on anything written here.
 4. Humans decide only what GATES.md lists. Everything else: proceed, leave receipts.
 ```
 
 ## Current effort (read this before the rest)
 
-As of 2026-08-18 the active work is the **blueprint**: a clone-and-go repository template for
-running agentic projects that survive usage limits, provider switches, and session death. Its
-draft architecture is `workflow/blueprint/ARCHITECTURE.md`, and it **supersedes SEED** — SEED
-becomes an input, not a peer (`workflow/canon/DECISIONS.md`, 2026-08-18).
+As of 2026-08-23 the active work is the **blueprint factory** at `workflow/blueprint/` —
+an evolving system for building other systems (Miracle's suite pattern applied to
+development). Start at `workflow/blueprint/README.md`. Architecture:
+`workflow/blueprint/ARCHITECTURE.md`. It **supersedes SEED** as the product
+(`workflow/canon/DECISIONS.md`, 2026-08-18); SEED remains the executable protocol in
+this repo.
+
+The harvest at `workflow/harvest/` feeds it: `workflow/harvest/IDEAS.md` (145 development ideas) and the
+file pack. Cold start: `python workflow/blueprint/bin/orient.py`. Humans landing from GitHub
+read `README.md` (research abstract); agents still start here.
 
 What that means concretely for you:
 
@@ -53,10 +59,23 @@ commitments:
 | Path | What it is |
 |---|---|
 | `LAWS.md` | The eight proven laws, each with provenance and enforcement |
+| `README.md` | Research abstract for humans landing from GitHub |
+| `CITATION.cff` | How to cite this repository and the case study |
+| `LICENSE` | MIT |
+| `CONTRIBUTING.md` | Research norms (pre-register, author XOR verifier) |
 | `CLAIMS.md` | Falsifiable public claims, status, falsifier, and bound evidence |
 | `AGENTS.md` | Universal worker contract — paste-portable to any harness |
 | `GATES.md` | Human-key boundary + machine-parsed gate registry with SLA |
-| `workflow/blueprint/ARCHITECTURE.md` | Draft architecture of the blueprint — the current effort |
+| `workflow/blueprint/ARCHITECTURE.md` | Factory architecture — current effort |
+| `workflow/blueprint/README.md` | Factory front door (Miracle-style capability catalog) |
+| `workflow/blueprint/CAPABILITY-CATALOG.md` | What ships, what is documented, what is deferred |
+| `workflow/blueprint/EXTRACT-LOG.md` | File-by-file provenance of the extract |
+| `workflow/blueprint/HARDENING.md` | Ten low-risk moves to lock recovered factory value |
+| `workflow/research/2026-08-24-pr-case-study/PAPER.md` | Camera-ready PR case study (throughput ≠ progress) |
+| `workflow/blueprint/PLAN.md` | Factory build plan (SEED PLAN.md is paused) |
+| `workflow/blueprint/bin/orient.py` | Cold-start: SHA, four lines, stage, gates, next action |
+| `workflow/blueprint/bin/bootstrap.py` | Install factory into a clean git repo |
+| `workflow/blueprint/bin/selftest.py` | Catalog + ledger paths + orient sabotage |
 | `workflow/PLAN.md` | SEED's phased plan (P1-P3), PAUSED as of 2026-08-18 |
 | `workflow/canon/RETRACTIONS.md` | Ledger of numbers that are in the record but FALSE |
 | `workflow/canon/DECISIONS.md` | Settled decisions — do not re-litigate |
@@ -80,18 +99,24 @@ commitments:
 | `pocs/cold-start/` | Frozen truth contract and scorer for the 15-minute onboarding test |
 | `pocs/deceptive-green/` | Source-vs-deployed-artifact false-green calibration fixture |
 | `workflow/research/2026-08-08-poc-foundations.md` | Primary-source rationale for the POC architecture |
-| `.github/workflows/verify.yml` | Runs onboarding, sabotage, and POC calibration in CI |
+| `.github/workflows/verify.yml` | Onboard, sabotage, POC calibration, factory selftest, pack check, orient |
 | `scripts/spend_check.py` | Law 9: fails when compute burns without closed loops |
 | `scripts/stress_test.py` | Randomized defect-injection stress test of the guards at scale |
+| `workflow/harvest/PLAN.md` | Harvest phased plan — feeds the blueprint |
+| `workflow/harvest/IDEAS.md` | Development ideas earned in the origin campaign — the growing factory ledger |
+| `workflow/harvest/INVENTORY.md` | Classified *files* (CORE / OPTIONAL / NEVER) — how some ideas are already encoded |
+| `workflow/harvest/pack/README.md` | How to install CORE, identity templates, and optional extras |
+| `workflow/harvest/pack/assemble.py` | Validate the pack; materialize it into a clean git repo |
 
 ## Onboarding a fresh harness (any vendor)
 
 1. Run `python scripts/onboard_check.py`, `python scripts/sabotage_test.py`, and
    `python scripts/poc_check.py`. Red means a claimed
    invariant or its refutation test is broken — fix that first.
-2. Read `workflow/blueprint/ARCHITECTURE.md` (the current effort), then `LAWS.md`,
-   `AGENTS.md`, `GATES.md`, `workflow/PLAN.md` (SEED's paused roadmap), and the newest file in
-   `workflow/handoffs/` (if any). That is the complete state. Do not ask a human to re-explain.
+2. Run `python workflow/blueprint/bin/orient.py`, then read `workflow/blueprint/README.md`,
+   `LAWS.md`, `AGENTS.md`, `GATES.md`, `workflow/blueprint/PLAN.md`, and the newest file in
+   `workflow/handoffs/` (if any). SEED's `workflow/PLAN.md` is paused. Do not ask a human
+   to re-explain.
 3. Check `workflow/canon/RETRACTIONS.md` before citing ANY number found in older documents.
 4. Claim work per `AGENTS.md`, do it, bank a receipt per the template, update the handoff.
 
@@ -101,5 +126,5 @@ Copy everything except `workflow/receipts/*` and `workflow/handoffs/*` contents.
 four-line job and `workflow/PLAN.md` for the new problem. Open gate `G-001` (first commit) in
 `GATES.md`. Run the checker. You are operational.
 
-Last verified against reality: 2026-08-18.
+Last verified against reality: 2026-08-31.
 
