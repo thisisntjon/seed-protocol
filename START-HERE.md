@@ -90,6 +90,9 @@ commitments:
 | `workflow/receipts/` | Banked receipts land here (linted) |
 | `workflow/handoffs/` | Dated handoff memos land here |
 | `scripts/onboard_check.py` | Verifies this documentation against reality |
+| `scripts/schema_check.py` | Validates every banked record against `schema/` (the machine form of the templates) |
+| `schema/evidence-kernel.schema.json` | JSON Schema 2020-12 for the evidence contract; references the four record schemas |
+| `schema/README.md` | Templates are the human form, `schema/` is the machine form; the checker enforces both |
 | `scripts/sabotage_test.py` | Proves the checker fails on seeded defects |
 | `scripts/status.py` | Computes phase status and verified-loop progress from artifacts |
 | `scripts/checkpoint.py` | Refuses a git checkpoint while required checks are red |
@@ -101,7 +104,7 @@ commitments:
 | `pocs/cold-start/` | Frozen truth contract and scorer for the 15-minute onboarding test |
 | `pocs/deceptive-green/` | Source-vs-deployed-artifact false-green calibration fixture |
 | `workflow/research/2026-08-08-poc-foundations.md` | Primary-source rationale for the POC architecture |
-| `.github/workflows/verify.yml` | Onboard, sabotage, POC calibration, factory selftest, pack check, orient |
+| `.github/workflows/verify.yml` | Onboard, schema, sabotage, POC calibration, factory selftest, pack check, orient |
 | `scripts/spend_check.py` | Law 9: fails when compute burns without closed loops |
 | `scripts/stress_test.py` | Randomized defect-injection stress test of the guards at scale |
 | `workflow/harvest/PLAN.md` | Harvest phased plan — feeds the blueprint |
@@ -128,5 +131,5 @@ Copy everything except `workflow/receipts/*` and `workflow/handoffs/*` contents.
 four-line job and `workflow/PLAN.md` for the new problem. Open gate `G-001` (first commit) in
 `GATES.md`. Run the checker. You are operational.
 
-Last verified against reality: 2026-08-31.
+Last verified against reality: 2026-09-02.
 

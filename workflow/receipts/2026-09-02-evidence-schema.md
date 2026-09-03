@@ -1,0 +1,10 @@
+STATE:       DONE
+OBJECT:      Evidence contract as machine form: `schema/` (receipt, dispatch, experiment, handoff, evidence-kernel JSON Schema 2020-12, version 0.1.0) + `scripts/schema_check.py` + four sabotage cases + CI wiring. Incident: 2026-09-02 external review — a reviewer could not inspect the evidence contract without reading the whole repository; the schemas existed only as markdown templates
+EXACT_REF:   working-tree-2026-09-02-evidence-schema
+EVIDENCE:    `python scripts/onboard_check.py` -> "0 error(s), 0 warning(s). ONBOARD CHECK PASSED" (exit 0); `python scripts/schema_check.py` -> "33 record(s) validated against 4 schema(s); 0 error(s). SCHEMA CHECK PASSED" (exit 0) before this receipt existed, "34 record(s) ... SCHEMA CHECK PASSED" with it; `python scripts/sabotage_test.py` -> "SABOTAGE TEST 23/23 PASSED -- every seeded defect was detected" incl. "PASS schema rejects invalid receipt STATE token", "PASS schema rejects free-text experiment OUTCOME", "PASS schema rejects receipt missing NEXT_OWNER", "PASS schema vocabulary drift from checker fails" (exit 0; the prior 18 cases still pass); `python workflow/blueprint/bin/selftest.py` -> "BLUEPRINT SELFTEST PASSED" (exit 0); `python workflow/harvest/pack/assemble.py --check` -> "PACK CHECK PASSED core=10 extras=['comms', 'ops', 'poc', 'ci', 'canon', 'pack'] identity_templates=7" (exit 0). No banked record was edited and nothing in the schema is looser than the checker; `schema/README.md` documents each place the checker is looser than the template prose (BLOCKED_ON conditional, SESSION_ID cutoff by filename, OUTCOME first-token rule, case normalization, extra fields allowed)
+PROGRESS:    INFRASTRUCTURE
+EFFECT:      none — infrastructure
+BLOCKED_ON:  none
+SESSION_ID:  claude-code session 2026-09-02
+ACTUAL:      one session, first attempt; sabotage_test grew from 18 to 23 cases (1 clean-passes-schema control + 4 seeded schema defects)
+NEXT_OWNER:  next reviewer — read `schema/evidence-kernel.schema.json` first; next incident that needs a stricter field bumps the schema version with a DECISIONS row

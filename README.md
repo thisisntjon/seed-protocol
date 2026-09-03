@@ -59,6 +59,7 @@ Source: `workflow/research/2026-08-24-pr-case-study/artifacts/summary.json` fiel
 
 ```text
 python scripts/onboard_check.py
+python scripts/schema_check.py
 python scripts/sabotage_test.py
 python scripts/poc_check.py
 python workflow/blueprint/bin/selftest.py

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thisisntjon/seed-protocol/schema/receipt.schema.json",
+  "title": "RECEIPT",
+  "version": "0.1.0",
+  "description": "Work reported done. One file per completed dispatch in workflow/receipts/, named <date>-<short-slug>.md. Human form: workflow/templates/RECEIPT.md. Machine form: the FIELD: value lines of that file, parsed as scripts/onboard_check.py parses them. 'Done' without evidence is not a state (Law 5).",
+  "type": "object",
+  "$defs": {
+    "filled": {
+      "type": "string",
+      "minLength": 1,
+      "not": { "pattern": "<.*>" },
+      "description": "A required field must be present, non-empty, and not still hold a <template placeholder>."
+    }
+  },
+  "properties": {
+    "STATE": {
+      "type": "string",
+      "enum": ["DONE", "PARTIAL", "BLOCKED", "KILLED", "INVALIDATED"],
+      "description": "DONE | PARTIAL | BLOCKED | KILLED | INVALIDATED. Compared case-insensitively (the checker uppercases before matching)."
+    },
+    "OBJECT": {
+      "$ref": "#/$defs/filled",
+      "description": "What this receipt is about."
+    },
+    "EXACT_REF": {
+      "$ref": "#/$defs/filled",
+      "description": "Commit/artifact hash the evidence was produced against. If it is a 7-40 hex string and the tree is a git clone, the checker requires that commit to exist."
+    },
+    "EVIDENCE": {
+      "$ref": "#/$defs/filled",
+      "description": "Command output, file path, hash, or measurement that proves the state -- something a verifier can re-run or re-read."
+    },
+    "PROGRESS": {
+      "type": "string",
+      "enum": ["DECISION", "MEASUREMENT", "INFRASTRUCTURE"],
+      "description": "DECISION | MEASUREMENT | INFRASTRUCTURE. Compared case-insensitively. A DONE or KILLED receipt claiming DECISION or MEASUREMENT progress may not have an EFFECT beginning with 'none'."
+    },
+    "EFFECT": {
+      "$ref": "#/$defs/filled",
+      "description": "The decision changed or measured outcome; use 'none -- infrastructure' honestly."
+    },
+    "BLOCKED_ON": {
+      "type": "string",
+      "description": "Only if BLOCKED: the precise missing thing and who owns it. The template lists it; the checker requires it only when STATE is BLOCKED."
+    },
+    "SESSION_ID": {
+      "type": "string",
+      "description": "The session/transcript identifier that produced this work -- required for receipts dated 2026-08-09 or later; makes every verdict pairable to its trajectory. The date lives in the filename, so the checker (not this schema) enforces the cutoff."
+    },
+    "ACTUAL": {
+      "type": "string",
+      "description": "Optional but expected when the dispatch carried a FORECAST: actual duration / tokens / attempts -- the flywheel grades forecast vs actual."
+    },
+    "NEXT_OWNER": {
+      "$ref": "#/$defs/filled",
+      "description": "Who/what consumes this: a seat, the lead, a gate, 'none -- terminal'."
+    }
+  },
+  "required": ["STATE", "OBJECT", "EXACT_REF", "EVIDENCE", "PROGRESS", "EFFECT", "NEXT_OWNER"],
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": { "properties": { "STATE": { "const": "BLOCKED" } }, "required": ["STATE"] },
+      "then": { "required": ["BLOCKED_ON"], "properties": { "BLOCKED_ON": { "$ref": "#/$defs/filled" } } }
+    },
+    {
+      "if": {
+        "properties": {
+          "STATE": { "enum": ["DONE", "KILLED"] },
+          "PROGRESS": { "enum": ["DECISION", "MEASUREMENT"] }
+        },
+        "required": ["STATE", "PROGRESS"]
+      },
+      "then": { "properties": { "EFFECT": { "not": { "pattern": "^[Nn][Oo][Nn][Ee]" } } } }
+    }
+  ]
+}

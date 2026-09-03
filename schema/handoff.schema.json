@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thisisntjon/seed-protocol/schema/handoff.schema.json",
+  "title": "HANDOFF",
+  "version": "0.1.0",
+  "description": "Cold-open memo written into workflow/handoffs/<date>.md before ending a session. Human form: workflow/templates/HANDOFF.md. A handoff is a headed document, not a FIELD: value record; its machine form is the first line plus the set of required '## ' headings found in the body, which is exactly what scripts/onboard_check.py checks.",
+  "type": "object",
+  "properties": {
+    "header": {
+      "type": "string",
+      "pattern": "^# RESUME HERE",
+      "description": "The file must start with '# RESUME HERE' (the template: '# RESUME HERE -- written <date>')."
+    },
+    "sections": {
+      "type": "object",
+      "description": "Required '## ' headings, keyed by their canonical text. The checker matches each heading as a substring of the body, so a heading may carry a suffix (the template's '## OPEN QUESTIONS -- do not let these die unrecorded').",
+      "properties": {
+        "## THE WHOLE JOB, IN FOUR LINES": {
+          "type": "string",
+          "description": "1. the single most important thing to do or protect; 2. the second; 3. the third; 4. the fourth -- if you need five lines, the project has a focus problem."
+        },
+        "## BINDING RULES RIGHT NOW": {
+          "type": "string",
+          "description": "Anything that must not happen, with the reason -- a DO-NOT list beats a to-do list."
+        },
+        "## EVERY NUMBER WORTH CITING": {
+          "type": "string",
+          "description": "Measured values only, each with provenance (file/receipt + date). Anything not listed here is not citable without re-verification."
+        },
+        "## OPEN QUESTIONS": {
+          "type": "string",
+          "description": "Numbered, each with what resolving it requires. Do not let these die unrecorded."
+        },
+        "## WHAT NOT TO DO": {
+          "type": "string",
+          "description": "The tempting wrong moves, and why they are wrong."
+        }
+      },
+      "required": [
+        "## THE WHOLE JOB, IN FOUR LINES",
+        "## BINDING RULES RIGHT NOW",
+        "## EVERY NUMBER WORTH CITING",
+        "## OPEN QUESTIONS",
+        "## WHAT NOT TO DO"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "required": ["header", "sections"],
+  "additionalProperties": false
+}

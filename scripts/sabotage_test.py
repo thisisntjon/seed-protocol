@@ -17,6 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CHECK = ROOT / "scripts" / "onboard_check.py"
+SCHEMA_CHECK = ROOT / "scripts" / "schema_check.py"
 STATUS = ROOT / "scripts" / "status.py"
 TRANSPLANT = ROOT / "scripts" / "transplant.py"
 
@@ -24,6 +25,15 @@ TRANSPLANT = ROOT / "scripts" / "transplant.py"
 def run_check(root):
     result = subprocess.run(
         [sys.executable, str(CHECK), "--root", str(root)],
+        capture_output=True,
+        text=True,
+    )
+    return result.returncode
+
+
+def run_schema_check(root):
+    result = subprocess.run(
+        [sys.executable, str(SCHEMA_CHECK), "--root", str(root)],
         capture_output=True,
         text=True,
     )
@@ -99,6 +109,7 @@ def main():
     with tempfile.TemporaryDirectory() as tmp:
         clean = fresh_copy(tmp, "clean")
         results.append(("clean repo passes", run_check(clean) == 0))
+        results.append(("clean repo passes schema check", run_schema_check(clean) == 0))
         status_code, status_output = run_status(clean)
         baseline_counts = progress_counts(status_output)
 
@@ -231,6 +242,43 @@ def main():
             encoding="utf-8",
         )
         results.append(("supported claim without bound evidence fails", run_check(unsupported_claim) != 0))
+
+        schema_bad_state = fresh_copy(tmp, "schema-bad-receipt-state")
+        (schema_bad_state / "workflow" / "receipts" / "2026-09-02-hopeful.md").write_text(
+            "STATE: HOPEFUL\nOBJECT: something\nEXACT_REF: abc123\nEVIDENCE: command passed\n"
+            "PROGRESS: INFRASTRUCTURE\nEFFECT: none - infrastructure\nSESSION_ID: sabotage\n"
+            "NEXT_OWNER: none\n",
+            encoding="utf-8",
+        )
+        results.append(("schema rejects invalid receipt STATE token", run_schema_check(schema_bad_state) != 0))
+
+        schema_free_outcome = fresh_copy(tmp, "schema-free-text-outcome")
+        experiments = schema_free_outcome / "workflow" / "experiments"
+        experiments.mkdir(parents=True, exist_ok=True)
+        (experiments / "2026-09-02-narrative.md").write_text(
+            "HYPOTHESIS: x\nOBJECT: abc123\nDEPLOYED_FORM: local\nMEASUREMENT: n=1\n"
+            "PASS_BAR: 1\nKILL_BAR: 0\nCOST: none\n"
+            "OUTCOME: looks promising, basically a pass\n"
+            "INDEPENDENT_REPRO: pending\n",
+            encoding="utf-8",
+        )
+        results.append(("schema rejects free-text experiment OUTCOME", run_schema_check(schema_free_outcome) != 0))
+
+        schema_missing_field = fresh_copy(tmp, "schema-missing-field")
+        (schema_missing_field / "workflow" / "receipts" / "2026-09-02-no-owner.md").write_text(
+            "STATE: DONE\nOBJECT: something\nEXACT_REF: abc123\nEVIDENCE: command passed\n"
+            "PROGRESS: INFRASTRUCTURE\nEFFECT: none - infrastructure\nSESSION_ID: sabotage\n",
+            encoding="utf-8",
+        )
+        results.append(("schema rejects receipt missing NEXT_OWNER", run_schema_check(schema_missing_field) != 0))
+
+        schema_drift = fresh_copy(tmp, "schema-vocabulary-drift")
+        kernel = schema_drift / "schema" / "evidence-kernel.schema.json"
+        kernel.write_text(
+            kernel.read_text(encoding="utf-8").replace('"INVALIDATED"', '"VIBES"'),
+            encoding="utf-8",
+        )
+        results.append(("schema vocabulary drift from checker fails", run_schema_check(schema_drift) != 0))
 
         dry_target = Path(tmp) / "transplant-dry-target"
         initialized = init_target(dry_target)
