@@ -1,8 +1,8 @@
 # Bonkers / SEED
 
-Bonkers is a measurement protocol called SEED; the GitHub name thefleet is historical, and fleet orchestration is deferred.
+Bonkers is a measurement protocol called SEED; the repository was renamed from `thefleet` to `seed-protocol` on 2026-09-02 and the old name redirects, and fleet orchestration is deferred.
 
-**Repository:** [thisisntjon/thefleet](https://github.com/thisisntjon/thefleet).  
+**Repository:** [thisisntjon/seed-protocol](https://github.com/thisisntjon/seed-protocol).  
 **Object:** a portable measurement protocol for agentic software work, plus one pinned case study.  
 **Not:** an agent runtime, a fleet orchestrator, or a claim of autonomy.
 
