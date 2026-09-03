@@ -93,6 +93,8 @@ Watanabe et al. (arXiv:2509.14745) study merge rates of Claude Code pull request
 
 Use [`CITATION.cff`](CITATION.cff). Preferred citation is the case-study report, with the author-run caveat attached.
 
+A DOI is minted via Zenodo from GitHub releases (`.zenodo.json` carries the deposit metadata); cite the DOI of the release you used once one exists.
+
 ## License
 
 MIT. See [`LICENSE`](LICENSE).

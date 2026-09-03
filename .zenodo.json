@@ -1,0 +1,30 @@
+{
+  "title": "SEED: a measurement protocol for agentic software work, with the PR case study 'Throughput is not progress'",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Simone, Jonathan"
+    }
+  ],
+  "description": "Implementation throughput is a poor proxy for verified progress in agent-driven software work. SEED records that finding as a small, incident-bounded protocol: claims have falsifiers, guards are sabotage-tested before they are trusted, state lives in git artifacts, humans gate only irreversibles, and spend is scored against closed loops. The bundled PR case study (1,979 PR-linked commits on one pinned repository) is author-run and not independently reproduced; whether using SEED improves recovery time, false-progress rate, or human intervention versus a bare project is a registered hypothesis (C-004) and is not claimed.",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "evaluation",
+    "methodology",
+    "pre-registration",
+    "reproducibility",
+    "research",
+    "software-engineering"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/thisisntjon/seed-protocol/blob/main/workflow/research/2026-08-24-pr-case-study/PAPER.md",
+      "relation": "isDocumentedBy",
+      "resource_type": "publication-report",
+      "scheme": "url"
+    }
+  ],
+  "version": "0.1.0",
+  "notes": "Version 0.1.0 is the first public identity of this repository (formerly Bonkers). The case study is n=1 repository, n=1 principal, author-run."
+}

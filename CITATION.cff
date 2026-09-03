@@ -3,25 +3,29 @@ title: "SEED: a measurement protocol for agentic software work"
 message: "If you use this protocol or the case study, please cite this repository and keep the claim statuses in CLAIMS.md."
 type: software
 authors:
-  - name: "thisisntjon"
+  - family-names: "Simone"
+    given-names: "Jonathan"
     website: "https://github.com/thisisntjon"
+version: "0.1.0"
 repository-code: "https://github.com/thisisntjon/seed-protocol"
 url: "https://github.com/thisisntjon/seed-protocol"
 abstract: "An incident-earned, sabotage-tested epistemic control plane for agentic software work. Causal benefit versus a bare project remains a registered hypothesis."
 keywords:
-  - research
-  - reproducibility
   - agents
   - evaluation
+  - methodology
   - pre-registration
+  - reproducibility
+  - research
   - software-engineering
 license: MIT
-date-released: "2026-08-31"
+date-released: "2026-09-02"
 preferred-citation:
   type: report
   title: "Throughput is not progress: a pinned case study of 1,979 agent-landed pull requests"
   authors:
-    - name: "thisisntjon"
+    - family-names: "Simone"
+      given-names: "Jonathan"
   year: 2026
   month: 8
   url: "https://github.com/thisisntjon/seed-protocol/blob/main/workflow/research/2026-08-24-pr-case-study/PAPER.md"
