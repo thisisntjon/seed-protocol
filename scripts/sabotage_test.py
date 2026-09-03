@@ -78,7 +78,23 @@ def add_gate(root, row):
     path.write_text(path.read_text(encoding="utf-8") + "\n" + row + "\n", encoding="utf-8")
 
 
+def require_git_clone():
+    """The transplant cases read SEED's own git identity; a ZIP download has none."""
+    probe = subprocess.run(
+        ["git", "-C", str(ROOT), "rev-parse", "HEAD"], capture_output=True, text=True
+    )
+    if not (ROOT / ".git").exists() or probe.returncode != 0:
+        print(
+            "sabotage_test requires a git clone (uses git history); "
+            "download ZIP is not supported"
+        )
+        return False
+    return True
+
+
 def main():
+    if not require_git_clone():
+        return 2
     results = []
     with tempfile.TemporaryDirectory() as tmp:
         clean = fresh_copy(tmp, "clean")
