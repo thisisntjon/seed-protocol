@@ -80,9 +80,6 @@
     "workflow/blueprint/ARCHITECTURE.md"
   ],
   "never": [
-    "scripts/humanizer_engine.py",
-    "scripts/humanizer_council.py",
-    "scripts/humanizer_app.py",
     "web/",
     "workflow/relay/beliefs/"
   ]
