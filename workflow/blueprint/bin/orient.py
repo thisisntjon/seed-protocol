@@ -88,7 +88,16 @@ def newest_handoff(root: Path) -> str:
     files = [p for p in folder.glob("*.md") if p.is_file()]
     if not files:
         return "(none)"
-    newest = max(files, key=lambda p: p.stat().st_mtime)
+    # Order by the YYYY-MM-DD prefix in the filename; mtime is meaningless on a
+    # fresh clone (every file is written at checkout time). Files without a date
+    # prefix fall back to mtime and sort below any dated file.
+    def sort_key(path: Path):
+        match = re.match(r"(\d{4}-\d{2}-\d{2})", path.name)
+        if match:
+            return (1, match.group(1), path.name, 0.0)
+        return (0, "", path.name, path.stat().st_mtime)
+
+    newest = max(files, key=sort_key)
     return newest.name
 
 
