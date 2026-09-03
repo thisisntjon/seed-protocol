@@ -35,7 +35,7 @@ CI runs the same commands (`.github/workflows/verify.yml`). A green onboard chec
 - The PR case study is n = 1 repository, n = 1 principal, author-run. It does not support a treatment-effect claim. The public dataset is [`workflow/research/2026-08-24-pr-case-study/artifacts/`](workflow/research/2026-08-24-pr-case-study/artifacts/). The source mill (`poketcg`) is a private repository and is not this repository; the public dataset is `artifacts/` here.
 - The playbook line “encoded rules never failed again” is **unverified** (`workflow/canon/DECISIONS.md`). Recurrence was not tracked in the source ledger.
 - Factory bootstrap (`workflow/blueprint/bin/bootstrap.py`) is not yet a CI fixture. Continuity (`switch.py`) is not built.
-- Flipping this remote to a general audience is a human gate (`GATES.md` publication). A clone URL is not a visibility flip.
+- This repository became public on 2026-09-02 (gate G-002 in `GATES.md`). Public visibility is not evidence; the claim table above is.
 
 ## Deeper documentation
 
