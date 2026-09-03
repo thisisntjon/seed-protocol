@@ -6,7 +6,7 @@ this file is edited, not appended. `scripts/onboard_check.py` verifies its claim
 ## THE WHOLE JOB, IN FOUR LINES
 
 ```
-1. This repo is Bonkers. The BLUEPRINT is the factory for building other systems
+1. This repo is SEED. The BLUEPRINT is the factory for building other systems
    (workflow/blueprint/README.md). SEED is the protocol it contains.
 2. Run python workflow/blueprint/bin/orient.py, then read LAWS.md, AGENTS.md, GATES.md.
    SEED workflow/PLAN.md is paused.

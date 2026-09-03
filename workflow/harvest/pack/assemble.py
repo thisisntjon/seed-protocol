@@ -189,7 +189,7 @@ def apply_dest(manifest: dict, dest: Path, extras: list[str], candidate: bool) -
         raise RuntimeError("refusing to overwrite differing target file(s): " + ", ".join(conflicts))
     provenance = {
         "schema_version": 1,
-        "source_project": "Bonkers / SEED harvest pack",
+        "source_project": "SEED harvest pack",
         "source_commit": transplant.source_commit(),
         "copied": copied,
         "identical": skipped,

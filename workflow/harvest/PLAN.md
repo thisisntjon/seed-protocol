@@ -17,7 +17,7 @@ growing ledger of ideas that other projects can encode as they hit the same inci
 
 **Why now:** The principal asked for an inventory of everything that can be repurposed. The first
 pass inventoried files to copy. The correction: inventory the ideas used *during* the
-project — thousands of human hours of research — so Bonkers becomes an evolving factory.
+project — thousands of human hours of research — so SEED becomes an evolving factory.
 
 **Original hypothesis:** (principal, 2026-08-23)
 

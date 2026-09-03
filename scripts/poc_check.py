@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Calibrate Bonkers POCs, including expected-red controls."""
+"""Calibrate SEED POCs, including expected-red controls."""
 
 import json
 import subprocess

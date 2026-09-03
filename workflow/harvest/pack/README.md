@@ -1,6 +1,6 @@
 # SEED factory pack
 
-Clean extract of Bonkers protocol. **Not** the Pokemon campaign. **Not** Career. **Not** thebus.
+Clean extract of the SEED protocol. **Not** the Pokemon campaign. **Not** Career. **Not** thebus.
 
 Two install paths. Do not mix them up.
 

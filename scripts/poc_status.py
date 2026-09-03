@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render one-glance functionality progress for the ten Bonkers POCs."""
+"""Render one-glance functionality progress for the ten SEED POCs."""
 
 import json
 from pathlib import Path
@@ -18,7 +18,7 @@ def main():
     registry = json.loads((ROOT / "pocs" / "POC-REGISTRY.json").read_text(encoding="utf-8"))
     pocs = registry["pocs"]
     overall = round(sum(item["progress_percent"] for item in pocs) / len(pocs))
-    print("BONKERS POC STATUS")
+    print("SEED POC STATUS")
     print(f"  overall  {bar(overall)}  functionality, not activity")
     print()
     for item in pocs:

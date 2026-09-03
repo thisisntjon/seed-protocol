@@ -39,7 +39,7 @@ year of projects. That tuition is the cost basis of this ledger. The mill (eval 
 wake `.ps1` files, kernel copies) is the *waste product* of discovering these ideas.
 Keep the ideas. Do not import the mill.
 
-**Causal savings versus a bare repo are still unmeasured** (Bonkers C-004, P3 ablation
+**Causal savings versus a bare repo are still unmeasured** (SEED C-004, P3 ablation
 pending). That does not make the ideas cheap. It means we have not yet priced the *payout*.
 The *premium already paid* is the research.
 
@@ -67,7 +67,7 @@ The *premium already paid* is the research.
 | I-A02 | **The repo is the memory.** Sessions die constantly. State in artifacts, not context windows. Successor re-orients in minutes. | Three lead-session deaths in three days | CORE: templates + START-HERE |
 | I-A03 | **START-HERE contains no sentence a later sentence corrects.** Historical contradiction lives in provenance files. Checker wins. | 66 files still citing a retracted figure; AGENTS.md as 500-line supersede stack | CORE: onboard_check paths + retractions |
 | I-A04 | **Correct by editing; retract by ledger.** Grep finds the wrong answer first if you append-only-correct. | Same | CORE: RETRACTIONS token scan |
-| I-A05 | **Never delete documentation.** Archive banner + supersession register. Missing files look like "n=0 / never done." | Fleet re-deriving from vanished citations | CANDIDATE (conflict: Bonkers overwrites *current* truth; archive research) |
+| I-A05 | **Never delete documentation.** Archive banner + supersession register. Missing files look like "n=0 / never done." | Fleet re-deriving from vanished citations | CANDIDATE (conflict: SEED overwrites *current* truth; archive research) |
 | I-A06 | **Wake pack, not the novel.** Inventories + NOW + CURRENT-TRUTH. Do not open 600 research files on wake. | Harness accessibility; 44% of PRs were markdown-only | CANDIDATE: inventory_validate pattern |
 | I-A07 | **Governance is origin/main, not the hub working copy.** | Local RUN_GATES 33 sequences stale | Doctrine |
 | I-A08 | **No shallow git in the hub.** Shallow fetch destroyed merge-base, stranded 15h of read-side. | 2026-07-29 hub incident | Doctrine |
@@ -135,7 +135,7 @@ The *premium already paid* is the research.
 
 | ID | Idea | Earned by | Encode |
 |---|---|---|---|
-| I-D01 | **Phased investigation:** frame → investigate → assumption registry → roadmap → phase loop. PLAN.md is state. Gates are approve/adjust, not approve/reject. | `/phased`; Bonkers PLAN | CANDIDATE skill; Bonkers PLAN format |
+| I-D01 | **Phased investigation:** frame → investigate → assumption registry → roadmap → phase loop. PLAN.md is state. Gates are approve/adjust, not approve/reject. | `/phased`; SEED PLAN | CANDIDATE skill; SEED PLAN format |
 | I-D02 | **Existence-check before building.** Research whether the thing exists. | principal operating contract | Doctrine |
 | I-D03 | **Incident → rule → machine check, within one cycle.** | Playbook empirical claim (encode-recurrence still unverified as a *statistic*; encoding remains the cheap default) | CORE: Law 1 + meta-law |
 | I-D04 | **Rule diet.** Incidents add a check or a checklist line, never a new prose rule. Prose gets compiled and retired. | Ceremony pathology: lots of experiments/cards/tools → few submissions | CORE: Law 1 |
@@ -148,8 +148,8 @@ The *premium already paid* is the research.
 | I-D11 | **Genuinely different perspectives are load-bearing.** Adversarial second opinions; different model families that disagree usefully. | Playbook transferable claim 3 | Doctrine |
 | I-D12 | **The learning loop is the product.** Week two runs on autopilot where week one ran on paste *because of the ledger*. | Playbook transferable claim 4 | This file |
 | I-D13 | **It is teachable because it is written down.** Join, roster, idle behavior, orders, what counts as true, why each rule exists — an afternoon. | Playbook transferable claim 5 | START-HERE |
-| I-D14 | **SOTA wins by default against calcified scar tissue.** A finding must earn its place against current evidence. | Bonkers DECISIONS 2026-08-18 | Doctrine |
-| I-D15 | **Minimum viable subset:** solo operator + two agents yields the headline properties at roughly a fifth of the tooling. Default one strong agent; fleet is opt-in. | Playbook + Bonkers DECISIONS | CORE: Law 8 |
+| I-D14 | **SOTA wins by default against calcified scar tissue.** A finding must earn its place against current evidence. | SEED DECISIONS 2026-08-18 | Doctrine |
+| I-D15 | **Minimum viable subset:** solo operator + two agents yields the headline properties at roughly a fifth of the tooling. Default one strong agent; fleet is opt-in. | Playbook + SEED DECISIONS | CORE: Law 8 |
 
 ## E. Autonomy and the human
 
@@ -243,13 +243,13 @@ The *premium already paid* is the research.
 |---|---|---|
 | I-K01 | **The mill.** Hundreds of domain scripts are the waste product of discovery, not the factory. | Copy `ptcg-agent/harness/*` |
 | I-K02 | **thebus.** A separate fleet-governance product, retired. Design retracted. | Rebuild a bus repo |
-| I-K03 | **Mega-merge.** Pokemon + Career + Bonkers as one repo. | Union the trees |
+| I-K03 | **Mega-merge.** Pokemon + Career + SEED as one repo. | Union the trees |
 | I-K04 | **Invented rubrics / prize structures.** | 14/14/14 splits; false BO3 / invented prize |
 | I-K05 | **Provenance novels as current truth.** AGENTS.md 500-line supersede stacks. | Onboard from the novel |
 | I-K06 | **Second state file** that drifts from PLAN. | A STATUS.md that is not derived |
 | I-K07 | **Bulk `--apply` on a header-driven board.** | board_sync --apply |
 | I-K08 | **Copying another project's live CLAIMS/PLAN/retractions.** | Identity overwrite |
-| I-K09 | **Humanizer / product UI as protocol.** | Bonkers web/ + VoiceCraft in CORE |
+| I-K09 | **Humanizer / product UI as protocol.** | SEED web/ + VoiceCraft in CORE |
 | I-K10 | **Watcher scripts inside worktrees.** | I-F22 |
 | I-K11 | **Treating a frozen or never-polled number as a score.** | I-C05 |
 | I-K12 | **Closing a mechanism class because one implementation failed.** Scope guard or don't cite. | DEAD-ENDS A1/A2 |

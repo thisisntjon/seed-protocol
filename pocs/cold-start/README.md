@@ -14,6 +14,6 @@ mission, authority boundary, experiment status, and next action without oral rec
    no hidden evidence-path allowlist.
 
 A PASS proves only that this reader recovered the frozen facts within the time ceiling. It does
-not prove general portability, project effectiveness, or causal benefit. Bonkers P2 requires an
+not prove general portability, project effectiveness, or causal benefit. SEED P2 requires an
 independent reader; the bundled examples are scorer calibration controls only. V1 remains
 preserved as an invalid exact-token instrument, and V2 as an invalid hidden-path instrument.

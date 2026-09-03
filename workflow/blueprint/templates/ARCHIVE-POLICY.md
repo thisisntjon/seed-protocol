@@ -9,6 +9,6 @@
 **Why:** multi-agent fleets re-derive from old citations; missing files look like
 "n=0 / never done." Retractions require the false claim to still be findable.
 
-Leave the file; mark ARCHIVE; list the successor. Bonkers overwrites *current-truth*
+Leave the file; mark ARCHIVE; list the successor. SEED overwrites *current-truth*
 files (START-HERE, PLAN) in place — that is a different rule. Research and receipts
 archive; current-truth edits.

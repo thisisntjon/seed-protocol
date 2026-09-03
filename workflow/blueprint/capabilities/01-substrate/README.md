@@ -25,4 +25,4 @@ Wake-pack inventories (DOC-ROLES) are CANDIDATE until a repo grows past one STAR
 
 ## Taken from
 
-Playbook durable-state-files; Bonkers Law 5–6; DOC-ROLES; harvest I-A01–A12.
+Playbook durable-state-files; SEED Law 5–6; DOC-ROLES; harvest I-A01–A12.

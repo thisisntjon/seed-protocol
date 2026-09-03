@@ -6,7 +6,7 @@ Source: `poketcg/playbook/TOOLS.md`. Instance paths there are under `scripts/` a
 **Do not copy ~326 harness scripts.** Rebuild the abstract tool when its trigger fires.
 Each rebuild is stdlib-only, fail-closed, exit-code API, and cites its incident in-source.
 
-Bonkers CORE already covers day-0 protocol checks. This file is the rest.
+SEED CORE already covers day-0 protocol checks. This file is the rest.
 
 ## Tier 1 — day 0 (you cannot run a board without these)
 

@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "Bonkers / SEED: a measurement protocol for agentic software work"
+title: "SEED: a measurement protocol for agentic software work"
 message: "If you use this protocol or the case study, please cite this repository and keep the claim statuses in CLAIMS.md."
 type: software
 authors:

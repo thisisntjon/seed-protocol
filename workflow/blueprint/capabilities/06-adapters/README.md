@@ -18,7 +18,7 @@ Switch vendor without re-teaching conventions. One source, rendered per harness.
 ## Quality bar
 
 A fresh Claude Code / Codex session can onboard from START-HERE + AGENTS without oral
-context (P2c cold-start evidence in Bonkers receipts).
+context (P2c cold-start evidence in SEED receipts).
 
 ## Remaining work
 

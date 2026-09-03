@@ -9,7 +9,7 @@
 This is the classified list of reusable **files** versus campaign mill. The harvest's
 actual asset is the **ideas ledger**: `IDEAS.md` (145 development ideas). Files below
 are how some of those ideas are already encoded. It is **not** a merge of Pokemon,
-Career, Bonkers, and thebus.
+Career, SEED, and thebus.
 
 ## Classes
 
@@ -23,7 +23,7 @@ Career, Bonkers, and thebus.
 
 ## Decision this inventory informs
 
-Do **not** merge Pokemon + Career + Bonkers into one mega-repo. Transplant CORE. Load OPTIONAL
+Do **not** merge Pokemon + Career + SEED into one mega-repo. Transplant CORE. Load OPTIONAL
 by extra. Keep domain packs in their origin repos.
 
 Two install paths:
@@ -77,7 +77,7 @@ Portable **patterns**. Full rows in `INVENTORY.json`. Condensed here.
 |---|---|
 | Day 0 | CORE (already). Then `orient.py` as one command. |
 | Second harness | `new_harness.py` shape, `verdict_lint.py`, dispatch ledger, stall watch, inbox-wake **policy** |
-| Board file exists | Pokemon `status.py` ownership linter (different object from Bonkers `status.py`) |
+| Board file exists | Pokemon `status.py` ownership linter (different object from SEED `status.py`) |
 | Unattended jobs | `gate_pin.py`, `queue_worker.py`, `ops_digest.py`, VALUE-delta heartbeats |
 | Two boxes | `wt_sweep.py`, recovery runbook, dual-channel watchdog |
 | Shipping to a runtime | `preflight.py` **rebuilt for that runtime**, SHA identity before spend |

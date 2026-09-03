@@ -1,4 +1,4 @@
-# CLAIMS — what Bonkers is allowed to say
+# CLAIMS — what SEED is allowed to say
 
 A claim is not upgraded by repetition. `HYPOTHESIS` is the default. `SUPPORTED` and `REFUTED`
 require repository-bound evidence, and every claim must state what could prove it wrong.
@@ -9,4 +9,4 @@ require repository-bound evidence, and every claim must state what could prove i
 | C-002 | The current checker detects every defect class named by its sabotage suite. | SUPPORTED | Any seeded case remains green, or the clean repository turns red. | `workflow/receipts/2026-08-08-verified-progress-control.md` |
 | C-003 | The protocol is portable into a second project without importing its domain runtime or overwriting existing state. | SUPPORTED | A reproduced transplant requires domain imports, destructive overwrite, undocumented oral context, or source edits that are not project configuration. | `workflow/receipts/2026-08-08-p2c-cold-v3-pass.md` |
 | C-004 | Using SEED reduces false progress, recovery time, or unnecessary human intervention relative to a bare project. | HYPOTHESIS | A preregistered matched ablation is null or favors the bare condition on its primary measures. | Pending P3 ablation. |
-| C-005 | Bonkers can publish a negative result without rescuing or silently changing the claim. | SUPPORTED | A failed P2/P3 gate is re-described as success, removed, or rerun under a changed bar without a new registration. | `workflow/receipts/2026-08-08-p2a-invalid-transplant.md` |
+| C-005 | SEED can publish a negative result without rescuing or silently changing the claim. | SUPPORTED | A failed P2/P3 gate is re-described as success, removed, or rerun under a changed bar without a new registration. | `workflow/receipts/2026-08-08-p2a-invalid-transplant.md` |

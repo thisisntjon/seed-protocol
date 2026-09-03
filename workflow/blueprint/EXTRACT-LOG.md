@@ -58,7 +58,7 @@ plus thousands of human hours. The mill is the waste product. These files are th
 | `workflow/canon/RETRACTIONS.md` (pattern) | Token ledger; mechanism not just the false number | CORE RETRACTIONS | PTCG tokens |
 | `START-HERE.md` field facts | Which object/sha; reachable≠selected≠executed; freeze vs mature; pair-mean; point-bar false precision; unread path ≠ empty; derived ceiling ≠ wall | IDEAS C04–C08, D07 | Mission dates, c61, writeup slot |
 
-## Bonkers SEED (already executable)
+## SEED (already executable)
 
 | Source | Taken | Landed | Left behind |
 |---|---|---|---|
@@ -103,7 +103,7 @@ plus thousands of human hours. The mill is the waste product. These files are th
 | `Write-Up/` | Strategy-category product |
 | Career pipeline JSON | Different product |
 | thebus | RETIRED |
-| Bonkers `humanizer_*`, `web/` | Product experiment, not protocol |
+| SEED `humanizer_*`, `web/` | Product experiment, not protocol |
 | Godot/Comfy/UI-QA/Miracle-MCP/peek/grail skills | Domain/product |
 | Box-specific `.ps1`/`.vbs` wake drivers | Copy the policy (dual-trigger), not the files |
 

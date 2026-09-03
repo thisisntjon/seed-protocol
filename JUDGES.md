@@ -1,6 +1,6 @@
 # JUDGES — score the instrument
 
-This entry is **Bonkers / SEED**, a measurement protocol. The GitHub slug
+This entry is **SEED**, a measurement protocol. The GitHub slug
 `thefleet` was renamed to `seed-protocol` on 2026-09-02; the old name redirects. Fleet orchestration is deferred.
 
 Do not score treatment effect. C-004 stays **HYPOTHESIS**.

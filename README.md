@@ -1,6 +1,6 @@
-# Bonkers / SEED
+# SEED
 
-Bonkers is a measurement protocol called SEED; the repository was renamed from `thefleet` to `seed-protocol` on 2026-09-02 and the old name redirects, and fleet orchestration is deferred.
+SEED (formerly Bonkers) is a measurement protocol for agentic software work; the repository was renamed from `thefleet` to `seed-protocol` on 2026-09-02 and the old name redirects, and fleet orchestration is deferred.
 
 **Repository:** [thisisntjon/seed-protocol](https://github.com/thisisntjon/seed-protocol).  
 **Object:** a portable measurement protocol for agentic software work, plus one pinned case study.  
@@ -10,7 +10,7 @@ Agents cold-start at [`START-HERE.md`](START-HERE.md) and trust nothing until `p
 
 ## Abstract
 
-Implementation throughput is a poor proxy for verified progress in agent-driven software work. Bonkers records that finding as a small, incident-bounded protocol (**SEED**): claims have falsifiers, guards are sabotage-tested before they are trusted, state lives in git artifacts, humans gate only irreversibles, and spend is scored against closed loops.
+Implementation throughput is a poor proxy for verified progress in agent-driven software work. SEED records that finding as a small, incident-bounded protocol: claims have falsifiers, guards are sabotage-tested before they are trusted, state lives in git artifacts, humans gate only irreversibles, and spend is scored against closed loops.
 
 The protocol is an *epistemic control plane*. It does not schedule agents. A later factory extract packages portable ideas so a second project does not re-derive them. Whether using SEED improves recovery time, false-progress rate, or human intervention versus a bare project is **hypothesis C-004** and is not claimed.
 

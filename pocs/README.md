@@ -1,4 +1,4 @@
-# Bonkers proof-of-concept program
+# SEED proof-of-concept program
 
 The registry at `POC-REGISTRY.json` is the source of truth. A POC is complete only when its
 named functionality works and its evidence can turn red on the defect it claims to detect.

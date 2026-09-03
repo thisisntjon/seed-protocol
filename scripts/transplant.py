@@ -32,6 +32,9 @@ PORTABLE_FILES = (
     "workflow/templates/EXPERIMENT.md",
 )
 PROVENANCE_PATH = Path("workflow/SEED-TRANSPLANT.json")
+SOURCE_PROJECT = "SEED"
+# Manifests written before the 2026-09-02 rename carry the old name; both are accepted on read.
+SOURCE_PROJECT_NAMES = {SOURCE_PROJECT, "Bonkers / SEED"}
 
 
 def sha256(path: Path) -> str:
@@ -76,7 +79,7 @@ def load_previous_provenance(target: Path) -> dict[str, object] | None:
         value = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise RuntimeError(f"existing provenance is unreadable: {exc}") from exc
-    if value.get("source_project") != "Bonkers / SEED" or not isinstance(value.get("portable_files"), list):
+    if value.get("source_project") not in SOURCE_PROJECT_NAMES or not isinstance(value.get("portable_files"), list):
         raise RuntimeError("existing provenance is not a recognized SEED transplant")
     return value
 
@@ -139,7 +142,7 @@ def apply_transplant(target: Path, transplant_plan: dict[str, object]) -> None:
         shutil.copy2(source, destination)
     provenance = {
         "schema_version": 1,
-        "source_project": "Bonkers / SEED",
+        "source_project": SOURCE_PROJECT,
         "source_commit": transplant_plan["source_commit"],
         "portable_identity_sha256": transplant_plan["portable_identity_sha256"],
         "installed_at_utc": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
