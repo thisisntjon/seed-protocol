@@ -12,3 +12,7 @@ This repository is a measurement protocol, not a product backlog.
 8. **Bank a receipt** (`workflow/templates/RECEIPT.md`) when a loop closes. “Done” without an evidence path is not a state.
 
 Human-gated: spend above the pre-authorized runway, public release, deletion of non-regenerable data, production flips, and scope changes that invalidate the problem statement (`GATES.md`).
+
+## Report a reproduction
+
+Ran the Reproduce block or the case-study instrument on your own machine? File an issue with the [Independent reproduction report](.github/ISSUE_TEMPLATE/independent-reproduction.md) template (label `reproduction`). Environment, commit SHA, command, expected versus observed, differences, evidence attached. A matching result is worth filing; a mismatch is worth more. Author-run rows only move to INDEPENDENTLY REPRODUCED on reports from someone other than the author.
