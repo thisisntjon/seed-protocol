@@ -28,3 +28,4 @@ Answering a gate is always legal in any state; deferring it requires a date.
 | id | what | decision needed from | opened | status |
 |---|---|---|---|---|
 | G-001 | First commit: review the skeleton, `git init` happened, make the initial commit | human | 2026-08-08 | ANSWERED |
+| G-002 | Publication: flip `thisisntjon/thefleet` to public as the Bonkers / SEED front door for simoneresearch.com. Preconditions met on branch `public-prep`: featured tree clean, board ticket paths stripped, checker green. Answering means: merge `public-prep`, set visibility public, then update the site card. | human | 2026-09-02 | OPEN |
