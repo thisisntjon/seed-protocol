@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thisisntjon/seed-protocol/schema/experiment.schema.json",
+  "title": "EXPERIMENT",
+  "version": "0.1.0",
+  "description": "Pre-registration. Committed to workflow/experiments/ BEFORE results exist; the commit timestamp is the pre-registration. Human form: workflow/templates/EXPERIMENT.md. Outcomes are terminal -- one of four tokens plus PENDING, no free-text verdicts (Law 4).",
+  "type": "object",
+  "$defs": {
+    "filled": {
+      "type": "string",
+      "minLength": 1,
+      "not": { "pattern": "<.*>" },
+      "description": "A required field must be present, non-empty, and not still hold a <template placeholder>."
+    }
+  },
+  "properties": {
+    "HYPOTHESIS": {
+      "$ref": "#/$defs/filled",
+      "description": "One falsifiable sentence."
+    },
+    "OBJECT": {
+      "$ref": "#/$defs/filled",
+      "description": "Exact artifact under test -- HASH, not label (Law 3)."
+    },
+    "DEPLOYED_FORM": {
+      "$ref": "#/$defs/filled",
+      "description": "How the object is packaged/run for measurement -- must match how it ships."
+    },
+    "MEASUREMENT": {
+      "$ref": "#/$defs/filled",
+      "description": "The command/procedure; the sample size and why it is powered for the effect size that would matter."
+    },
+    "PASS_BAR": {
+      "$ref": "#/$defs/filled",
+      "description": "Pre-stated threshold for shipping."
+    },
+    "KILL_BAR": {
+      "$ref": "#/$defs/filled",
+      "description": "Pre-stated threshold for abandoning -- honored regardless of narrative."
+    },
+    "COST": {
+      "$ref": "#/$defs/filled",
+      "description": "Estimated spend/time; actual filled in at outcome -- economics get measured."
+    },
+    "OUTCOME": {
+      "type": "string",
+      "pattern": "^(PENDING|PASS|KILL|NULL|INVALID-INSTRUMENT)(\\s.*)?$",
+      "description": "PENDING before results; then PASS | KILL | NULL | INVALID-INSTRUMENT (+ the measured value, + receipt path). The verdict is the first whitespace-delimited token and must be one of the five; anything after the first whitespace is the measured value and receipt path. Compared case-insensitively (the checker uppercases the token)."
+    },
+    "INDEPENDENT_REPRO": {
+      "$ref": "#/$defs/filled",
+      "description": "Required for PASS: who reproduced it, from what ref -- author XOR verifier."
+    }
+  },
+  "required": ["HYPOTHESIS", "OBJECT", "DEPLOYED_FORM", "MEASUREMENT", "PASS_BAR", "KILL_BAR", "COST", "OUTCOME", "INDEPENDENT_REPRO"],
+  "additionalProperties": true
+}

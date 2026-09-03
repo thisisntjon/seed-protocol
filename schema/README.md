@@ -76,9 +76,32 @@ would fail banked files, and banked files are not edited (Law 6: correct by ledg
 Nothing had to be loosened below what the checker accepts: on 2026-09-02 all 33 pre-existing banked records
 (22 receipts, 8 experiments, 3 handoffs, 0 dispatches) validate unchanged.
 
+## Install
+
+The parser and validator are an installable package, `evidence-kernel` (`schema/evidence_kernel/`,
+no third-party dependencies, MIT). `scripts/schema_check.py` imports the same package, so there is
+one implementation; the package bundles copies of the four record schemas and the kernel, and
+`schema_check.py` fails if those copies drift from `schema/*.schema.json`.
+
+```
+pip install ./schema
+evidence-kernel check workflow/receipts            # a directory: type inferred from its name
+evidence-kernel check --type receipt path/to/r.md  # a file of an explicit type
+```
+
+```python
+from evidence_kernel import validate
+
+errors = validate("receipt", open("workflow/receipts/2026-08-08-p1-skeleton-build.md", encoding="utf-8").read())
+assert errors == [], errors   # each entry is "$.FIELD: what failed"
+```
+
+Record types are `receipt`, `dispatch`, `experiment`, and `handoff`. Smoke test (stdlib unittest,
+also run in CI): `python -m unittest discover -s schema/tests`.
+
 ## Validator
 
-`scripts/schema_check.py` has no third-party dependency. It implements only the keywords these
+`evidence_kernel` (and therefore `scripts/schema_check.py`) has no third-party dependency. It implements only the keywords these
 schemas use (`type`, `enum`, `const`, `pattern`, `minLength`, `not`, `properties`, `required`,
 `additionalProperties`, `allOf`, `if`/`then`, `$ref` to `#/$defs` and to sibling files) and
 raises on any other keyword, so a schema edit the validator cannot enforce is loud, not silent

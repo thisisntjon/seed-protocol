@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# Python build artifacts (pip install ./schema)
+build/
+*.egg-info/

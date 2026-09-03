@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thisisntjon/seed-protocol/schema/dispatch.schema.json",
+  "title": "DISPATCH",
+  "version": "0.1.0",
+  "description": "Work handed to an agent. Delivered as a file in workflow/dispatches/ (fleet: the worker's inbox; solo: alongside the plan). Human form: workflow/templates/DISPATCH.md. A dispatch missing ACCEPTANCE or FENCES is invalid -- the linter treats it as malformed.",
+  "type": "object",
+  "$defs": {
+    "filled": {
+      "type": "string",
+      "minLength": 1,
+      "not": { "pattern": "<.*>" },
+      "description": "A required field must be present, non-empty, and not still hold a <template placeholder>."
+    }
+  },
+  "properties": {
+    "TO": {
+      "$ref": "#/$defs/filled",
+      "description": "Seat/session that owns this."
+    },
+    "OBJECT": {
+      "$ref": "#/$defs/filled",
+      "description": "The one thing being worked on -- file, feature, question."
+    },
+    "EXACT_REF": {
+      "$ref": "#/$defs/filled",
+      "description": "Commit hash / artifact hash / version this work is against."
+    },
+    "ACTION": {
+      "$ref": "#/$defs/filled",
+      "description": "What to do, in one sentence."
+    },
+    "ACCEPTANCE": {
+      "$ref": "#/$defs/filled",
+      "description": "The command(s) or observable(s) that define done -- runnable, not vibes."
+    },
+    "FENCES": {
+      "$ref": "#/$defs/filled",
+      "description": "What is out of bounds: files not to touch, decisions not to make, spend limits."
+    },
+    "FORECAST": {
+      "$ref": "#/$defs/filled",
+      "description": "Predicted duration / tokens / attempts BEFORE work starts -- every dispatch is a bet; the receipt's ACTUAL grades it (Law 9, calibration flywheel)."
+    },
+    "NEXT_EVENT": {
+      "$ref": "#/$defs/filled",
+      "description": "What happens when done: who consumes the receipt, what it unblocks."
+    }
+  },
+  "required": ["TO", "OBJECT", "EXACT_REF", "ACTION", "ACCEPTANCE", "FENCES", "FORECAST", "NEXT_EVENT"],
+  "additionalProperties": true
+}

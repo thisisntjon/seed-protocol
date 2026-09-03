@@ -19,6 +19,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python scripts/onboard_check.py
       - run: python scripts/schema_check.py
+      - run: python -m unittest discover -s schema/tests
       - run: python scripts/sabotage_test.py
       - run: python scripts/poc_check.py
       - run: python workflow/blueprint/bin/selftest.py

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thisisntjon/seed-protocol/schema/evidence-kernel.schema.json",
+  "title": "SEED evidence kernel",
+  "version": "0.1.0",
+  "description": "The evidence contract of this repository as one machine-readable object: the four record types that scripts/onboard_check.py validates. Every record is a Markdown file under workflow/; the human form is workflow/templates/<TYPE>.md. A record's type is the directory it lives in. The `records` object below maps each directory to the schema every file in it must satisfy.",
+  "type": "object",
+  "properties": {
+    "records": {
+      "type": "object",
+      "description": "Directory -> schema. Every *.md file directly under the directory is one record of that type.",
+      "properties": {
+        "workflow/receipts": { "$ref": "receipt.schema.json" },
+        "workflow/dispatches": { "$ref": "dispatch.schema.json" },
+        "workflow/experiments": { "$ref": "experiment.schema.json" },
+        "workflow/handoffs": { "$ref": "handoff.schema.json" }
+      },
+      "required": ["workflow/receipts", "workflow/dispatches", "workflow/experiments", "workflow/handoffs"],
+      "additionalProperties": false
+    },
+    "vocabularies": {
+      "type": "object",
+      "description": "The closed vocabularies, restated so a reviewer can read them without opening each schema. They are identical to the enums in the record schemas and to the constants in scripts/onboard_check.py.",
+      "properties": {
+        "STATE": { "const": ["DONE", "PARTIAL", "BLOCKED", "KILLED", "INVALIDATED"] },
+        "PROGRESS": { "const": ["DECISION", "MEASUREMENT", "INFRASTRUCTURE"] },
+        "OUTCOME": { "const": ["PENDING", "PASS", "KILL", "NULL", "INVALID-INSTRUMENT"] }
+      },
+      "required": ["STATE", "PROGRESS", "OUTCOME"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["records", "vocabularies"],
+  "additionalProperties": false
+}
