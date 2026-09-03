@@ -2,7 +2,7 @@
 
 SEED is a measurement and epistemic-control protocol for distinguishing implementation activity from verified progress in agent-driven software work. Formerly Bonkers; the repository was renamed from `thefleet` to `seed-protocol` on 2026-09-02 and the old name redirects. Not an agent runtime, a fleet orchestrator, or a claim of autonomy. Repository: [thisisntjon/seed-protocol](https://github.com/thisisntjon/seed-protocol).
 
-**Status:** HYPOTHESIS (C-004) · INSTRUMENT VALIDATED (sabotage 23/23) · case study AUTHOR-RUN
+**Status:** HYPOTHESIS (C-004) · INSTRUMENT VALIDATED (sabotage 23/23, [receipt](workflow/receipts/2026-09-02-evidence-schema.md)) · case study AUTHOR-RUN
 
 **Research question (C-004):** Does an incident-earned, machine-checked control plane reduce invalid completion claims, recovery cost, or unnecessary human intervention relative to a bare repository, without a material drop in correct task completion? The matched ablation is designed and paused (`workflow/experiments/2026-08-08-p3-bare-vs-seed-ablation.md`). A null result is a valid outcome.
 
