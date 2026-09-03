@@ -33,10 +33,11 @@ What that means concretely for you:
   the laws, the gates, the receipts, the checkers. Keep using them.
 - SEED's *roadmap* (`workflow/PLAN.md`, phases P1-P3) is paused. Do not resume P3 or any other
   SEED phase without a new decision; the blueprint's plan replaces it.
-- The source material for the blueprint is the playbook directory of the poketcg repo
-  (https://github.com/thisisntjon/poketcg) — 73 incident-earned rules — not this repo. This repo
-  contributes whatever earns its place.
-- A separate repo, thebus (https://github.com/thisisntjon/thebus), is RETIRED. It was an earlier
+- The source material for the blueprint is the playbook directory of the poketcg repo — a
+  private repository, 73 incident-earned rules — not this repo. The public dataset derived from it
+  is `workflow/research/2026-08-24-pr-case-study/artifacts/` in this repo. This repo contributes
+  whatever earns its place.
+- A separate repo, thebus (publication pending; no public link yet), is RETIRED. It was an earlier
   attempt at fleet governance; its design is retracted and its research is banked there. Do not
   build on it.
 

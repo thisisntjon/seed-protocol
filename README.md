@@ -23,7 +23,7 @@ Registered as C-004. Status: **HYPOTHESIS**. The matched ablation is designed an
 ## Limitations
 
 - C-004 is untested. Supported rows are about the instrument, not causal benefit.
-- The PR case study is n = 1 repository, n = 1 principal, author-run. It does not support a treatment-effect claim. The public dataset is [`workflow/research/2026-08-24-pr-case-study/artifacts/`](workflow/research/2026-08-24-pr-case-study/artifacts/). `thisisntjon/poketcg` is the source mill and is not this repository.
+- The PR case study is n = 1 repository, n = 1 principal, author-run. It does not support a treatment-effect claim. The public dataset is [`workflow/research/2026-08-24-pr-case-study/artifacts/`](workflow/research/2026-08-24-pr-case-study/artifacts/). The source mill (`poketcg`) is a private repository and is not this repository; the public dataset is `artifacts/` here.
 - The playbook line “encoded rules never failed again” is **unverified** (`workflow/canon/DECISIONS.md`). Recurrence was not tracked in the source ledger.
 - Factory bootstrap (`workflow/blueprint/bin/bootstrap.py`) is not yet a CI fixture. Continuity (`switch.py`) is not built.
 - Flipping this remote to a general audience is a human gate (`GATES.md` publication). A clone URL is not a visibility flip.
@@ -43,13 +43,13 @@ Falsifiers and bound evidence: [`CLAIMS.md`](CLAIMS.md). Do not upgrade a row by
 ## Evidence in this tree
 
 **Case study (author-run, not independently reproduced).**  
-[Throughput is not progress](workflow/research/2026-08-24-pr-case-study/PAPER.md) — a census of 1,979 PR-linked commits on `thisisntjon/poketcg` at pin `9522a8a`. Pre-registration: [`workflow/experiments/2026-08-24-pr-case-study.md`](workflow/experiments/2026-08-24-pr-case-study.md). Public dataset: [`artifacts/`](workflow/research/2026-08-24-pr-case-study/artifacts/).
+[Throughput is not progress](workflow/research/2026-08-24-pr-case-study/PAPER.md) — a census of 1,979 PR-linked commits on `poketcg` (a private repository) at pin `9522a8a`. Pre-registration: [`workflow/experiments/2026-08-24-pr-case-study.md`](workflow/experiments/2026-08-24-pr-case-study.md). Public dataset: [`artifacts/`](workflow/research/2026-08-24-pr-case-study/artifacts/).
 
 Observed on that pin (see `artifacts/summary.json`): 43.2% of PR-linked commits were docs-only; independent human GitHub review in a 40-PR sample was 0/40; a stratified 80-PR inspection found 2 PRs that changed the playing agent. The paper’s estimand is composition and identity, not merge rate.
 
 ![Weekly file-shape mix of PR-linked commits (poketcg pin)](workflow/research/2026-08-24-pr-case-study/artifacts/weekly-mix.svg)
 
-Source: `workflow/research/2026-08-24-pr-case-study/artifacts/summary.json` field `weekly`. Object: `thisisntjon/poketcg` @ pin `9522a8a37078d00f46b99a586b825b789b01387d`. Labels: `docs_only` = every changed path is `.md`/`.txt`; `has_code` = at least one `.py`/`.go`/`.js`/`.ts`/`.rs`/`.java`/`.c`/`.cpp`/`.h`; `n` = PR-linked first-parent commits that week (`CODEBOOK.md`). Campaign `docs_only_rate` = 0.432 (855/1979). Author-run, not independently reproduced. The clone that produced the census is not this repository.
+Source: `workflow/research/2026-08-24-pr-case-study/artifacts/summary.json` field `weekly`. Object: `poketcg` (private repository) @ pin `9522a8a37078d00f46b99a586b825b789b01387d`. Labels: `docs_only` = every changed path is `.md`/`.txt`; `has_code` = at least one `.py`/`.go`/`.js`/`.ts`/`.rs`/`.java`/`.c`/`.cpp`/`.h`; `n` = PR-linked first-parent commits that week (`CODEBOOK.md`). Campaign `docs_only_rate` = 0.432 (855/1979). Author-run, not independently reproduced. The clone that produced the census is not this repository.
 
 **Instrument calibration.** Cold-start comprehension and deceptive-green scoring are registered under `pocs/`. Transplant of the invariant core is receipt-bound (C-003).
 
@@ -68,7 +68,7 @@ python workflow/blueprint/bin/orient.py
 
 CI runs the same commands (`.github/workflows/verify.yml`). A green onboard check means the docs match this tree. It does not mean the research question is answered.
 
-To rerun the case-study instrument against the pinned poketcg SHA, pass an explicit clone path to `workflow/research/2026-08-24-pr-case-study/measure_pr_census.py`. That clone is not this repository. A judge who only clones thefleet can read `artifacts/`; they cannot regenerate the census.
+To rerun the case-study instrument against the pinned poketcg SHA, pass an explicit clone path of the private source repository to `workflow/research/2026-08-24-pr-case-study/measure_pr_census.py`. That clone is not this repository. A judge who only clones thefleet can read `artifacts/`; they cannot regenerate the census.
 
 ## How to read the tree
 

@@ -3,7 +3,7 @@
 **A pinned case study of 1,979 agent-landed pull requests in a single-operator fleet**
 
 Authors: measurement run 2026-08-24 (Bonkers factory) · **author-run, not independently reproduced**
-Object: `thisisntjon/poketcg` @ `9522a8a37078d00f46b99a586b825b789b01387d`
+Object: `poketcg` (a private repository; not this one) @ `9522a8a37078d00f46b99a586b825b789b01387d`. Public dataset: `artifacts/` in this repository
 Pre-registration: `workflow/experiments/2026-08-24-pr-case-study.md`
 Artifacts: `artifacts/summary.json`, `sample80_summary.json`, `pr_join.json`, `review_sample.json`
 
@@ -27,7 +27,7 @@ A stratified 80-PR inspection (oversampling code) found **2** PRs that changed t
 
 ## 1. Introduction
 
-From 2026-07-09 a public GitHub repository was used as the coordination substrate for a Kaggle Pokémon TCG agent campaign. The operating theory, later captured as a playbook, was that agent seats would claim work by pushing branches, merge via pull requests, and accumulate verified improvement. The same campaign independently recorded a stretch of **high PR volume with few closed experimental loops** (Law 8 in the distilled protocol).
+From 2026-07-09 a single-operator GitHub repository, private at the time of writing, was used as the coordination substrate for a Kaggle Pokémon TCG agent campaign. The operating theory, later captured as a playbook, was that agent seats would claim work by pushing branches, merge via pull requests, and accumulate verified improvement. The same campaign independently recorded a stretch of **high PR volume with few closed experimental loops** (Law 8 in the distilled protocol).
 
 Two stories are available.
 
@@ -61,7 +61,7 @@ origin/main = 9522a8a37078d00f46b99a586b825b789b01387d
 # 2026-08-24T11:29:23-07:00
 ```
 
-Local clone: an operator-supplied checkout of `thisisntjon/poketcg` (not this repository). GitHub: `gh api search/issues` the same calendar day.
+Local clone: an operator-supplied checkout of `poketcg` (a private repository; not this one). GitHub: `gh api search/issues` the same calendar day.
 
 ### 3.2 PR-linked commits
 
