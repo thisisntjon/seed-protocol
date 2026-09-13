@@ -12,7 +12,7 @@ SEED is a measurement and epistemic-control protocol for distinguishing implemen
 
 Source: `workflow/research/2026-08-24-pr-case-study/artifacts/summary.json` field `weekly`. Object: `poketcg` (private repository) @ pin `9522a8a37078d00f46b99a586b825b789b01387d`. Labels: `docs_only` = every changed path is `.md`/`.txt`; `has_code` = at least one `.py`/`.go`/`.js`/`.ts`/`.rs`/`.java`/`.c`/`.cpp`/`.h`; `n` = PR-linked first-parent commits that week (`CODEBOOK.md`). Campaign `docs_only_rate` = 0.432 (855/1979). Author-run, not independently reproduced. The clone that produced the census is not this repository.
 
-Four numbers from that pin ([`PAPER.md`](workflow/research/2026-08-24-pr-case-study/PAPER.md), `artifacts/summary.json`): **1,979** PR-linked first-parent commits analyzed (author-run, n = 1 repository). **43.2%** of those were docs-only (855/1,979; composition, not merge rate). **0/40** sampled PRs had an independent human GitHub review (40-PR sample; the only reviewer login was the author; `artifacts/review_sample.json`). **2/80** sampled PRs changed the playing agent (80-PR stratified inspection, single inspector; `artifacts/sample80_summary.json`).
+Four numbers from that pin ([`PAPER.md`](workflow/research/2026-08-24-pr-case-study/PAPER.md), `artifacts/summary.json`): **1,979** PR-linked first-parent commits analyzed (author-run, n = 1 repository). **43.2%** of those were docs-only (855/1,979; composition, not merge rate). **0/40** sampled PRs had an independent human GitHub review (40-PR sample; the only human reviewer login was the author; `artifacts/review_sample.json`). **2/80** sampled PRs changed the playing agent (80-PR stratified inspection, single inspector; `artifacts/sample80_summary.json`).
 
 ## Reproduce
 

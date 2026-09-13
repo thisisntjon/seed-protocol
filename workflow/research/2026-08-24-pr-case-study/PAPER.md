@@ -7,6 +7,8 @@ Object: `poketcg` (a private repository; not this one) @ `9522a8a37078d00f46b99a
 Pre-registration: `workflow/experiments/2026-08-24-pr-case-study.md`
 Artifacts: `artifacts/summary.json`, `sample80_summary.json`, `pr_join.json`, `review_sample.json`
 
+Updated 2026-09-13: corrected the weekly ranking, review counts and sampling description; distinguished earlier estimates from the current census; narrowed claims about product progress. The public datasets and method scripts are unchanged. See [correction record](CORRECTIONS-2026-09-13.md).
+
 ---
 
 ## Abstract
@@ -15,13 +17,13 @@ Empirical SE now has *breadth* on agent pull requests: Watanabe et al. study 567
 
 They do not answer what happens when **one human operates ~100 git identities for six weeks** and treats GitHub as a factory. We census that regime.
 
-On a pinned first-parent history, **1,979** PR-linked commits cover **84.6%** of 2,338 GitHub-merged PRs. **43.2%** change only `.md`/`.txt`. **39.7%** have churn &lt; 100. The week with the most landings (652) was **58.4% docs-only**; a later week with 79 landings was **6.3% docs-only and 77.2% code**. Throughput and construction moved in opposite directions.
+On a pinned first-parent history, **1,979** PR-linked commits cover **84.6%** of 2,338 GitHub-merged PRs. **43.2%** change only `.md`/`.txt`. **39.7%** have churn &lt; 100. The week with the most landings (652) was **58.4% docs-only**; a later week with 79 landings was **6.3% docs-only and 77.2% code**. These are changes in work composition, not measurements of player improvement.
 
-GitHub cannot recover the fleet: squash authors are 1,974×`thisisntjon` + 5×`ash`; `shortlog --all` still shows 103 seat names. In a seeded review sample of 40, independent human GitHub review is **0/40** (16 Codex-bot reviews; 1 human login is the PR author).
+GitHub identities do not recover individual fleet contributions: squash authors are 1,974×`thisisntjon` + 5×`ash`; `shortlog --all` still shows 103 author names. In a seeded review sample of 40, independent human GitHub review is **0/40**. Seventeen sampled PRs have Codex-bot reviews; one of those also has a review from the PR author's human login.
 
-A stratified 80-PR inspection (oversampling code) found **2** PRs that changed the playing agent. Protocol ledgers barely cite PRs (`playbook/RULES-LEDGER.md`: 3 census PRs); the kanban cites 301. Incident→check is not visible as a GitHub join.
+A stratified 80-PR inspection found **2** PRs classified as playing-agent changes. That unweighted sample share is neither a population estimate nor a statistical upper bound. Protocol ledgers barely cite PRs (`playbook/RULES-LEDGER.md`: 3 census PRs); the kanban cites 301. Incident→check is not visible as a GitHub join.
 
-**Contribution.** A rerunnable, pinned negative: in this factory, PR count, seat count, and GitHub reviews are invalid proxies for verified product progress. Complementary to merge-rate papers as **depth plus mechanism**.
+**Contribution.** A pinned, rerunnable description of composition, recorded identities and review traces in one agent-assisted project. Those records alone do not establish product progress or recover off-GitHub verification. This complements merge-rate studies with a different estimand.
 
 ---
 
@@ -31,11 +33,11 @@ From 2026-07-09 a single-operator GitHub repository, private at the time of writ
 
 Two stories are available.
 
-**Story A — volume.** ~2,300 merged PRs, ~100 git authors, ~50 PRs per day. Agents work.
+**Story A — volume.** ~2,300 merged PRs, ~100 git authors, ~50 PRs per day. These describe recorded activity.
 
-**Story B — conveyor.** Most landings are documentation, board, or measurement receipts. Identity collapses at squash. Reviewers on GitHub are bots or the owner. The playing agent almost never moves.
+**Story B — composition.** PR counts combine different kinds of work. Shared identities and squash commits can obscure individual contributions, and GitHub review records may omit verification performed elsewhere. Direct playing-agent edits are only one possible contribution to the project.
 
-Story A is what a mining paper sees if it stops at `is:merged`. This paper tests Story B with a pre-registered instrument.
+The pre-registered instrument measures those observable properties. Whether the player improved, and which work helped, requires separate outcome evidence.
 
 ---
 
@@ -69,7 +71,7 @@ First-parent log. Linked iff subject matches `\(#N\)\s*$` or `Merge pull request
 
 **Kill bar (pre-registered):** file list for &lt;80% of GitHub-merged PRs → INVALID-INSTRUMENT. Observed coverage **1,979 / 2,338 = 84.6%**. Instrument stands. The 15.4% gap is not imputed.
 
-**Bound:** if every missing GitHub-merged PR were `has_code`, docs-only on the full 2,338 would still be **855/2,338 = 36.6%**. The qualitative claim survives the gap.
+**Composition bound:** if every missing GitHub-merged PR were `has_code`, docs-only on the full 2,338 would still be **855/2,338 = 36.6%**. This bounds a file-shape proportion, not the amount or value of useful work.
 
 ### 3.3 File-shape labels (pass 0, N=1,979)
 
@@ -79,7 +81,7 @@ These labels describe **bytes**, not value. A 49-line conformance audit can be l
 
 ### 3.4 Intent labels (pass 1 auto, pass 2 inspection, n=80)
 
-Stratified draw: 20 `docs_only` + 20 `has_code` + 20 `other` + 20 extra `small`, hashed on pin+PR. **Oversamples code** relative to the population (population `has_code` 38.5%). Product-share estimates from this sample are therefore **upper bounds** on population product share.
+Stratified draw: 20 `docs_only` + 20 `has_code` + 20 `other` + 20 extra `small`, hashed on pin+PR. The resulting `sample80_pass2.jsonl` contains 33 `docs_only`, 24 `has_code` and 23 `other` records. Its code share is **24/80 = 30.0%**, below **761/1,979 = 38.5%** in the census. Reported intent shares describe this stratified sample; without a weighting analysis they are not population estimates, and the design does not make them statistical upper bounds.
 
 Pass 1: keyword+path rules (`label_sample.py`).
 Pass 2: exclusive human inspection of subject+paths (`pass2_labels.py`):
@@ -126,17 +128,18 @@ Naive rate ≈ 51 merged PRs/day. Section 4.3 is why that sentence is not a resu
 | docs_only | 855 | **43.2%** | 44.7% |
 | has_code | 761 | 38.5% | — |
 | other | 362 | 18.3% | — |
+| empty | 1 | <0.1% | — |
 | churn &lt; 100 | 786 | **39.7%** | 39.6% |
 
-**The 44.7% / 39.6% figures reproduce.** They were not campaign mythology.
+The current **43.2% / 39.7%** estimates update the earlier **44.7% / 39.6%** figures. They are nearby values, not identical results.
 
-Churn is heavy-tailed: p50=146, p90=1,349, p99=8,879, max=135,280. Means of “lines per PR” are not estimands.
+Churn is heavy-tailed: p50=146, p90=1,349, p99=8,879, max=135,280. This study reports that distribution rather than treating mean lines per PR as a measure of progress.
 
 Class tokens in **squash subjects**: 11 `[ops]`, 9 `[research]`, 0 `[bank]`/`[instrument]`. GitHub *title* search still finds `[bank]`=148. **The protocol token does not survive `git log`.** Tools that mine commits will not see it.
 
 Squash authors: `thisisntjon` 1,974; `ash` 5.
 
-### 4.3 Time series — the firehose was documentation
+### 4.3 Time series — weekly work composition
 
 Week of 2026-07-08:
 
@@ -152,7 +155,7 @@ Week of 2026-07-08:
 
 Peak day in this instrument: **2026-07-10, 279** PR-linked commits. (Campaign prose sometimes says 353; different population; not used here.)
 
-**The highest-volume week is the worst code-share week.** When volume fell by an order of magnitude, code share rose. That is the measurable form of “throughput is not progress.”
+The highest-volume week, July 8, had **194/652 = 29.75%** code-containing commits. July 15 was lower at **139/488 = 28.48%**. By August 12, code share was **61/79 = 77.2%**, although the number of code-containing commits had fallen from 194 to 61. These comparisons describe a changing mix of work; they do not measure whether the player improved.
 
 ### 4.4 Identity (RQ3)
 
@@ -161,7 +164,7 @@ Peak day in this instrument: **2026-07-10, 279** PR-linked commits. (Campaign pr
 | `git shortlog -sn --all` | 103 |
 | `git log origin/main --pretty=%an` | 19 |
 | PR-linked squash commits | **2** |
-| GitHub login (review sample) | **1** (`thisisntjon`) |
+| PR author GitHub login (review sample) | **1** (`thisisntjon`) |
 
 Seat names (Ash, Misty, Roach, 5080, …) are real as **protocol**. They are erased at squash and never present on `pulls[].user`. A miner using GitHub identity reports a solo developer. Both sentences can be true.
 
@@ -172,21 +175,21 @@ n=40 seeded PR-linked merges:
 | | Count |
 |---|---|
 | Any review | 17/40 |
-| `chatgpt-codex-connector[bot]` | 16 |
-| Human login | 1 — `thisisntjon` (the author) |
+| PRs reviewed by `chatgpt-codex-connector[bot]` | 17/40 |
+| PRs reviewed by a human login | 1/40 — `thisisntjon` (the author), also bot-reviewed |
 | Independent human, not author | **0/40** |
 
-Clopper-Pearson 95% interval on 0/40: **0–8.8%**. We reject “GitHub reviews are the verifier channel.” We do not reject the existence of off-GitHub verification (receipts, second-seat git authors on branches). Those traces are **not this graph**.
+The reviewer categories overlap: PR **#2377** has both the bot and author login. Clopper-Pearson 95% interval on 0/40: **0–8.8%**. This sample records no independent human GitHub review. It does not establish whether off-GitHub verification occurred through receipts or second-seat work on branches; those traces are **not this graph**.
 
-Doctrine was author XOR verifier, including across hardware. **GitHub cannot operationalize that doctrine** once squash + owner-login are the public objects.
+Doctrine separated authors from verifiers, including across hardware. The GitHub review graph alone cannot establish whether that separation occurred in the surrounding workflow.
 
 ### 4.6 Main is not only PRs
 
-First-parent commits at the pin: **4,093**. PR-linked: 1,979. **2,106** have no PR token. Prefix counts on the no-token remainder (before merge-message absorption): mailbox, lead/board, master/control dominate.
+The instrument's `summary.json` separately reports **1,979** PR-linked first-parent commits and **2,106** skipped records with no PR token. The previously stated 4,093 total does not reconcile with those two reported counts, whose sum is 4,085; neither is presented here as a verified total of the pinned history. This correction retains the instrument's classified counts without changing the underlying data.
 
-Playbook rule: `main` is lead-write-only. Git shape: the lead **pushed** inbox and board updates. “2,338 merged PRs” undercounts governance traffic and, if used as a construction count, overcounts product.
+The separate no-token count shows that PR-linked commits do not describe all recorded mainline activity. It does not establish the value or intent of every omitted record. A merged-PR count is therefore an activity measure, not a count of product improvements.
 
-### 4.7 Intent sample (n=80, code-oversampled)
+### 4.7 Intent sample (n=80, stratified)
 
 Pass-2 distribution:
 
@@ -203,7 +206,7 @@ The two PRODUCT PRs: **#113** (deck-aware archetype selection in `agent/config.p
 
 Governance+ceremony = **30/80**. Evidence receipts = **29/80**. Playing-agent edits = **2/80**.
 
-Because the sample **oversampled** `has_code`, 2.5% PRODUCT is an **upper-ish** glimpse of population product share, not a lower bound. Even in the code stratum, most Python is harness/eval (INSTRUMENT), not the agent.
+The **2.5% PRODUCT** share describes this stratified sample. It is neither an unweighted population estimate nor a statistical upper bound. Harness and evaluation work can support the player without editing its policy directly; the labels do not measure that work's value.
 
 ### 4.8 Protocol join — incident→check is not a PR foreign key
 
@@ -226,11 +229,11 @@ Most “joins” are the **board mentioning PRs**, which is what a board is for.
 
 **May claim (author-run, this pin):**
 
-1. Docs-only 43.2% and small-PR 39.7% on N=1,979; prior 44.7%/39.6% reproduce.
-2. Volume and code-share moved inversely across weeks.
-3. GitHub user and squash author collapse to the owner; 103 seat names live only off `main`.
+1. Docs-only 43.2% and small-PR 39.7% on N=1,979; these update the earlier 44.7%/39.6% estimates.
+2. The July 8 week had 652 landings and 29.75% code share; August 12 had 79 and 77.2%. July 15, not July 8, had the lowest weekly code share at 28.48%.
+3. Shared GitHub identities and squash authors limit attribution: 103 author names across all refs, 19 on main's log, and 2 on PR-linked squash commits.
 4. 0/40 independent human GitHub reviews in a seeded sample.
-5. In a code-oversampled 80, 2 PRs changed the playing agent.
+5. In the stratified 80-PR sample, 2 were classified as playing-agent changes; this is a sample description only.
 6. Rules-ledger PR join is essentially empty (3); kanban join is dense (301).
 
 **May not claim:**
@@ -238,6 +241,8 @@ Most “joins” are the **board mentioning PRs**, which is what a board is for.
 - Encoded rules never failed again (unmeasured; Bonkers DECISIONS already flags the header).
 - 103 independent agents.
 - Merge volume ⇒ product progress.
+- File composition establishes player stagnation, the value of project work, or a majority bound on useful output.
+- The unweighted PRODUCT sample share estimates or upper-bounds the population share.
 - Causal benefit of the protocol vs a bare repo (still HYPOTHESIS).
 - External validity beyond this factory.
 
@@ -245,10 +250,10 @@ Most “joins” are the **board mentioning PRs**, which is what a board is for.
 
 ## 6. Threats to validity
 
-1. **Single operator, single repo, competition.** Mechanism, not ATE.
+1. **Single operator, single repo, competition.** Descriptive case study, not a treatment-effect estimate.
 2. **Coverage 84.6%.** Bound in §3.2: docs-only ≥ 36.6% even in the adversarial fill.
 3. **`docs_only` ≠ waste.** Playbook capture is markdown. The veto is on *volume as strength*, not on writing docs.
-4. **One inspector on n=80.** Pass1/pass2 exact agreement 62.5%. A second coder could move PRODUCT by a few PRs; they cannot move it to a majority given the file-shape census.
+4. **One inspector on n=80.** Pass1/pass2 exact agreement 62.5%. Another inspector could classify some records differently. The file-shape census does not resolve those intent judgments or establish a bound on useful output. The unweighted stratified sample is not a population estimate.
 5. **Author-run census.** Independent rerun of `measure_pr_census.py` on the same SHA is the next scientific bar.
 6. **Squash erases co-authors.** By design of the merge policy under study.
 7. **Keyword join `#1234` collides with issue numbers and hashes.** We intersect with the census set, which removes most false positives, not all (short numbers).
@@ -257,7 +262,7 @@ Most “joins” are the **board mentioning PRs**, which is what a board is for.
 
 ## 7. Why this paper has value
 
-The 2025–2026 agent-PR literature is answering **acceptance**. This factory is a warning about **instrumentation**. If the next lab mines GitHub for “agent productivity,” this case is a documented way that dashboard goes up while the product stands still: docs-majority firehose, identity collapse, bot reviews, harness code mistaken for agent code, protocol tokens that do not survive squash.
+The 2025–2026 agent-PR literature discussed here studies **acceptance**. This case contributes a different view of **instrumentation**: docs-only changes are the largest file-shape category at 43.2%, shared commit identities limit attribution, and GitHub review records do not capture every possible verification channel. Those observations show why merge counts alone are insufficient evidence of progress. Whether the player improved and which work helped require separate outcome evidence.
 
 That is citable. It is not a medal.
 
@@ -286,4 +291,4 @@ Cite the pin, not live HEAD. New merges will move rates; that is expected.
 
 Keep CORE sabotage and identity-by-hash. Do not treat squash-to-owner as harmless. H1–H7 (CI bind, bootstrap fixture, measurement tripwires) exist because GitHub will not tell the truth by default.
 
-Do not print 2,338 or 103 in a pitch. Print **43.2% docs-only (N=1,979, SHA 9522a8a…)** and **2/80 PRODUCT in a code-oversampled sample**.
+When citing the census, keep its object and limits beside the figures: **43.2% docs-only (N=1,979, SHA 9522a8a…)** and **2/80 PRODUCT in a stratified sample**. Neither is a measure of total useful output or player strength.
