@@ -4,6 +4,8 @@
 [`PAPER.md`](PAPER.md) (adds n=80 intent labels, protocol join, coverage bound).
 Do not cite this file as the full result.
 
+**Correction notice (2026-09-13):** This historical body retains superseded review counts and interpretations of earlier estimates, work composition and the mainline total. Use the corrected [PAPER.md](PAPER.md) and its [correction record](CORRECTIONS-2026-09-13.md) for current statements. The archived body is preserved as provenance; the public data and method scripts are unchanged.
+
 **A measured case study of agent-authored pull requests in a single-operator fleet**
 
 **Status:** MEASURED (author-run) · **Not independently reproduced**
